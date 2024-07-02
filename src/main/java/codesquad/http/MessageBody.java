@@ -24,6 +24,10 @@ public class MessageBody {
         bodyData = parseRequestMessageBody(requestReader, contentLengthValue);
     }
 
+    public MessageBody(final byte[] bytes) {
+        bodyData = new String(bytes);
+    }
+
     private String parseRequestMessageBody(final BufferedReader requestReader,
                                            final String contentLengthValue) throws IOException {
 

@@ -2,6 +2,7 @@ package codesquad.http;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import codesquad.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -20,7 +21,7 @@ class HeadersTest {
         Headers headers = new Headers(bufferedReader);
 
         // when
-        String headerValue = headers.getHeader("Host");
+        String headerValue = headers.getHeader(HeaderType.HOST);
 
         // then
         assertThat(headerValue).isEqualTo("localhost");

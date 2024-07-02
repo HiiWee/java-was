@@ -1,8 +1,10 @@
 package codesquad.http;
 
+import codesquad.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Headers {
@@ -10,26 +12,34 @@ public class Headers {
     private static final int HEADER_NAME_INDEX = 0;
     private static final int HEADER_VALUE_INDEX = 1;
 
-    private final Map<String, String> headers;
+    private final Map<HeaderType, String> headers = new LinkedHashMap<>();
 
-    public Headers(final Map<String, String> headers) {
-        this.headers = headers;
+    public Headers() {
     }
 
     public Headers(final BufferedReader requestReader) throws IOException {
-        Map<String, String> requestHeaderFields = new HashMap<>();
+        Map<HeaderType, String> requestHeaderFields = new LinkedHashMap<>();
 
         String headerLine;
         while (!(headerLine = requestReader.readLine()).isEmpty()) {
             String[] headerSplits = headerLine.split(":");
-            requestHeaderFields.put(headerSplits[HEADER_NAME_INDEX].trim(), headerSplits[HEADER_VALUE_INDEX].trim());
+            requestHeaderFields.put(HeaderType.find(headerSplits[HEADER_NAME_INDEX].trim()),
+                    headerSplits[HEADER_VALUE_INDEX].trim());
         }
 
-        headers = requestHeaderFields;
+        headers.putAll(requestHeaderFields);
     }
 
-    public String getHeader(final String headerName) {
-        return headers.get(headerName);
+    public void add(final HeaderType headerType, final String value) {
+        headers.put(headerType, value);
+    }
+
+    public Map<HeaderType, String> getHeaders() {
+        return Collections.unmodifiableMap(headers);
+    }
+
+    public String getHeader(final HeaderType headerType) {
+        return headers.get(headerType);
     }
 
     @Override
