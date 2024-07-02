@@ -2,8 +2,10 @@ package codesquad.http.type;
 
 import java.util.Arrays;
 
+// TODO 표준, 비표준 헤더에 대한 정리 필요, 인덴트라도
 public enum HeaderType {
 
+    NONE("none"),
     CONTENT_TYPE("Content-Type"),
     CONTENT_LENGTH("Content-Length"),
     HOST("Host"),
@@ -34,10 +36,15 @@ public enum HeaderType {
         return Arrays.stream(values())
                 .filter(type -> type.headerName.equalsIgnoreCase(inputHeaderName))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(inputHeaderName + " 헤더를 찾을 수 없습니다."));
+                .orElse(NONE);
     }
 
     public String getHeaderName() {
+        return headerName;
+    }
+
+    @Override
+    public String toString() {
         return headerName;
     }
 }

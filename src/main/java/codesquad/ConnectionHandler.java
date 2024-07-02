@@ -23,7 +23,7 @@ public class ConnectionHandler implements Runnable {
 
     private static final String STATIC_RELATIVE_PATH = "src/main/resources/static";
 
-    private final Logger log = LoggerFactory.getLogger(Main.class);
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private final Socket clientSocket;
 
     public ConnectionHandler(final Socket clientSocket) {

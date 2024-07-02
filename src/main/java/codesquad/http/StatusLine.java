@@ -23,4 +23,12 @@ public class StatusLine {
     public String getHttpStatusMessage() {
         return statusCodeType.getStatusMessage();
     }
+
+    @Override
+    public String toString() {
+        return "StatusLine{" +
+                "httpVersion='" + httpVersion + '\'' +
+                ", statusCodeType=" + statusCodeType +
+                '}';
+    }
 }
