@@ -21,8 +21,9 @@ import org.slf4j.LoggerFactory;
 
 public class ConnectionHandler implements Runnable {
 
-    private final Logger log = LoggerFactory.getLogger(Main.class);
+    private static final String STATIC_RELATIVE_PATH = "src/main/resources/static";
 
+    private final Logger log = LoggerFactory.getLogger(Main.class);
     private final Socket clientSocket;
 
     public ConnectionHandler(final Socket clientSocket) {
@@ -33,8 +34,8 @@ public class ConnectionHandler implements Runnable {
     public void run() {
         try (InputStream inputStream = clientSocket.getInputStream();
              InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-             OutputStream clientOutput = clientSocket.getOutputStream();
-             BufferedReader requestReader = new BufferedReader(inputStreamReader)
+             BufferedReader requestReader = new BufferedReader(inputStreamReader);
+             OutputStream clientOutput = clientSocket.getOutputStream()
         ) {
             HttpRequest httpRequest = new HttpRequest(requestReader);
 
@@ -60,7 +61,7 @@ public class ConnectionHandler implements Runnable {
             throws IOException {
         String requestPath = httpRequest.getRequestPath();
 
-        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/static" + requestPath)) {
+        try (FileInputStream fileInputStream = new FileInputStream(STATIC_RELATIVE_PATH + requestPath)) {
             Headers headers = new Headers();
             headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
 

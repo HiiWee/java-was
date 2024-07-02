@@ -21,7 +21,8 @@ public enum HeaderType {
     SEC_FETCH_DEST("Sec-Fetch-Dest"),
     ACCEPT_ENCODING("Accept-Encoding"),
     ACCEPT_LANGUAGE("Accept-Language"),
-    REFERER("Referer");
+    REFERER("Referer"),
+    COOKIE("Cookie");
 
     private final String headerName;
 
@@ -33,7 +34,7 @@ public enum HeaderType {
         return Arrays.stream(values())
                 .filter(type -> type.headerName.equalsIgnoreCase(inputHeaderName))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("헤더를 찾을 수 없습니다." + inputHeaderName));
+                .orElseThrow(() -> new IllegalArgumentException(inputHeaderName + " 헤더를 찾을 수 없습니다."));
     }
 
     public String getHeaderName() {

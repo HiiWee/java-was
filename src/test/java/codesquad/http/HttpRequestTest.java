@@ -36,6 +36,5 @@ class HttpRequestTest {
                     () -> assertThat(httpRequest.getHttpVersion()).isEqualTo("HTTP/1.1")
             );
         }
-
     }
 }
