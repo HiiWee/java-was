@@ -9,11 +9,9 @@ import codesquad.http.type.HeaderType;
 import codesquad.http.type.MimeType;
 import codesquad.http.type.StatusCodeType;
 import codesquad.utils.StringUtils;
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import org.slf4j.Logger;
@@ -32,17 +30,16 @@ public class ConnectionHandler implements Runnable {
 
     @Override
     public void run() {
-        try (InputStream inputStream = clientSocket.getInputStream();
-             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-             BufferedReader requestReader = new BufferedReader(inputStreamReader);
+        try (InputStream clientInput = clientSocket.getInputStream();
              OutputStream clientOutput = clientSocket.getOutputStream()
         ) {
-            HttpRequest httpRequest = new HttpRequest(requestReader);
+            HttpRequest httpRequest = new HttpRequest(clientInput);
 
             log.debug("Http Request = {}", httpRequest);
             log.debug("Client connected");
 
             HttpResponse httpResponse = createResponse(StatusCodeType.OK, httpRequest);
+
             clientOutput.write(httpResponse.createResponseMessage().getBytes());
         } catch (IOException e) {
             log.error("요청을 처리할 수 없습니다.");

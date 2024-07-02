@@ -3,9 +3,9 @@ package codesquad.http;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.StringReader;
+import java.io.InputStream;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -25,10 +25,10 @@ class HttpRequestTest {
                             "Content-Length: 13\r\n" +
                             "\r\n" +
                             "name=JohnDoe";
-            BufferedReader requestReader = new BufferedReader(new StringReader(httpRequestValue));
+            InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
 
             // when
-            HttpRequest httpRequest = new HttpRequest(requestReader);
+            HttpRequest httpRequest = new HttpRequest(clientInput);
 
             // then
             assertAll(

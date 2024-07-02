@@ -3,6 +3,8 @@ package codesquad.http;
 import codesquad.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class HttpRequest {
 
@@ -16,10 +18,12 @@ public class HttpRequest {
         this.requestBody = requestBody;
     }
 
-    public HttpRequest(final BufferedReader requestReader) throws IOException {
-        requestLine = new RequestLine(requestReader.readLine());
-        headers = new Headers(requestReader);
-        requestBody = new MessageBody(requestReader, headers.getHeader(HeaderType.CONTENT_LENGTH));
+    public HttpRequest(final InputStream clientInput) throws IOException {
+        try (BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientInput))) {
+            requestLine = new RequestLine(requestReader.readLine());
+            headers = new Headers(requestReader);
+            requestBody = new MessageBody(requestReader, headers.getHeader(HeaderType.CONTENT_LENGTH));
+        }
     }
 
     public String getRequestPath() {
