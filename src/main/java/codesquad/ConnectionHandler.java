@@ -1,5 +1,6 @@
 package codesquad;
 
+import codesquad.http.HttpRequest;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,9 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,23 +23,16 @@ public class ConnectionHandler implements Runnable {
 
     @Override
     public void run() {
-
         try (InputStream inputStream = clientSocket.getInputStream();
              InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
              OutputStream clientOutput = clientSocket.getOutputStream();
              BufferedReader requestReader = new BufferedReader(inputStreamReader)
         ) {
+            HttpRequest httpRequest = new HttpRequest(requestReader);
+            String requestPath = httpRequest.getRequestPath();
+            FileInputStream fileInputStream = new FileInputStream("src/main/resources/static" + requestPath);
 
-            Map<String, String> requestLines = parseRequestLine(requestReader);
-            FileInputStream fileInputStream = new FileInputStream(
-                    "src/main/resources/static" + requestLines.get("requestUrl"));
-            Map<String, String> requestHeaderFields = parseRequestHeaderFields(requestReader);
-            String requestMessageBody = parseRequestMessageBody(requestReader,
-                    requestHeaderFields.get("Content-Length"));
-
-            log.debug("requestLines = {}", requestLines);
-            log.debug("requestHeaderFields = {}", requestHeaderFields);
-            log.debug("requestMessageBody = {}", requestMessageBody);
+            log.debug("Http Request = {}", httpRequest);
             log.debug("Client connected");
 
             clientOutput.write("HTTP/1.1 200 OK\r\n".getBytes());
@@ -61,42 +52,5 @@ public class ConnectionHandler implements Runnable {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    private Map<String, String> parseRequestLine(final BufferedReader requestReader) throws IOException {
-        String requestLine = requestReader.readLine();
-        String[] splitLines = requestLine.split(" ");
-        return Map.of(
-                "httpMethod", splitLines[0],
-                "requestUrl", splitLines[1],
-                "httpVersion", splitLines[2]
-        );
-    }
-
-    private Map<String, String> parseRequestHeaderFields(final BufferedReader requestReader) throws IOException {
-        Map<String, String> requestHeaderFields = new HashMap<>();
-
-        String headerLine;
-        while (!(headerLine = requestReader.readLine()).isEmpty()) {
-            String[] headerSplits = headerLine.split(":");
-            requestHeaderFields.put(headerSplits[0], headerSplits[1]);
-        }
-
-        return requestHeaderFields;
-    }
-
-    private String parseRequestMessageBody(final BufferedReader bufferedReader,
-                                           final String contentLengthValue) throws IOException {
-        if (Objects.isNull(contentLengthValue)) {
-            return "[Request Message Body is Empty]";
-        }
-        int contentLength = Integer.parseInt(contentLengthValue.trim());
-        char[] buffer = new char[contentLength];
-        int result = bufferedReader.read(buffer);
-        if (result == 0) {
-            return "[Can not Read Request Body]";
-        }
-
-        return String.valueOf(buffer);
     }
 }
