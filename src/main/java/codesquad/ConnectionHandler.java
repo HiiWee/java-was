@@ -3,9 +3,13 @@ package codesquad;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,21 +25,31 @@ public class ConnectionHandler implements Runnable {
 
     @Override
     public void run() {
-        try (BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+        try (InputStream inputStream = clientSocket.getInputStream();
+             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
              OutputStream clientOutput = clientSocket.getOutputStream();
-             FileInputStream fileInputStream = new FileInputStream("src/main/resources/static/index.html")) {
+             BufferedReader requestReader = new BufferedReader(inputStreamReader)
+        ) {
 
-            String httpRequestInformation = parseRequest(requestReader);
+            Map<String, String> requestLines = parseRequestLine(requestReader);
+            FileInputStream fileInputStream = new FileInputStream(
+                    "src/main/resources/static" + requestLines.get("requestUrl"));
+            Map<String, String> requestHeaderFields = parseRequestHeaderFields(requestReader);
+            String requestMessageBody = parseRequestMessageBody(requestReader,
+                    requestHeaderFields.get("Content-Length"));
 
-            log.debug(httpRequestInformation);
+            log.debug("requestLines = {}", requestLines);
+            log.debug("requestHeaderFields = {}", requestHeaderFields);
+            log.debug("requestMessageBody = {}", requestMessageBody);
             log.debug("Client connected");
 
-            // HTTP 응답을 생성합니다.
             clientOutput.write("HTTP/1.1 200 OK\r\n".getBytes());
             clientOutput.write("Content-Type: text/html\r\n".getBytes());
             clientOutput.write("\r\n".getBytes());
-            clientOutput.write(fileInputStream.readAllBytes()); // 응답 본문으로 "Hello"를 보냅니다.
+            clientOutput.write(fileInputStream.readAllBytes());
             clientOutput.flush();
+            fileInputStream.close();
         } catch (IOException e) {
             log.error("요청을 처리할 수 없습니다.");
             throw new RuntimeException("요청을 처리할 수 없습니다.", e);
@@ -49,14 +63,40 @@ public class ConnectionHandler implements Runnable {
         }
     }
 
-    private String parseRequest(final BufferedReader requestReader) throws IOException {
-        StringBuilder httpRequestBuilder = new StringBuilder();
-        String requestLine;
-        while (!(requestLine = requestReader.readLine()).isEmpty()) {
-            httpRequestBuilder.append(requestLine)
-                    .append(System.lineSeparator());
+    private Map<String, String> parseRequestLine(final BufferedReader requestReader) throws IOException {
+        String requestLine = requestReader.readLine();
+        String[] splitLines = requestLine.split(" ");
+        return Map.of(
+                "httpMethod", splitLines[0],
+                "requestUrl", splitLines[1],
+                "httpVersion", splitLines[2]
+        );
+    }
+
+    private Map<String, String> parseRequestHeaderFields(final BufferedReader requestReader) throws IOException {
+        Map<String, String> requestHeaderFields = new HashMap<>();
+
+        String headerLine;
+        while (!(headerLine = requestReader.readLine()).isEmpty()) {
+            String[] headerSplits = headerLine.split(":");
+            requestHeaderFields.put(headerSplits[0], headerSplits[1]);
         }
 
-        return httpRequestBuilder.toString();
+        return requestHeaderFields;
+    }
+
+    private String parseRequestMessageBody(final BufferedReader bufferedReader,
+                                           final String contentLengthValue) throws IOException {
+        if (Objects.isNull(contentLengthValue)) {
+            return "[Request Message Body is Empty]";
+        }
+        int contentLength = Integer.parseInt(contentLengthValue.trim());
+        char[] buffer = new char[contentLength];
+        int result = bufferedReader.read(buffer);
+        if (result == 0) {
+            return "[Can not Read Request Body]";
+        }
+
+        return String.valueOf(buffer);
     }
 }
