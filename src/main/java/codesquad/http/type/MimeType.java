@@ -26,6 +26,6 @@ public enum MimeType {
                 .filter(type -> type.extensions.contains(extension))
                 .map(type -> type.value)
                 .findAny()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(extension + "에 해당하는 MIME 타입을 찾을 수 없습니다."));
     }
 }
