@@ -37,22 +37,12 @@ public class ConnectionHandler implements Runnable {
              BufferedReader requestReader = new BufferedReader(inputStreamReader)
         ) {
             HttpRequest httpRequest = new HttpRequest(requestReader);
-            String requestPath = httpRequest.getRequestPath();
-            FileInputStream fileInputStream = new FileInputStream("src/main/resources/static" + requestPath);
 
             log.debug("Http Request = {}", httpRequest);
             log.debug("Client connected");
 
-            Headers headers = new Headers();
-            headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
-            HttpResponse httpResponse = new HttpResponse(
-                    new StatusLine("HTTP/1.1", StatusCodeType.OK),
-                    headers,
-                    new MessageBody(fileInputStream.readAllBytes()));
-
-            httpResponse.createResponseMessage();
+            HttpResponse httpResponse = createResponse(StatusCodeType.OK, httpRequest);
             clientOutput.write(httpResponse.createResponseMessage().getBytes());
-            fileInputStream.close();
         } catch (IOException e) {
             log.error("요청을 처리할 수 없습니다.");
             throw new RuntimeException("요청을 처리할 수 없습니다.", e);
@@ -63,6 +53,21 @@ public class ConnectionHandler implements Runnable {
                 log.error("클라이언트 소켓을 닫을 수 없습니다.");
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    private HttpResponse createResponse(final StatusCodeType statusCodeType, final HttpRequest httpRequest)
+            throws IOException {
+        String requestPath = httpRequest.getRequestPath();
+
+        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/static" + requestPath)) {
+            Headers headers = new Headers();
+            headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
+
+            return new HttpResponse(
+                    new StatusLine("HTTP/1.1", statusCodeType),
+                    headers,
+                    new MessageBody(fileInputStream.readAllBytes()));
         }
     }
 }
