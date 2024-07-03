@@ -1,9 +1,17 @@
 package codesquad;
 
-import java.io.BufferedReader;
+import codesquad.http.Headers;
+import codesquad.http.HttpRequest;
+import codesquad.http.HttpResponse;
+import codesquad.http.MessageBody;
+import codesquad.http.StatusLine;
+import codesquad.http.type.HeaderType;
+import codesquad.http.type.MimeType;
+import codesquad.http.type.StatusCodeType;
+import codesquad.utils.StringUtils;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import org.slf4j.Logger;
@@ -11,8 +19,9 @@ import org.slf4j.LoggerFactory;
 
 public class ConnectionHandler implements Runnable {
 
-    private final Logger log = LoggerFactory.getLogger(Main.class);
+    private static final String STATIC_RELATIVE_PATH = "src/main/resources/static";
 
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private final Socket clientSocket;
 
     public ConnectionHandler(final Socket clientSocket) {
@@ -21,21 +30,17 @@ public class ConnectionHandler implements Runnable {
 
     @Override
     public void run() {
-        try (BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-             OutputStream clientOutput = clientSocket.getOutputStream();
-             FileInputStream fileInputStream = new FileInputStream("src/main/resources/static/index.html")) {
+        try (InputStream clientInput = clientSocket.getInputStream();
+             OutputStream clientOutput = clientSocket.getOutputStream()
+        ) {
+            HttpRequest httpRequest = new HttpRequest(clientInput);
 
-            String httpRequestInformation = parseRequest(requestReader);
-
-            log.debug(httpRequestInformation);
+            log.debug("Http Request = {}", httpRequest);
             log.debug("Client connected");
 
-            // HTTP 응답을 생성합니다.
-            clientOutput.write("HTTP/1.1 200 OK\r\n".getBytes());
-            clientOutput.write("Content-Type: text/html\r\n".getBytes());
-            clientOutput.write("\r\n".getBytes());
-            clientOutput.write(fileInputStream.readAllBytes()); // 응답 본문으로 "Hello"를 보냅니다.
-            clientOutput.flush();
+            HttpResponse httpResponse = createResponse(StatusCodeType.OK, httpRequest);
+
+            clientOutput.write(httpResponse.createResponseMessage().getBytes());
         } catch (IOException e) {
             log.error("요청을 처리할 수 없습니다.");
             throw new RuntimeException("요청을 처리할 수 없습니다.", e);
@@ -49,14 +54,18 @@ public class ConnectionHandler implements Runnable {
         }
     }
 
-    private String parseRequest(final BufferedReader requestReader) throws IOException {
-        StringBuilder httpRequestBuilder = new StringBuilder();
-        String requestLine;
-        while (!(requestLine = requestReader.readLine()).isEmpty()) {
-            httpRequestBuilder.append(requestLine)
-                    .append(System.lineSeparator());
-        }
+    private HttpResponse createResponse(final StatusCodeType statusCodeType, final HttpRequest httpRequest)
+            throws IOException {
+        String requestPath = httpRequest.getRequestPath();
 
-        return httpRequestBuilder.toString();
+        try (FileInputStream fileInputStream = new FileInputStream(STATIC_RELATIVE_PATH + requestPath)) {
+            Headers headers = new Headers();
+            headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
+
+            return new HttpResponse(
+                    new StatusLine("HTTP/1.1", statusCodeType),
+                    headers,
+                    new MessageBody(fileInputStream.readAllBytes()));
+        }
     }
 }
