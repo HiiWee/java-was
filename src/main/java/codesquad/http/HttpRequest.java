@@ -10,20 +10,19 @@ public class HttpRequest {
 
     private final RequestLine requestLine;
     private final Headers headers;
-    private final MessageBody requestBody;
+    private final RequestMessageBody requestBody;
 
-    public HttpRequest(final RequestLine requestLine, final Headers headers, final MessageBody requestBody) {
+    public HttpRequest(final RequestLine requestLine, final Headers headers, final RequestMessageBody requestBody) {
         this.requestLine = requestLine;
         this.headers = headers;
         this.requestBody = requestBody;
     }
 
     public HttpRequest(final InputStream clientInput) throws IOException {
-        try (BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientInput))) {
-            requestLine = new RequestLine(requestReader.readLine());
-            headers = new Headers(requestReader);
-            requestBody = new MessageBody(requestReader, headers.getHeader(HeaderType.CONTENT_LENGTH));
-        }
+        BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientInput));
+        requestLine = new RequestLine(requestReader.readLine());
+        headers = new Headers(requestReader);
+        requestBody = new RequestMessageBody(requestReader, headers.getHeader(HeaderType.CONTENT_LENGTH));
     }
 
     public String getRequestPath() {

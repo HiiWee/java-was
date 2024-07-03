@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MessageBody {
+public class RequestMessageBody {
 
     private static final String EMPTY_DATA = "";
     private static final int END_STREAM = -1;
@@ -12,11 +12,11 @@ public class MessageBody {
 
     private final String bodyData;
 
-    public MessageBody(final String bodyData) {
+    public RequestMessageBody(final String bodyData) {
         this.bodyData = bodyData;
     }
 
-    public MessageBody(final BufferedReader requestReader, final String contentLengthValue) throws IOException {
+    public RequestMessageBody(final BufferedReader requestReader, final String contentLengthValue) throws IOException {
         if (Objects.isNull(contentLengthValue) || "0".equals(contentLengthValue.trim())) {
             bodyData = EMPTY_DATA;
             return;
@@ -24,13 +24,8 @@ public class MessageBody {
         bodyData = parseRequestMessageBody(requestReader, contentLengthValue);
     }
 
-    public MessageBody(final byte[] bytes) {
-        bodyData = new String(bytes);
-    }
-
     private String parseRequestMessageBody(final BufferedReader requestReader,
                                            final String contentLengthValue) throws IOException {
-
         int contentLength = Integer.parseInt(contentLengthValue.trim());
         char[] buffer = new char[contentLength];
         int result = requestReader.read(buffer);
