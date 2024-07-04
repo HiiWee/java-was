@@ -20,10 +20,8 @@ class MimeTypeTest {
     }
 
     @Test
-    void 일치하는_확장자의_mimeType이_없으면_예외가_발생한다() {
+    void 알_수_없는_mimeType이라면_octet_stream이_반환된다() {
         // expect
-        assertThatThrownBy(() -> MimeType.findMimeValue("none_extension"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("none_extension에 해당하는 MIME 타입을 찾을 수 없습니다.");
+        assertThat(MimeType.findMimeValue("undefined-type")).isEqualTo("application/octet-stream");
     }
 }
