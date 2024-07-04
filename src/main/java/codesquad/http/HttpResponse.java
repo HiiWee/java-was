@@ -46,8 +46,6 @@ public class HttpResponse {
     private void sendResponse(final byte[] responseBytes) throws IOException {
         dataOutputStream.writeBytes(getStatusLineMessage() + CRLF + getHeaderMessage() + CRLF + CRLF);
         dataOutputStream.write(responseBytes);
-        dataOutputStream.flush();
-        dataOutputStream.close();
     }
 
     private String getStatusLineMessage() {

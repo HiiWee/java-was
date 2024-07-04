@@ -24,7 +24,8 @@ public enum HeaderType {
     ACCEPT_ENCODING("Accept-Encoding"),
     ACCEPT_LANGUAGE("Accept-Language"),
     REFERER("Referer"),
-    COOKIE("Cookie");
+    COOKIE("Cookie"),
+    LOCATION("Location");
 
     private final String headerName;
 

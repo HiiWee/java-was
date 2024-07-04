@@ -6,9 +6,18 @@ import java.io.IOException;
 
 public interface RequestHandler {
 
-    void process(HttpRequest request, HttpResponse response) throws IOException;
+    default void process(HttpRequest request, HttpResponse response) throws IOException {
+        String httpMethod = request.getHttpMethod();
 
-    default void handleGet(HttpRequest request, HttpResponse response) {
+        if (httpMethod.equals("GET")) {
+            handleGet(request, response);
+        }
+        if (httpMethod.equals("POST")) {
+            handlePost(request, response);
+        }
+    }
+
+    default void handleGet(HttpRequest request, HttpResponse response) throws IOException {
     }
 
     default void handlePost(HttpRequest request, HttpResponse response) {
