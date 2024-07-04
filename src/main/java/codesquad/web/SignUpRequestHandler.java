@@ -16,8 +16,9 @@ public class SignUpRequestHandler implements RequestHandler {
         String userId = request.getParameter("userId");
         String nickname = request.getParameter("nickname");
         String password = request.getParameter("password");
+        String email = request.getParameter("email");
 
-        User user = new User(userId, nickname, password);
+        User user = new User(userId, nickname, password, email);
         log.info("회원가입 유저 = {}", user);
 
         response.sendRedirect("/main");
