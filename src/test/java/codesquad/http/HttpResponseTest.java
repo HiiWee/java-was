@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ class HttpResponseTest {
         class 잘못된_파일경로를_넘겨주면 {
 
             @Test
-            void 예외가_발생한다() throws IOException {
+            void 예외가_발생한다() {
                 // given
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 HttpResponse httpResponse = new HttpResponse(new DataOutputStream(byteArrayOutputStream), "HTTP/1.1");

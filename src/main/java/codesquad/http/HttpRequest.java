@@ -89,7 +89,8 @@ public class HttpRequest {
         return "HttpRequest{" +
                 "requestLine=" + requestLine +
                 ", headers=" + headers +
-                ", body=" + requestBody +
+                ", requestParameters=" + requestParameters +
+                ", requestBody=" + requestBody +
                 '}';
     }
 }

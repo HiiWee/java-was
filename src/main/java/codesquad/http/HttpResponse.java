@@ -60,4 +60,10 @@ public class HttpResponse {
                 .map(entry -> entry.getKey().getHeaderName() + DELIMITER + entry.getValue())
                 .collect(Collectors.joining(CRLF));
     }
+
+    public void sendRedirect(final String redirectPath) throws IOException {
+        statusLine.setResponseStatus(StatusCodeType.FOUND);
+        headers.add(HeaderType.LOCATION, redirectPath);
+        sendResponse(new byte[0]);
+    }
 }

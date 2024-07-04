@@ -4,10 +4,10 @@ import codesquad.http.HttpRequest;
 import codesquad.http.HttpResponse;
 import java.io.IOException;
 
-public class RegistrationRequestHandler implements RequestHandler {
+public class StaticResourceForwardHandler implements RequestHandler {
 
     @Override
     public void process(final HttpRequest request, final HttpResponse response) throws IOException {
-        response.forward("/registration/index.html");
+        response.forward(request.getRequestPath());
     }
 }
