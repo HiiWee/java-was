@@ -5,30 +5,33 @@ import codesquad.http.type.StatusCodeType;
 public class StatusLine {
 
     private final String httpVersion;
-    private final StatusCodeType statusCodeType;
+    private StatusCodeType responseStatus;
 
-    public StatusLine(final String httpVersion, final StatusCodeType statusCodeType) {
+    public StatusLine(final String httpVersion) {
         this.httpVersion = httpVersion;
-        this.statusCodeType = statusCodeType;
     }
 
     public String getHttpVersion() {
         return httpVersion;
     }
 
-    public String getHttpStatus() {
-        return statusCodeType.getStatusCode();
+    public String getHttpStatusCode() {
+        return responseStatus.getStatusCode();
+    }
+
+    public void setResponseStatus(final StatusCodeType responseStatus) {
+        this.responseStatus = responseStatus;
     }
 
     public String getHttpStatusMessage() {
-        return statusCodeType.getStatusMessage();
+        return responseStatus.getStatusMessage();
     }
 
     @Override
     public String toString() {
         return "StatusLine{" +
                 "httpVersion='" + httpVersion + '\'' +
-                ", statusCodeType=" + statusCodeType +
+                ", statusCodeType=" + responseStatus +
                 '}';
     }
 }

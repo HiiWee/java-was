@@ -16,9 +16,10 @@ public class Main {
         log.debug("Listening for connection on port 8080 ....");
 
         ExecutorService executor = Executors.newFixedThreadPool(10);
+        RequestHandlerMapping requestHandlerMapping = new RequestHandlerMapping();
 
         while (true) {
-            executor.execute(new ConnectionHandler(serverSocket.accept()));
+            executor.execute(new ConnectionHandler(serverSocket.accept(), requestHandlerMapping));
         }
     }
 }

@@ -48,7 +48,7 @@ class RequestLineTest {
 
     @Test
     void URI에서_쿼리파라미터의_value가_없으면_제외된다() throws IOException {
-                // given
+        // given
         BufferedReader requestReader = new BufferedReader(new StringReader(
                 "GET /create?userId=&password=&name=%EB%B0%95%EC%9E%AC%EC%84%B1&email=javajigi%40slipp.net HTTP/1.1\r\n"));
 

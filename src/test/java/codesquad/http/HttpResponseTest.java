@@ -1,31 +1,32 @@
 package codesquad.http;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import codesquad.http.type.HeaderType;
-import codesquad.http.type.StatusCodeType;
-import java.io.UnsupportedEncodingException;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class HttpResponseTest {
 
     @Nested
-    class HttpResponse_객체를_생성하면 {
+    class forward_메소드는 {
 
-        @Test
-        void HttpResponse_메시지를_만들_수_있다() throws UnsupportedEncodingException {
-            // given
-            Headers headers = new Headers();
-            headers.add(HeaderType.CONTENT_TYPE, "text/html");
-            HttpResponse httpResponse = new HttpResponse(new StatusLine("HTTP/1.1", StatusCodeType.OK), headers,
-                    new ResponseMessageBody("messageBody".getBytes("UTF-8")));
+        @Nested
+        class 잘못된_파일경로를_넘겨주면 {
 
-            // when
-            String responseMessage = new String(httpResponse.getResponseBytes());
+            @Test
+            void 예외가_발생한다() throws IOException {
+                // given
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                HttpResponse httpResponse = new HttpResponse(new DataOutputStream(byteArrayOutputStream), "HTTP/1.1");
 
-            // then
-            assertThat(responseMessage).isEqualTo("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nmessageBody");
+                // expect
+                assertThatThrownBy(() -> httpResponse.forward("/invalidPath"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("파일을 찾을 수 없습니다. requestPath = /invalidPath");
+            }
         }
     }
 }

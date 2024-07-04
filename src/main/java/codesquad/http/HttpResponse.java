@@ -1,6 +1,14 @@
 package codesquad.http;
 
-import java.io.UnsupportedEncodingException;
+import codesquad.http.type.HeaderType;
+import codesquad.http.type.MimeType;
+import codesquad.http.type.StatusCodeType;
+import codesquad.utils.StringUtils;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.stream.Collectors;
 
 public class HttpResponse {
@@ -8,31 +16,42 @@ public class HttpResponse {
     private static final String CRLF = "\r\n";
     private static final String ONE_SPACE = " ";
     private static final String DELIMITER = ": ";
-    private static final String UTF_8 = "UTF-8";
 
     private final StatusLine statusLine;
-    private final Headers headers;
-    private final ResponseMessageBody responseBody;
+    private final Headers headers = new Headers();
+    private final DataOutputStream dataOutputStream;
 
-    public HttpResponse(final StatusLine statusLine, final Headers headers, final ResponseMessageBody responseBody) {
-        this.statusLine = statusLine;
-        this.headers = headers;
-        this.responseBody = responseBody;
+    public HttpResponse(final OutputStream outputStream, final String httpVersion) {
+        this.statusLine = new StatusLine(httpVersion);
+        this.dataOutputStream = new DataOutputStream(outputStream);
     }
 
-    public byte[] getResponseBytes() throws UnsupportedEncodingException {
-        byte[] responseBytesWithoutBody = (getStatusLineMessage() + CRLF + getHeaderMessage() + CRLF + CRLF).getBytes(
-                UTF_8);
-        byte[] responseBodyBytes = responseBody.getBytes();
-        byte[] bytes = new byte[responseBytesWithoutBody.length + responseBodyBytes.length];
-        System.arraycopy(responseBytesWithoutBody, 0, bytes, 0, responseBytesWithoutBody.length);
-        System.arraycopy(responseBodyBytes, 0, bytes, responseBytesWithoutBody.length, responseBodyBytes.length);
+    public void forward(final String requestPath) throws IOException {
+        URL fileUrl = getClass().getClassLoader().getResource("static" + requestPath);
 
-        return bytes;
+        if (fileUrl == null) {
+            throw new IllegalArgumentException("파일을 찾을 수 없습니다. requestPath = " + requestPath);
+        }
+
+        try (InputStream inputStream = fileUrl.openStream()) {
+            byte[] fileBytes = inputStream.readAllBytes();
+            headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
+            headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(fileBytes.length));
+            statusLine.setResponseStatus(StatusCodeType.OK);
+
+            sendResponse(fileBytes);
+        }
+    }
+
+    private void sendResponse(final byte[] responseBytes) throws IOException {
+        dataOutputStream.writeBytes(getStatusLineMessage() + CRLF + getHeaderMessage() + CRLF + CRLF);
+        dataOutputStream.write(responseBytes);
+        dataOutputStream.flush();
+        dataOutputStream.close();
     }
 
     private String getStatusLineMessage() {
-        return statusLine.getHttpVersion() + ONE_SPACE + statusLine.getHttpStatus() + ONE_SPACE
+        return statusLine.getHttpVersion() + ONE_SPACE + statusLine.getHttpStatusCode() + ONE_SPACE
                 + statusLine.getHttpStatusMessage();
     }
 
@@ -42,9 +61,5 @@ public class HttpResponse {
                 .stream()
                 .map(entry -> entry.getKey().getHeaderName() + DELIMITER + entry.getValue())
                 .collect(Collectors.joining(CRLF));
-    }
-
-    private byte[] createBodyMessage() {
-        return responseBody.getBytes();
     }
 }

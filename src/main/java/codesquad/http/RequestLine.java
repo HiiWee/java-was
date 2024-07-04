@@ -75,7 +75,8 @@ public class RequestLine {
     public String toString() {
         return "RequestLine{" +
                 "method='" + method + '\'' +
-                ", requestTarget='" + requestPath + '\'' +
+                ", requestPath='" + requestPath + '\'' +
+                ", queryParams=" + queryParams +
                 ", httpVersion='" + httpVersion + '\'' +
                 '}';
     }

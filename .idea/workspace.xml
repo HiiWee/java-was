@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/ConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/http/HttpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/http/HttpResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/http/RequestLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/http/RequestLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/registration/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/registration/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/http/RequestLineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/http/RequestLineTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +47,7 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -98,6 +101,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="codesquad" />
+      <recent name="codesquad.web" />
       <recent name="codesquad.http" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -108,7 +113,7 @@
       <recent name="codesquad.http" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.RawTest.test">
+  <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
       <module name="java-was.main" />
@@ -218,9 +223,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.RawTest.test" />
         <item itemvalue="Gradle.MimeTypeTest.알_수_없는_mimeType이라면_octet_stream이_반환된다" />
-        <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.HttpResponse_객체를_생성하면.HttpResponse_메시지를_만들_수_있다" />
         <item itemvalue="Application.Main" />
       </list>
