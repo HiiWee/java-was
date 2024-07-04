@@ -1,11 +1,6 @@
-package codesquad;
+package codesquad.web;
 
 import codesquad.utils.StringUtils;
-import codesquad.web.MainForwardHandler;
-import codesquad.web.RegistrationForwardHandler;
-import codesquad.web.RequestHandler;
-import codesquad.web.SignUpRequestHandler;
-import codesquad.web.StaticResourceForwardHandler;
 import java.util.Map;
 
 public class RequestHandlerMapping {

@@ -1,4 +1,4 @@
-package codesquad.http.type;
+package codesquad.was.http.type;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package codesquad.http.type;
+package codesquad.was.http.type;
 
 public enum StatusCodeType {
 

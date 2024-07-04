@@ -1,4 +1,4 @@
-package codesquad;
+package codesquad.web;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

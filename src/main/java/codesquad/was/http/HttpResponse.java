@@ -1,9 +1,9 @@
-package codesquad.http;
+package codesquad.was.http;
 
-import codesquad.http.type.HeaderType;
-import codesquad.http.type.MimeType;
-import codesquad.http.type.StatusCodeType;
 import codesquad.utils.StringUtils;
+import codesquad.was.http.type.HeaderType;
+import codesquad.was.http.type.MimeType;
+import codesquad.was.http.type.StatusCodeType;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

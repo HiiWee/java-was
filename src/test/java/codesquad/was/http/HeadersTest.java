@@ -1,8 +1,8 @@
-package codesquad.http;
+package codesquad.was.http;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import codesquad.http.type.HeaderType;
+import codesquad.was.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;

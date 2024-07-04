@@ -1,6 +1,6 @@
-package codesquad.http;
+package codesquad.was.http;
 
-import codesquad.http.type.StatusCodeType;
+import codesquad.was.http.type.StatusCodeType;
 
 public class StatusLine {
 

@@ -1,8 +1,9 @@
-package codesquad;
+package codesquad.was;
 
-import codesquad.http.HttpRequest;
-import codesquad.http.HttpResponse;
+import codesquad.was.http.HttpRequest;
+import codesquad.was.http.HttpResponse;
 import codesquad.web.RequestHandler;
+import codesquad.web.RequestHandlerMapping;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -35,7 +36,6 @@ public class ConnectionHandler implements Runnable {
 
             RequestHandler requestHandler = requestHandlerMapping.read(httpRequest.getRequestPath());
             requestHandler.process(httpRequest, httpResponse);
-
         } catch (IOException e) {
             log.error("요청을 처리할 수 없습니다.", e);
         }
