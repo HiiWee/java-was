@@ -2,17 +2,18 @@ package codesquad.web;
 
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
+import codesquad.was.http.type.HttpMethod;
 import java.io.IOException;
 
 public interface RequestHandler {
 
     default void process(HttpRequest request, HttpResponse response) throws IOException {
-        String httpMethod = request.getHttpMethod();
+        HttpMethod requestMethod = request.getHttpMethod();
 
-        if (httpMethod.equals("GET")) {
+        if (requestMethod == HttpMethod.GET) {
             handleGet(request, response);
         }
-        if (httpMethod.equals("POST")) {
+        if (requestMethod == HttpMethod.POST) {
             handlePost(request, response);
         }
     }

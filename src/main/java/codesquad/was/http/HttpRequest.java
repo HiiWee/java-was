@@ -1,6 +1,7 @@
 package codesquad.was.http;
 
 import codesquad.was.http.type.HeaderType;
+import codesquad.was.http.type.HttpMethod;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +44,7 @@ public class HttpRequest {
 
     private RequestLine createRequestLine(final String requestLine) throws UnsupportedEncodingException {
         String[] splitLines = requestLine.split(ONE_SPACE);
-        String method = splitLines[METHOD_INDEX];
+        HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
         String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
         String requestPath = pathWithQueryString[PATH_INDEX];
         requestParameters.putAll(parseQueryParams(pathWithQueryString));
@@ -76,7 +77,7 @@ public class HttpRequest {
         return requestLine.getHttpVersion();
     }
 
-    public String getHttpMethod() {
+    public HttpMethod getHttpMethod() {
         return requestLine.getMethod();
     }
 
