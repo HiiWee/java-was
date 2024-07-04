@@ -16,6 +16,7 @@ public class HttpResponse {
     private static final String CRLF = "\r\n";
     private static final String ONE_SPACE = " ";
     private static final String DELIMITER = ": ";
+    private static final String HOST_URL = "http://localhost:8080";
 
     private final StatusLine statusLine;
     private final Headers headers = new Headers();
@@ -63,7 +64,7 @@ public class HttpResponse {
 
     public void sendRedirect(final String redirectPath) throws IOException {
         statusLine.setResponseStatus(StatusCodeType.FOUND);
-        headers.add(HeaderType.LOCATION, redirectPath);
+        headers.add(HeaderType.LOCATION, HOST_URL + redirectPath);
         sendResponse(new byte[0]);
     }
 }
