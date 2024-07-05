@@ -1,4 +1,4 @@
-package codesquad.http.type;
+package codesquad.was.http.type;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -11,7 +11,8 @@ public enum MimeType {
     ICO(Set.of("ico"), "image/x-icon"),
     PNG(Set.of("png"), "image/png"),
     JPG(Set.of("jpg", "jpeg"), "image/jpeg"),
-    SVG(Set.of("svg"), "image/svg+xml");
+    SVG(Set.of("svg"), "image/svg+xml"),
+    APPLICATION_OCTET_STREAM(Set.of("application/octet-stream"), "application/octet-stream");
 
     private final Set<String> extensions;
     private final String value;
@@ -26,6 +27,6 @@ public enum MimeType {
                 .filter(type -> type.extensions.contains(extension))
                 .map(type -> type.value)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(extension + "에 해당하는 MIME 타입을 찾을 수 없습니다."));
+                .orElse(APPLICATION_OCTET_STREAM.value);
     }
 }

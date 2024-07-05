@@ -1,4 +1,4 @@
-package codesquad.http;
+package codesquad.was.http;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import org.junit.jupiter.api.Test;
 
-class MessageBodyTest {
+class RequestMessageBodyTest {
 
     @Test
     void httpRequest의_요청_바디를_읽을_수_있다() throws IOException {
@@ -17,12 +17,12 @@ class MessageBodyTest {
         BufferedReader requestReader = new BufferedReader(new StringReader(input));
 
         // when
-        MessageBody messageBody = new MessageBody(requestReader, String.valueOf(input.length()));
+        RequestMessageBody requestMessageBody = new RequestMessageBody(requestReader, String.valueOf(input.length()));
 
         // then
         assertAll(
-                () -> assertThat(messageBody.getBodyData()).isEqualTo(new String(input.getBytes("UTF-8"))),
-                () -> assertThat(messageBody.getBodyData().getBytes("UTF-8")).isEqualTo(input.getBytes("UTF-8"))
+                () -> assertThat(requestMessageBody.getBodyData()).isEqualTo(new String(input.getBytes("UTF-8"))),
+                () -> assertThat(requestMessageBody.getBodyData().getBytes("UTF-8")).isEqualTo(input.getBytes("UTF-8"))
         );
     }
 
@@ -33,9 +33,9 @@ class MessageBodyTest {
         BufferedReader requestReader = new BufferedReader(new StringReader(input));
 
         // when
-        MessageBody messageBody = new MessageBody(requestReader, "0");
+        RequestMessageBody requestMessageBody = new RequestMessageBody(requestReader, "0");
 
         // then
-        assertThat(messageBody.getBodyData()).isEqualTo("");
+        assertThat(requestMessageBody.getBodyData()).isEqualTo("");
     }
 }

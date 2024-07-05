@@ -1,6 +1,6 @@
-package codesquad.http;
+package codesquad.was.http;
 
-import codesquad.http.type.HeaderType;
+import codesquad.was.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Collections;

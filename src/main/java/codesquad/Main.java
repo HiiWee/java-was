@@ -1,5 +1,7 @@
 package codesquad;
 
+import codesquad.was.ConnectionHandler;
+import codesquad.web.RequestHandlerMapping;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
@@ -16,9 +18,10 @@ public class Main {
         log.debug("Listening for connection on port 8080 ....");
 
         ExecutorService executor = Executors.newFixedThreadPool(10);
+        RequestHandlerMapping requestHandlerMapping = new RequestHandlerMapping();
 
         while (true) {
-            executor.execute(new ConnectionHandler(serverSocket.accept()));
+            executor.execute(new ConnectionHandler(serverSocket.accept(), requestHandlerMapping));
         }
     }
 }
