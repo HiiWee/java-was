@@ -9,6 +9,7 @@ public class RequestHandlerMapping {
 
     private static final Map<String, RequestHandler> handlerMappings = Map.of(
             "static", new StaticResourceForwardHandler(),
+            "/", new HomeForwardController(),
             "/registration", new RegistrationForwardHandler(),
             "/signup", new SignUpRequestHandler(),
             "/main", new MainForwardHandler()
