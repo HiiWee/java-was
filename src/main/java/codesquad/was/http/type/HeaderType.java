@@ -2,7 +2,6 @@ package codesquad.was.http.type;
 
 import java.util.Arrays;
 
-// TODO 표준, 비표준 헤더에 대한 정리 필요, 인덴트라도
 public enum HeaderType {
 
     NONE("none"),

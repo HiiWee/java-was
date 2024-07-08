@@ -9,11 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class HttpRequest {
 
@@ -23,11 +19,10 @@ public class HttpRequest {
     private static final int VERSION_INDEX = 2;
     private static final int PATH_INDEX = 0;
     private static final int QUERY_STRING_INDEX = 1;
-    private static final int KEY_VALUE_LENGTH = 2;
 
     private final RequestLine requestLine;
     private final Headers headers;
-    private final Map<String, String> requestParameters = new HashMap<>();
+    private final RequestParameters parameters = new RequestParameters();
     private final RequestMessageBody requestBody;
 
     public HttpRequest(final RequestLine requestLine, final Headers headers, final RequestMessageBody requestBody) {
@@ -44,7 +39,7 @@ public class HttpRequest {
 
         if (isFormData()) {
             String bodyData = requestBody.getBodyData();
-            requestParameters.putAll(parseQueryParams(bodyData));
+            parameters.putParameters(bodyData);
         }
     }
 
@@ -62,8 +57,8 @@ public class HttpRequest {
         HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
         String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
         String requestPath = pathWithQueryString[PATH_INDEX];
-        if (pathWithQueryString.length == 2) {
-            requestParameters.putAll(parseQueryParams(pathWithQueryString[QUERY_STRING_INDEX]));
+        if (pathWithQueryString.length == RequestParameters.KEY_VALUE_LENGTH) {
+            parameters.putParameters(pathWithQueryString[QUERY_STRING_INDEX]);
         }
         String httpVersion = splitLines[VERSION_INDEX];
 
@@ -74,13 +69,6 @@ public class HttpRequest {
         String decodedQueryString = URLDecoder.decode(queryString, "UTF-8");
 
         return decodedQueryString.split("\\?");
-    }
-
-    private Map<String, String> parseQueryParams(final String queryString) {
-        return Arrays.stream(queryString.split("&"))
-                .map(param -> param.split("="))
-                .filter(params -> params.length == KEY_VALUE_LENGTH)
-                .collect(Collectors.toMap(splitParams -> splitParams[0], splitParams -> splitParams[1]));
     }
 
     public String getRequestPath() {
@@ -96,7 +84,7 @@ public class HttpRequest {
     }
 
     public String getParameter(final String name) {
-        return requestParameters.get(name);
+        return parameters.get(name);
     }
 
     @Override
@@ -104,7 +92,7 @@ public class HttpRequest {
         return "HttpRequest{" +
                 "requestLine=" + requestLine +
                 ", headers=" + headers +
-                ", requestParameters=" + requestParameters +
+                ", parameters=" + parameters +
                 ", requestBody=" + requestBody +
                 '}';
     }

@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestParameters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/codesquad/was/http/RequestParametersTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/HeaderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/HeaderType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,14 +46,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JvmLoggingSettingsStorage">
+    <option name="loggerId" value="Slf4j" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -74,9 +82,10 @@
     "Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor": "Run",
     "Gradle.RawTest.test.executor": "Run",
     "Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor": "Run",
     "Gradle.Tests in 'codesquad'.executor": "Run",
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
-    "Gradle.Tests in 'java-was.test'.executor": "Run",
+    "Gradle.Tests in 'java-was.test'.executor": "Coverage",
     "Gradle.java-was [:Main.main()].executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -107,24 +116,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="codesquad.web" />
+      <recent name="codesquad.was.http" />
       <recent name="codesquad.http.type" />
       <recent name="codesquad.http" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
-      <module name="java-was.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HttpRequestTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -197,6 +195,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.web.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Tests in 'java-was.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -222,10 +244,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
+        <item itemvalue="Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다" />
         <item itemvalue="Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다" />
         <item itemvalue="Gradle.HttpRequestTest" />
         <item itemvalue="Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -301,5 +323,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1720437367689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
