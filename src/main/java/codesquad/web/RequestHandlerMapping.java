@@ -11,7 +11,7 @@ public class RequestHandlerMapping {
             "static", new StaticResourceForwardHandler(),
             "/", new HomeForwardController(),
             "/registration", new RegistrationForwardHandler(),
-            "/signup", new SignUpRequestHandler(),
+            "/user/create", new SignUpRequestHandler(),
             "/main", new MainForwardHandler()
     );
 

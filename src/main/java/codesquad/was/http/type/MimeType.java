@@ -12,6 +12,7 @@ public enum MimeType {
     PNG(Set.of("png"), "image/png"),
     JPG(Set.of("jpg", "jpeg"), "image/jpeg"),
     SVG(Set.of("svg"), "image/svg+xml"),
+    APPLICATION_X_WWW_FORM_ENCODED(Set.of("application/x-www-form-urlencoded"), "application/x-www-form-urlencoded"),
     APPLICATION_OCTET_STREAM(Set.of("application/octet-stream"), "application/octet-stream");
 
     private final Set<String> extensions;
@@ -28,5 +29,9 @@ public enum MimeType {
                 .map(type -> type.value)
                 .findAny()
                 .orElse(APPLICATION_OCTET_STREAM.value);
+    }
+
+    public String getValue() {
+        return value;
     }
 }
