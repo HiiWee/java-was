@@ -111,7 +111,7 @@
       <recent name="codesquad.http" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
       <module name="java-was.main" />
@@ -221,8 +221,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다" />
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
+        <item itemvalue="Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다" />
         <item itemvalue="Gradle.HttpRequestTest" />
         <item itemvalue="Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다" />
         <item itemvalue="Application.Main" />
