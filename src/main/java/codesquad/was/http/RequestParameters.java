@@ -1,5 +1,7 @@
 package codesquad.was.http;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +13,9 @@ public class RequestParameters {
 
     private final Map<String, String> requestParameters = new HashMap<>();
 
-    public void putParameters(final String bodyData) {
-        requestParameters.putAll(parseQueryParams(bodyData));
+    public void putParameters(final String bodyData) throws UnsupportedEncodingException {
+        String decodedBodyData = URLDecoder.decode(bodyData, "UTF-8");
+        requestParameters.putAll(parseQueryParams(decodedBodyData));
     }
 
     private Map<String, String> parseQueryParams(final String queryString) {

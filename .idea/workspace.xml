@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestParameters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/codesquad/was/http/RequestParametersTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/HeaderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/HeaderType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,7 @@
     "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor": "Run",
     "Gradle.Tests in 'codesquad'.executor": "Run",
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
-    "Gradle.Tests in 'java-was.test'.executor": "Coverage",
+    "Gradle.Tests in 'java-was.test'.executor": "Run",
     "Gradle.java-was [:Main.main()].executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
