@@ -22,7 +22,7 @@ class HeadersTest {
         Headers headers = new Headers(bufferedReader);
 
         // when
-        String headerValue = headers.getHeader(HeaderType.HOST);
+        String headerValue = headers.getHeader(HeaderType.HOST).get(0);
 
         // then
         assertThat(headerValue).isEqualTo("localhost");

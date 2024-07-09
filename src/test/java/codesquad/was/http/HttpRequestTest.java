@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -112,6 +113,30 @@ class HttpRequestTest {
                     () -> assertThat(httpRequest.getParameter("name")).isEqualTo("박재성"),
                     () -> assertThat(httpRequest.getParameter("email")).isEqualTo("javajigi@slipp.net")
             );
+        }
+    }
+
+    @Nested
+    class getCookies_메소드는 {
+
+        @Test
+        void 요청으로_들어온_쿠키목록을_반환한다() throws IOException {
+            // given
+            String httpRequestValue =
+                    "GET /create HTTP/1.1\r\n"
+                            + "Host: localhost\r\n"
+                            + "Connection: keep-alive\r\n"
+                            + "Cookie: key1=value1; key2=value2\r\n"
+                            + "\r\n";
+            InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
+
+            // when
+            HttpRequest httpRequest = new HttpRequest(clientInput);
+            List<Cookie> cookies = httpRequest.getCookies();
+
+            // then
+            assertThat(cookies).containsExactlyElementsOf(
+                    List.of(new Cookie("key1", "value1"), new Cookie("key2", "value2")));
         }
     }
 }

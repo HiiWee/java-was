@@ -4,6 +4,7 @@ import codesquad.was.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +38,12 @@ public class Headers {
                 log.warn("{} 헤더를 찾지 못했습니다.", headerSplits[HEADER_NAME_INDEX].trim());
                 continue;
             }
+            List<String> headerValueSplits = Arrays.stream(headerSplits[HEADER_VALUE_INDEX].split(";"))
+                    .map(String::trim)
+                    .toList();
+
             requestHeaderFields.computeIfAbsent(headerType, k -> new ArrayList<>())
-                    .add(headerSplits[HEADER_VALUE_INDEX].trim());
+                    .addAll(headerValueSplits);
         }
 
         headers.putAll(requestHeaderFields);
@@ -59,6 +64,7 @@ public class Headers {
 
     public String createMessage() {
         if (headers.containsKey(HeaderType.SET_COOKIE)) {
+            System.out.println(createSetCookiesMessage());
             return createHeaderMessageWithoutCookie() + CRLF + createSetCookiesMessage();
         }
         return createHeaderMessageWithoutCookie();
@@ -82,13 +88,8 @@ public class Headers {
                 .collect(Collectors.joining(CRLF));
     }
 
-    public String getHeader(final HeaderType headerType) {
-        List<String> headerValues = headers.get(headerType);
-        if (headerValues == null) {
-            return null;
-        }
-
-        return String.join("; ", headers.get(headerType));
+    public List<String> getHeader(final HeaderType headerType) {
+        return headers.get(headerType);
     }
 
     @Override

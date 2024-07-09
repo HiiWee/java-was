@@ -2,6 +2,7 @@ package codesquad.was;
 
 import codesquad.utils.StringUtils;
 import codesquad.web.handler.LoginRequestHandler;
+import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import java.util.Map;
 
@@ -16,7 +17,8 @@ public class RequestHandlerMapping {
             "/registration", (request, response) -> response.forward("/registration/index.html"),
             "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
             "/user/create", new SignUpRequestHandler(),
-            "/user/login", new LoginRequestHandler()
+            "/user/login", new LoginRequestHandler(),
+            "/user/logout", new LogoutRequestHandler()
     );
 
     public RequestHandler read(final String requestPath) {

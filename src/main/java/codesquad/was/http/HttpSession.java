@@ -21,4 +21,8 @@ public class HttpSession {
                 "sessionStore=" + sessionStore +
                 '}';
     }
+
+    public void removeAttributes(final String value) {
+        sessionStore.remove(value);
+    }
 }

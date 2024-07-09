@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.List;
 import java.util.Objects;
 
 public class HttpRequest {
@@ -37,7 +38,8 @@ public class HttpRequest {
         BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientInput));
         requestLine = createRequestLine(requestReader.readLine());
         headers = new Headers(requestReader);
-        requestBody = new RequestMessageBody(requestReader, headers.getHeader(HeaderType.CONTENT_LENGTH));
+        String contentLengthValue = parseContentLength();
+        requestBody = new RequestMessageBody(requestReader, contentLengthValue);
 
         if (isFormData()) {
             String bodyData = requestBody.getBodyData();
@@ -45,12 +47,21 @@ public class HttpRequest {
         }
     }
 
-    private boolean isFormData() {
-        String contentType = headers.getHeader(HeaderType.CONTENT_TYPE);
+    private String parseContentLength() {
+        List<String> headerValues = headers.getHeader(HeaderType.CONTENT_LENGTH);
+        if (Objects.isNull(headerValues) || headerValues.isEmpty()) {
+            return null;
+        }
+        return String.join("; ", headerValues);
+    }
 
-        if (Objects.isNull(contentType)) {
+    private boolean isFormData() {
+        List<String> headerValues = headers.getHeader(HeaderType.CONTENT_TYPE);
+        if (Objects.isNull(headerValues) || headerValues.isEmpty()) {
             return false;
         }
+        String contentType = headerValues.get(0);
+
         return contentType.contains(MimeType.APPLICATION_X_WWW_FORM_ENCODED.getValue());
     }
 
@@ -87,6 +98,18 @@ public class HttpRequest {
 
     public String getParameter(final String name) {
         return parameters.get(name);
+    }
+
+    public List<Cookie> getCookies() {
+        List<String> cookies = headers.getHeader(HeaderType.COOKIE);
+        if (Objects.isNull(cookies) || cookies.isEmpty()) {
+            return null;
+        }
+
+        return cookies.stream()
+                .map(cookie -> cookie.split("="))
+                .map(keyAndValue -> new Cookie(keyAndValue[0], keyAndValue[1]))
+                .toList();
     }
 
     public HttpSession getSession() {
