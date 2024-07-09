@@ -66,4 +66,9 @@ public class HttpResponse {
         headers.add(HeaderType.LOCATION, redirectPath);
         sendResponse(new byte[0]);
     }
+
+    public void sendError(final StatusCodeType statusCodeType) throws IOException {
+        statusLine.setResponseStatus(statusCodeType);
+        sendResponse(new byte[0]);
+    }
 }

@@ -8,6 +8,7 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
+import codesquad.web.exception.MethodNotAllowedException;
 import java.io.DataOutputStream;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ class SignUpRequestHandlerTest {
                 new HttpRequest(new RequestLine(HttpMethod.GET, "/path", "HTTP/1.1"), new Headers(),
                         new RequestMessageBody("data")),
                 new HttpResponse(new DataOutputStream(System.out), "HTTP/1.1")))
-                .isInstanceOf(IllegalStateException.class);
+                .isInstanceOf(MethodNotAllowedException.class)
+                .hasMessage("Method Not Allowed");
     }
-
 }
