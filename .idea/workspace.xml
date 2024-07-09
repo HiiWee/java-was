@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,7 @@
     "Gradle.Tests in 'codesquad'.executor": "Run",
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
     "Gradle.Tests in 'java-was.test'.executor": "Run",
-    "Gradle.java-was [:Main.main()].executor": "Debug",
+    "Gradle.java-was [:Main.main()].executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -109,6 +110,10 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/image" />
+      <recent name="$PROJECT_DIR$/find_request_handler.png" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="codesquad.web" />
@@ -259,7 +264,7 @@
       <workItem from="1720083233932" duration="11116000" />
       <workItem from="1720098016752" duration="12000" />
       <workItem from="1720139837849" duration="5962000" />
-      <workItem from="1720486629289" duration="6220000" />
+      <workItem from="1720486629289" duration="8702000" />
     </task>
     <servers />
   </component>
