@@ -1,8 +1,9 @@
-package codesquad.web;
+package codesquad.web.handler;
 
 import codesquad.model.User;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
+import codesquad.web.RequestHandler;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
