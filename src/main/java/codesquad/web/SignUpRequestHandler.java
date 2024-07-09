@@ -13,6 +13,11 @@ public class SignUpRequestHandler implements RequestHandler {
 
     @Override
     public void handleGet(final HttpRequest request, final HttpResponse response) throws IOException {
+        throw new IllegalStateException("GET으로 회원가입할 수 없습니다.");
+    }
+
+    @Override
+    public void handlePost(final HttpRequest request, final HttpResponse response) throws IOException {
         String userId = request.getParameter("userId");
         String nickname = request.getParameter("nickname");
         String password = request.getParameter("password");

@@ -2,6 +2,7 @@ package codesquad.was.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Objects;
 
 public class RequestMessageBody {
@@ -32,9 +33,7 @@ public class RequestMessageBody {
         if (result == NO_DATA || result == END_STREAM) {
             return EMPTY_DATA;
         }
-
-        return String.valueOf(buffer)
-                .trim();
+        return URLDecoder.decode(String.valueOf(buffer).trim(), "UTF-8");
     }
 
     public String getBodyData() {

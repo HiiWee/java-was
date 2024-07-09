@@ -21,7 +21,7 @@ public interface RequestHandler {
     default void handleGet(HttpRequest request, HttpResponse response) throws IOException {
     }
 
-    default void handlePost(HttpRequest request, HttpResponse response) {
+    default void handlePost(HttpRequest request, HttpResponse response) throws IOException {
     }
 
     default void handlePut(HttpRequest request, HttpResponse response) {

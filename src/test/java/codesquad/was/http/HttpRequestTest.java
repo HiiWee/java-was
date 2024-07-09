@@ -47,7 +47,7 @@ class HttpRequestTest {
                             + "Content-Type: application/x-www-form-urlencoded\r\n"
                             + "Content-Length: 13\r\n"
                             + "\r\n"
-                            + "name=JohnDoe";
+                            + "body=data";
             InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
 
             // when
@@ -72,7 +72,7 @@ class HttpRequestTest {
                             + "Content-Type: application/x-www-form-urlencoded\r\n"
                             + "Content-Length: 13\r\n"
                             + "\r\n"
-                            + "name=JohnDoe";
+                            + "body=data";
             InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
 
             // when
@@ -82,6 +82,33 @@ class HttpRequestTest {
             assertAll(
                     () -> assertThat(httpRequest.getParameter("userId")).isNull(),
                     () -> assertThat(httpRequest.getParameter("password")).isNull(),
+                    () -> assertThat(httpRequest.getParameter("name")).isEqualTo("박재성"),
+                    () -> assertThat(httpRequest.getParameter("email")).isEqualTo("javajigi@slipp.net")
+            );
+        }
+
+        @Test
+        void Request_Message_Body가_form_data_라면_파싱하여_저장한다() throws IOException {
+            // given
+            String httpRequestValue =
+                    "GET /create HTTP/1.1\r\n"
+                            + "Host: localhost\r\n"
+                            + "Connection: keep-alive\r\n"
+                            + "Content-Type: application/x-www-form-urlencoded\r\n"
+                            + "Content-Length: "
+                            + "userId=javajigi&password=password&name=%EB%B0%95%EC%9E%AC%EC%84%B1&email=javajigi%40slipp.net".length()
+                            + "\r\n"
+                            + "\r\n"
+                            + "userId=javajigi&password=password&name=%EB%B0%95%EC%9E%AC%EC%84%B1&email=javajigi%40slipp.net";
+            InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
+
+            // when
+            HttpRequest httpRequest = new HttpRequest(clientInput);
+
+            // then
+            assertAll(
+                    () -> assertThat(httpRequest.getParameter("userId")).isEqualTo("javajigi"),
+                    () -> assertThat(httpRequest.getParameter("password")).isEqualTo("password"),
                     () -> assertThat(httpRequest.getParameter("name")).isEqualTo("박재성"),
                     () -> assertThat(httpRequest.getParameter("email")).isEqualTo("javajigi@slipp.net")
             );

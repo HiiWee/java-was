@@ -2,17 +2,14 @@ package codesquad.was.http;
 
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.HttpMethod;
+import codesquad.was.http.type.MimeType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class HttpRequest {
 
@@ -22,11 +19,10 @@ public class HttpRequest {
     private static final int VERSION_INDEX = 2;
     private static final int PATH_INDEX = 0;
     private static final int QUERY_STRING_INDEX = 1;
-    private static final int KEY_VALUE_LENGTH = 2;
 
     private final RequestLine requestLine;
     private final Headers headers;
-    private final Map<String, String> requestParameters = new HashMap<>();
+    private final RequestParameters parameters = new RequestParameters();
     private final RequestMessageBody requestBody;
 
     public HttpRequest(final RequestLine requestLine, final Headers headers, final RequestMessageBody requestBody) {
@@ -40,6 +36,20 @@ public class HttpRequest {
         requestLine = createRequestLine(requestReader.readLine());
         headers = new Headers(requestReader);
         requestBody = new RequestMessageBody(requestReader, headers.getHeader(HeaderType.CONTENT_LENGTH));
+
+        if (isFormData()) {
+            String bodyData = requestBody.getBodyData();
+            parameters.putParameters(bodyData);
+        }
+    }
+
+    private boolean isFormData() {
+        String contentType = headers.getHeader(HeaderType.CONTENT_TYPE);
+
+        if (Objects.isNull(contentType)) {
+            return false;
+        }
+        return contentType.contains(MimeType.APPLICATION_X_WWW_FORM_ENCODED.getValue());
     }
 
     private RequestLine createRequestLine(final String requestLine) throws UnsupportedEncodingException {
@@ -47,7 +57,9 @@ public class HttpRequest {
         HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
         String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
         String requestPath = pathWithQueryString[PATH_INDEX];
-        requestParameters.putAll(parseQueryParams(pathWithQueryString));
+        if (pathWithQueryString.length == RequestParameters.KEY_VALUE_LENGTH) {
+            parameters.putParameters(pathWithQueryString[QUERY_STRING_INDEX]);
+        }
         String httpVersion = splitLines[VERSION_INDEX];
 
         return new RequestLine(method, requestPath, httpVersion);
@@ -55,18 +67,8 @@ public class HttpRequest {
 
     private String[] splitDecodedQueryString(final String queryString) throws UnsupportedEncodingException {
         String decodedQueryString = URLDecoder.decode(queryString, "UTF-8");
+
         return decodedQueryString.split("\\?");
-    }
-
-    private Map<String, String> parseQueryParams(final String[] pathWithQueryString) {
-        if (pathWithQueryString.length == 1) {
-            return Collections.emptyMap();
-        }
-
-        return Arrays.stream(pathWithQueryString[QUERY_STRING_INDEX].split("&"))
-                .map(param -> param.split("="))
-                .filter(params -> params.length == KEY_VALUE_LENGTH)
-                .collect(Collectors.toMap(splitParams -> splitParams[0], splitParams -> splitParams[1]));
     }
 
     public String getRequestPath() {
@@ -82,7 +84,7 @@ public class HttpRequest {
     }
 
     public String getParameter(final String name) {
-        return requestParameters.get(name);
+        return parameters.get(name);
     }
 
     @Override
@@ -90,7 +92,7 @@ public class HttpRequest {
         return "HttpRequest{" +
                 "requestLine=" + requestLine +
                 ", headers=" + headers +
-                ", requestParameters=" + requestParameters +
+                ", parameters=" + parameters +
                 ", requestBody=" + requestBody +
                 '}';
     }
