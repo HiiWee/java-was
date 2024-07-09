@@ -1,28 +1,14 @@
 package codesquad.was;
 
-import codesquad.was.exception.CommonException;
 import codesquad.was.exception.MethodNotAllowedException;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
-import codesquad.was.http.type.HttpMethod;
 import java.io.IOException;
 
+@FunctionalInterface
 public interface RequestHandler {
 
-    default void process(HttpRequest request, HttpResponse response) throws IOException {
-        HttpMethod requestMethod = request.getHttpMethod();
-
-        try {
-            if (requestMethod == HttpMethod.GET) {
-                handleGet(request, response);
-            }
-            if (requestMethod == HttpMethod.POST) {
-                handlePost(request, response);
-            }
-        } catch (CommonException e) {
-            response.sendError(e.getStatusCodeType());
-        }
-    }
+    void process(HttpRequest request, HttpResponse response) throws IOException;
 
     default void handleGet(HttpRequest request, HttpResponse response) throws IOException {
         throw new MethodNotAllowedException("Method Not Allowed");

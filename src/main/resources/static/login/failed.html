@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="../reset.css" rel="stylesheet"/>
     <link href="../global.css" rel="stylesheet"/>
+    <style>
+        .error-message {
+            color: red;
+            border: 1px solid red;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -12,7 +21,7 @@
         <a href="/"><img src="../img/signiture.svg"/></a>
         <ul class="header__menu">
             <li class="header__menu__item">
-                <a class="btn btn_contained btn_size_s" href="/login">로그인</a>
+                <a class="btn btn_contained btn_size_s" href="/user/login">로그인</a>
             </li>
             <li class="header__menu__item">
                 <a class="btn btn_ghost btn_size_s" href="/registration">
@@ -23,13 +32,14 @@
     </header>
     <div class="page">
         <h2 class="page-title">로그인</h2>
-        <form class="form">
+        <form class="form" method="post" action="/user/login">
             <div class="textfield textfield_size_s">
                 <p class="title_textfield">아이디</p>
                 <input
                         class="input_textfield"
                         placeholder="아이디를 입력해주세요"
-                        autocomplete="username"
+                        autocomplete="userID"
+                        name="userId"
                 />
             </div>
             <div class="textfield textfield_size_s">
@@ -39,17 +49,21 @@
                         type="password"
                         placeholder="비밀번호를 입력해주세요"
                         autocomplete="current-password"
+                        name="password"
                 />
             </div>
             <button
                     id="login-btn"
                     class="btn btn_contained btn_size_m"
                     style="margin-top: 24px"
-                    type="button"
+                    type="submit"
             >
                 로그인
             </button>
         </form>
+        <div class="error-message">
+            로그인에 실패했습니다. 다시 시도해주세요.
+        </div>
     </div>
 </div>
 </body>
