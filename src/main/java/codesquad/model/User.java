@@ -36,6 +36,10 @@ public class User {
         return email;
     }
 
+    public boolean isValidPassword(final String password) {
+        return this.password.equals(password);
+    }
+
     @Override
     public String toString() {
         return "User{" +

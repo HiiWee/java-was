@@ -12,7 +12,7 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
-import codesquad.web.io.InMemoryDataBase;
+import codesquad.web.io.InMemoryUserDataBase;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -56,7 +56,7 @@ class SignUpRequestHandlerTest {
         // when
         signUpRequestHandler.handlePost(httpRequest,
                 new HttpResponse(DataOutputStream.nullOutputStream(), httpRequest.getHttpVersion()));
-        User user = (User) InMemoryDataBase.findById(1);
+        User user = (User) InMemoryUserDataBase.findById(1);
 
         // then
         assertAll(

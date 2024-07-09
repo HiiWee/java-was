@@ -20,6 +20,8 @@ public class HttpRequest {
     private static final int PATH_INDEX = 0;
     private static final int QUERY_STRING_INDEX = 1;
 
+    private static HttpSession httpSession;
+
     private final RequestLine requestLine;
     private final Headers headers;
     private final RequestParameters parameters = new RequestParameters();
@@ -85,6 +87,20 @@ public class HttpRequest {
 
     public String getParameter(final String name) {
         return parameters.get(name);
+    }
+
+    public HttpSession getSession() {
+        if (httpSession == null) {
+            httpSession = new HttpSession();
+        }
+        return httpSession;
+    }
+
+    public HttpSession getSession(final boolean needCreate) {
+        if (needCreate && httpSession == null) {
+            return httpSession = new HttpSession();
+        }
+        return httpSession;
     }
 
     @Override

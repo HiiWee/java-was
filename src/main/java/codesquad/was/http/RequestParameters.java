@@ -22,7 +22,7 @@ public class RequestParameters {
         return Arrays.stream(queryString.split("&"))
                 .map(param -> param.split("="))
                 .filter(params -> params.length == KEY_VALUE_LENGTH)
-                .collect(Collectors.toMap(splitParams -> splitParams[0], splitParams -> splitParams[1]));
+                .collect(Collectors.toMap(splitParams -> splitParams[0].trim(), splitParams -> splitParams[1].trim()));
     }
 
     public String get(final String name) {

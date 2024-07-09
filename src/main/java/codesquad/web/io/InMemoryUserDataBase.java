@@ -2,15 +2,16 @@ package codesquad.web.io;
 
 import codesquad.model.User;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class InMemoryDataBase {
+public class InMemoryUserDataBase {
 
     private static final AtomicLong idCounter = new AtomicLong(1);
-    private static final Map<Long, Object> store = new ConcurrentHashMap<>();
+    private static final Map<Long, User> userStore = new ConcurrentHashMap<>();
 
-    private InMemoryDataBase() {
+    private InMemoryUserDataBase() {
     }
 
     public static long generateId() {
@@ -18,10 +19,17 @@ public class InMemoryDataBase {
     }
 
     public static void saveUser(final User user) {
-        store.put(user.getId(), user);
+        userStore.put(user.getId(), user);
     }
 
     public static Object findById(final long id) {
-        return store.get(id);
+        return userStore.get(id);
+    }
+
+    public static Optional<User> findByUserId(final String userId) {
+        return userStore.values()
+                .stream()
+                .filter(user -> user.getUserId().equals(userId))
+                .findAny();
     }
 }
