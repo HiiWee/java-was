@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class HttpSession {
 
-    private static final Map<String, Object> sessionStore = new ConcurrentHashMap<>();
+    private final Map<String, Object> sessionStore = new ConcurrentHashMap<>();
 
     public void setAttribute(final String key, final Object value) {
         sessionStore.put(key, value);
@@ -13,5 +13,12 @@ public class HttpSession {
 
     public Object getAttribute(final String key) {
         return sessionStore.get(key);
+    }
+
+    @Override
+    public String toString() {
+        return "HttpSession{" +
+                "sessionStore=" + sessionStore +
+                '}';
     }
 }

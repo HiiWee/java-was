@@ -4,6 +4,8 @@ import codesquad.was.http.type.StatusCodeType;
 
 public class StatusLine {
 
+    private static final String ONE_SPACE = " ";
+
     private final String httpVersion;
     private StatusCodeType responseStatus;
 
@@ -11,20 +13,12 @@ public class StatusLine {
         this.httpVersion = httpVersion;
     }
 
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-
-    public String getHttpStatusCode() {
-        return responseStatus.getStatusCode();
+    public String createMessage() {
+        return httpVersion + ONE_SPACE + responseStatus.getStatusCode() + ONE_SPACE + responseStatus.getStatusMessage();
     }
 
     public void setResponseStatus(final StatusCodeType responseStatus) {
         this.responseStatus = responseStatus;
-    }
-
-    public String getHttpStatusMessage() {
-        return responseStatus.getStatusMessage();
     }
 
     @Override
