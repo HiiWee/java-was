@@ -1,4 +1,4 @@
-package codesquad.web;
+package codesquad.was;
 
 import codesquad.utils.StringUtils;
 import codesquad.web.handler.HomeForwardHandler;

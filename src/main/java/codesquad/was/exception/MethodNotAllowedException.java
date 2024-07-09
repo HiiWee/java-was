@@ -1,4 +1,4 @@
-package codesquad.web.exception;
+package codesquad.was.exception;
 
 import codesquad.was.http.type.StatusCodeType;
 

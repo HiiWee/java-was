@@ -1,8 +1,8 @@
 package codesquad.web.handler;
 
+import codesquad.was.RequestHandler;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
-import codesquad.web.RequestHandler;
 import java.io.IOException;
 
 public class StaticResourceForwardHandler implements RequestHandler {

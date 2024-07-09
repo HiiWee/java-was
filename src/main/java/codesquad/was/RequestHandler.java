@@ -1,10 +1,10 @@
-package codesquad.web;
+package codesquad.was;
 
+import codesquad.was.exception.CommonException;
+import codesquad.was.exception.MethodNotAllowedException;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HttpMethod;
-import codesquad.web.exception.CommonException;
-import codesquad.web.exception.MethodNotAllowedException;
 import java.io.IOException;
 
 public interface RequestHandler {

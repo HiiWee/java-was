@@ -2,8 +2,6 @@ package codesquad.was;
 
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
-import codesquad.web.RequestHandler;
-import codesquad.web.RequestHandlerMapping;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
