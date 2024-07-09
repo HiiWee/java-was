@@ -28,7 +28,7 @@
 <br>
 
 ### 3. `RequestHandler`의 요청 처리
-<img src="image/request_handler.png" alt="img.png" style="width:60%;height:auto;">
+<img src="image/request_handler.png" alt="img.png" style="width:100%;height:auto;">
 
 - `RequestHandler`에게 HttpRequest, HttpResponse를 넘겨주면서 처리를 요청합니다.
 - `RequestHandler`는 비즈니스 로직을 처리합니다.
