@@ -42,8 +42,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,7 +77,10 @@
     "Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor": "Run",
     "Gradle.RawTest.test.executor": "Run",
     "Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1).executor": "Run",
     "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor": "Run",
     "Gradle.Tests in 'codesquad'.executor": "Run",
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
     "Gradle.Tests in 'java-was.test'.executor": "Run",
@@ -87,7 +90,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "was2-1",
+    "git-widget-placeholder": "was2-2",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -103,12 +106,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="codesquad" />
       <recent name="codesquad.web" />
+      <recent name="codesquad" />
       <recent name="codesquad.http" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/image" />
+      <recent name="$PROJECT_DIR$/find_request_handler.png" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="codesquad.web" />
@@ -117,8 +124,8 @@
       <recent name="codesquad.http" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
-    <configuration name="HttpRequestTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.SignUpRequestHandlerTest">
+    <configuration name="SignUpRequestHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -131,7 +138,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;codesquad.http.HttpRequestTest&quot;" />
+            <option value="&quot;codesquad.web.handler.SignUpRequestHandlerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -142,7 +149,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -155,31 +162,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;codesquad.was.http.HttpRequestTest$HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="HttpRequest가_들어오면.httpRequest_객체를_생성한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.http.HttpRequestTest$HttpRequest가_들어오면.httpRequest_객체를_생성한다&quot;" />
+            <option value="&quot;codesquad.web.handler.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -214,6 +197,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.web.handler.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Tests in 'java-was.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -238,11 +245,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.SignUpRequestHandlerTest" />
+        <item itemvalue="Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다" />
+        <item itemvalue="Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1)" />
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다" />
-        <item itemvalue="Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다" />
-        <item itemvalue="Gradle.HttpRequestTest" />
-        <item itemvalue="Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다" />
       </list>
     </recent_temporary>
   </component>
@@ -270,6 +277,7 @@
       <workItem from="1720083233932" duration="11116000" />
       <workItem from="1720098016752" duration="12000" />
       <workItem from="1720139837849" duration="5962000" />
+      <workItem from="1720486629289" duration="13024000" />
     </task>
     <servers />
   </component>
@@ -316,6 +324,20 @@
           <line>105</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestParameters.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
+          <option name="timeStamp" value="9" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -1,7 +1,7 @@
 package codesquad;
 
 import codesquad.was.ConnectionHandler;
-import codesquad.web.RequestHandlerMapping;
+import codesquad.was.RequestHandlerMapping;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;

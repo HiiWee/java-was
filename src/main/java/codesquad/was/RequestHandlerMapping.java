@@ -1,18 +1,24 @@
-package codesquad.web;
+package codesquad.was;
 
 import codesquad.utils.StringUtils;
+import codesquad.web.handler.LoginRequestHandler;
+import codesquad.web.handler.LogoutRequestHandler;
+import codesquad.web.handler.SignUpRequestHandler;
 import java.util.Map;
 
 public class RequestHandlerMapping {
 
     private static final String STATIC_HANDLER_MAPPING = "static";
 
-    private static final Map<String, RequestHandler> handlerMappings = Map.of(
-            "static", new StaticResourceForwardHandler(),
-            "/", new HomeForwardHandler(),
-            "/registration", new RegistrationForwardHandler(),
+    private final Map<String, RequestHandler> handlerMappings = Map.of(
+            "static", (request, response) -> response.forward(request.getRequestPath()),
+            "/", (request, response) -> response.forward("/index.html"),
+            "/main", (request, response) -> response.forward("/main/index.html"),
+            "/registration", (request, response) -> response.forward("/registration/index.html"),
+            "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
             "/user/create", new SignUpRequestHandler(),
-            "/main", new MainForwardHandler()
+            "/user/login", new LoginRequestHandler(),
+            "/user/logout", new LogoutRequestHandler()
     );
 
     public RequestHandler read(final String requestPath) {

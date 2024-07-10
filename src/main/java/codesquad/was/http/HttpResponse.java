@@ -4,26 +4,28 @@ import codesquad.utils.StringUtils;
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.MimeType;
 import codesquad.was.http.type.StatusCodeType;
-import java.io.DataOutputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HttpResponse {
 
+    private static final int ONE_MB = 1048576;
     private static final String CRLF = "\r\n";
-    private static final String ONE_SPACE = " ";
-    private static final String DELIMITER = ": ";
+    private static final String UTF_8 = "UTF-8";
 
     private final StatusLine statusLine;
     private final Headers headers = new Headers();
-    private final DataOutputStream dataOutputStream;
+    private final List<Cookie> cookies = new ArrayList<>();
+    private final BufferedOutputStream bufferedOutputStream;
 
     public HttpResponse(final OutputStream outputStream, final String httpVersion) {
         this.statusLine = new StatusLine(httpVersion);
-        this.dataOutputStream = new DataOutputStream(outputStream);
+        this.bufferedOutputStream = new BufferedOutputStream(outputStream, ONE_MB);
     }
 
     public void forward(final String requestPath) throws IOException {
@@ -43,27 +45,37 @@ public class HttpResponse {
         }
     }
 
-    private void sendResponse(final byte[] responseBytes) throws IOException {
-        dataOutputStream.writeBytes(getStatusLineMessage() + CRLF + getHeaderMessage() + CRLF + CRLF);
-        dataOutputStream.write(responseBytes);
-    }
-
-    private String getStatusLineMessage() {
-        return statusLine.getHttpVersion() + ONE_SPACE + statusLine.getHttpStatusCode() + ONE_SPACE
-                + statusLine.getHttpStatusMessage();
-    }
-
-    private String getHeaderMessage() {
-        return headers.getHeaders()
-                .entrySet()
-                .stream()
-                .map(entry -> entry.getKey().getHeaderName() + DELIMITER + entry.getValue())
-                .collect(Collectors.joining(CRLF));
-    }
-
     public void sendRedirect(final String redirectPath) throws IOException {
         statusLine.setResponseStatus(StatusCodeType.FOUND);
         headers.add(HeaderType.LOCATION, redirectPath);
         sendResponse(new byte[0]);
+    }
+
+    public void sendError(final StatusCodeType statusCodeType) throws IOException {
+        statusLine.setResponseStatus(statusCodeType);
+        sendResponse(new byte[0]);
+    }
+
+    private void sendResponse(final byte[] responseBytes) throws IOException {
+        if (!cookies.isEmpty()) {
+            headers.addCookies(cookies);
+        }
+        String statusLineMessage = statusLine.createMessage();
+        String headersMessage = headers.createMessage();
+
+        bufferedOutputStream.write((statusLineMessage + CRLF).getBytes(UTF_8));
+        if (!headersMessage.isEmpty()) {
+            bufferedOutputStream.write((headersMessage + CRLF).getBytes(UTF_8));
+        }
+        bufferedOutputStream.write(CRLF.getBytes(UTF_8));
+        if (responseBytes.length > 0) {
+            bufferedOutputStream.write(responseBytes);
+        }
+        bufferedOutputStream.flush();
+        bufferedOutputStream.close();
+    }
+
+    public void addCookie(final Cookie cookie) {
+        cookies.add(cookie);
     }
 }

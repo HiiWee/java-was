@@ -24,7 +24,8 @@ public enum HeaderType {
     ACCEPT_LANGUAGE("Accept-Language"),
     REFERER("Referer"),
     COOKIE("Cookie"),
-    LOCATION("Location");
+    LOCATION("Location"),
+    SET_COOKIE("Set-Cookie");
 
     private final String headerName;
 

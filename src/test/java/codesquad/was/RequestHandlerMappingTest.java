@@ -1,4 +1,4 @@
-package codesquad.web;
+package codesquad.was;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -16,5 +16,4 @@ class RequestHandlerMappingTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("요청을 찾을 수 없습니다. requestPath = /invalidPath");
     }
-
 }

@@ -3,9 +3,12 @@ package codesquad.was.http;
 import codesquad.was.http.type.HeaderType;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,15 +16,17 @@ public class Headers {
 
     private static final int HEADER_NAME_INDEX = 0;
     private static final int HEADER_VALUE_INDEX = 1;
+    private static final String CRLF = "\r\n";
+    private static final String DELIMITER = ": ";
 
     private final Logger log = LoggerFactory.getLogger(getClass());
-    private final Map<HeaderType, String> headers = new LinkedHashMap<>();
+    private final Map<HeaderType, List<String>> headers = new LinkedHashMap<>();
 
     public Headers() {
     }
 
     public Headers(final BufferedReader requestReader) throws IOException {
-        Map<HeaderType, String> requestHeaderFields = new LinkedHashMap<>();
+        Map<HeaderType, List<String>> requestHeaderFields = new LinkedHashMap<>();
 
         String headerLine;
 
@@ -33,8 +38,12 @@ public class Headers {
                 log.warn("{} 헤더를 찾지 못했습니다.", headerSplits[HEADER_NAME_INDEX].trim());
                 continue;
             }
-            requestHeaderFields.put(HeaderType.find(headerSplits[HEADER_NAME_INDEX].trim()),
-                    headerSplits[HEADER_VALUE_INDEX].trim());
+            List<String> headerValueSplits = Arrays.stream(headerSplits[HEADER_VALUE_INDEX].split(";"))
+                    .map(String::trim)
+                    .toList();
+
+            requestHeaderFields.computeIfAbsent(headerType, k -> new ArrayList<>())
+                    .addAll(headerValueSplits);
         }
 
         headers.putAll(requestHeaderFields);
@@ -42,14 +51,44 @@ public class Headers {
 
 
     public void add(final HeaderType headerType, final String value) {
-        headers.put(headerType, value);
+        headers.computeIfAbsent(headerType, k -> new ArrayList<>())
+                .add(value);
     }
 
-    public Map<HeaderType, String> getHeaders() {
-        return Collections.unmodifiableMap(headers);
+    public void addCookies(final List<Cookie> cookies) {
+        List<String> cookiesMessage = cookies.stream()
+                .map(Cookie::getMessage)
+                .toList();
+        headers.put(HeaderType.SET_COOKIE, cookiesMessage);
     }
 
-    public String getHeader(final HeaderType headerType) {
+    public String createMessage() {
+        if (headers.containsKey(HeaderType.SET_COOKIE)) {
+            System.out.println(createSetCookiesMessage());
+            return createHeaderMessageWithoutCookie() + CRLF + createSetCookiesMessage();
+        }
+        return createHeaderMessageWithoutCookie();
+    }
+
+    private String createHeaderMessageWithoutCookie() {
+        return headers.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey() != HeaderType.SET_COOKIE)
+                .map(entry -> entry.getKey().getHeaderName() + DELIMITER + String.join("; ", entry.getValue()))
+                .collect(Collectors.joining(CRLF));
+    }
+
+    private String createSetCookiesMessage() {
+        return headers.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey() == HeaderType.SET_COOKIE)
+                .flatMap(entry -> entry.getValue()
+                        .stream()
+                        .map(value -> entry.getKey() + DELIMITER + value))
+                .collect(Collectors.joining(CRLF));
+    }
+
+    public List<String> getHeader(final HeaderType headerType) {
         return headers.get(headerType);
     }
 
