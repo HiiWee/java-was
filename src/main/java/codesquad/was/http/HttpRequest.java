@@ -1,5 +1,7 @@
 package codesquad.was.http;
 
+import static codesquad.was.http.type.CharsetType.UTF_8;
+
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.was.http.type.MimeType;
@@ -79,7 +81,7 @@ public class HttpRequest {
     }
 
     private String[] splitDecodedQueryString(final String queryString) throws UnsupportedEncodingException {
-        String decodedQueryString = URLDecoder.decode(queryString, "UTF-8");
+        String decodedQueryString = URLDecoder.decode(queryString, UTF_8.getCharset());
 
         return decodedQueryString.split("\\?");
     }

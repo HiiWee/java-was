@@ -1,5 +1,7 @@
 package codesquad.was.http;
 
+import static codesquad.was.http.type.CharsetType.UTF_8;
+
 import codesquad.utils.StringUtils;
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.MimeType;
@@ -16,7 +18,6 @@ public class HttpResponse {
 
     private static final int ONE_MB = 1048576;
     private static final String CRLF = "\r\n";
-    private static final String UTF_8 = "UTF-8";
 
     private final StatusLine statusLine;
     private final Headers headers = new Headers();
@@ -63,11 +64,11 @@ public class HttpResponse {
         String statusLineMessage = statusLine.createMessage();
         String headersMessage = headers.createMessage();
 
-        bufferedOutputStream.write((statusLineMessage + CRLF).getBytes(UTF_8));
+        bufferedOutputStream.write((statusLineMessage + CRLF).getBytes(UTF_8.getCharset()));
         if (!headersMessage.isEmpty()) {
-            bufferedOutputStream.write((headersMessage + CRLF).getBytes(UTF_8));
+            bufferedOutputStream.write((headersMessage + CRLF).getBytes(UTF_8.getCharset()));
         }
-        bufferedOutputStream.write(CRLF.getBytes(UTF_8));
+        bufferedOutputStream.write(CRLF.getBytes(UTF_8.getCharset()));
         if (responseBytes.length > 0) {
             bufferedOutputStream.write(responseBytes);
         }

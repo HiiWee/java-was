@@ -1,5 +1,7 @@
 package codesquad.was.http;
 
+import static codesquad.was.http.type.CharsetType.UTF_8;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -33,7 +35,7 @@ public class RequestMessageBody {
         if (result == NO_DATA || result == END_STREAM) {
             return EMPTY_DATA;
         }
-        return URLDecoder.decode(String.valueOf(buffer).trim(), "UTF-8");
+        return URLDecoder.decode(String.valueOf(buffer).trim(), UTF_8.getCharset());
     }
 
     public String getBodyData() {
