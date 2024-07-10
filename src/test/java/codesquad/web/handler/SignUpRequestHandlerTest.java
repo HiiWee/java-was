@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import codesquad.model.User;
 import codesquad.was.exception.MethodNotAllowedException;
 import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
@@ -13,6 +12,7 @@ import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.web.io.InMemoryUserDataBase;
+import codesquad.web.model.User;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

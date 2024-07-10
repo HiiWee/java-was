@@ -46,6 +46,14 @@ public class HttpResponse {
         }
     }
 
+    public void dynamicForward(final byte[] bytes, final MimeType mimeType) throws IOException {
+        headers.add(HeaderType.CONTENT_TYPE, mimeType.getValue());
+        headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(bytes.length));
+        statusLine.setResponseStatus(StatusCodeType.OK);
+
+        sendResponse(bytes);
+    }
+
     public void sendRedirect(final String redirectPath) throws IOException {
         statusLine.setResponseStatus(StatusCodeType.FOUND);
         headers.add(HeaderType.LOCATION, redirectPath);
