@@ -22,10 +22,6 @@ public class InMemoryUserDataBase {
         userStore.put(user.getId(), user);
     }
 
-    public static Object findById(final long id) {
-        return userStore.get(id);
-    }
-
     public static Optional<User> findByUserId(final String userId) {
         return userStore.values()
                 .stream()

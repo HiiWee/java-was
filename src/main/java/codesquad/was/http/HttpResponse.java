@@ -79,4 +79,8 @@ public class HttpResponse {
     public void addCookie(final Cookie cookie) {
         cookies.add(cookie);
     }
+
+    public Headers getHeaders() {
+        return headers;
+    }
 }

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/Headers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/Headers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +46,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -71,6 +74,9 @@
     "Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다.executor": "Run",
     "Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다.executor": "Run",
     "Gradle.HttpResponse_객체를_생성하면.HttpResponse_메시지를_만들_수_있다.executor": "Run",
+    "Gradle.LoginRequestHandlerTest.executor": "Run",
+    "Gradle.LoginRequestHandlerTest.로그인을_할_수_있다.executor": "Run",
+    "Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Run",
     "Gradle.MessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor": "Run",
     "Gradle.MessageBodyTest.httpRequest의_요청바디가_비어있다면_바디는_비어있다.executor": "Run",
     "Gradle.MimeTypeTest.executor": "Run",
@@ -119,14 +125,15 @@
       <recent name="$PROJECT_DIR$/find_request_handler.png" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="codesquad.web.handler" />
       <recent name="codesquad.web" />
       <recent name="codesquad.was.http" />
       <recent name="codesquad.http.type" />
       <recent name="codesquad.http" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.SignUpRequestHandlerTest">
-    <configuration name="SignUpRequestHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다">
+    <configuration name="LoginRequestHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -139,7 +146,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;codesquad.web.handler.SignUpRequestHandlerTest&quot;" />
+            <option value="&quot;codesquad.web.handler.LoginRequestHandlerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -150,7 +157,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LoginRequestHandlerTest.로그인을_할_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -163,7 +170,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;codesquad.web.handler.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다&quot;" />
+            <option value="&quot;codesquad.web.handler.LoginRequestHandlerTest.로그인을_할_수_있다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -174,7 +181,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LogoutRequestHandlerTest.로그아웃을_할_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -187,7 +194,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;codesquad.web.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다&quot;" />
+            <option value="&quot;codesquad.web.handler.LogoutRequestHandlerTest.로그아웃을_할_수_있다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -246,11 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.SignUpRequestHandlerTest" />
-        <item itemvalue="Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다" />
-        <item itemvalue="Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1)" />
+        <item itemvalue="Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다" />
+        <item itemvalue="Gradle.LoginRequestHandlerTest.로그인을_할_수_있다" />
+        <item itemvalue="Gradle.LoginRequestHandlerTest" />
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
-        <item itemvalue="Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다" />
+        <item itemvalue="Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다" />
       </list>
     </recent_temporary>
   </component>
@@ -326,14 +333,14 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestParameters.java</url>
           <line>23</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />

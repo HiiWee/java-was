@@ -64,7 +64,6 @@ public class Headers {
 
     public String createMessage() {
         if (headers.containsKey(HeaderType.SET_COOKIE)) {
-            System.out.println(createSetCookiesMessage());
             return createHeaderMessageWithoutCookie() + CRLF + createSetCookiesMessage();
         }
         return createHeaderMessageWithoutCookie();
