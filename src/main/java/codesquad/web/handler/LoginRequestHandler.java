@@ -33,6 +33,7 @@ public class LoginRequestHandler extends AbstractRequestHandler {
 
         if (Objects.isNull(user) || !user.isValidPassword(password)) {
             response.sendRedirect("/user/login-failed");
+            return;
         }
         HttpSession session = request.getSession();
 
