@@ -15,14 +15,14 @@ public class HttpSession {
         return sessionStore.get(key);
     }
 
+    public void removeAttributes(final String value) {
+        sessionStore.remove(value);
+    }
+
     @Override
     public String toString() {
         return "HttpSession{" +
                 "sessionStore=" + sessionStore +
                 '}';
-    }
-
-    public void removeAttributes(final String value) {
-        sessionStore.remove(value);
     }
 }
