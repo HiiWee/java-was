@@ -5,17 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/ConnectionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/article/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/article/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/LoginSnippet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippetBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippetBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/article/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/comment/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/bookMark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/ci_chevron-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/ci_chevron-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/like.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/sendLink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/signiture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/signiture.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/failed.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reset.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +56,23 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="java-was" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="java-was" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="java-was" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="java-was" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -75,6 +109,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build java-was.executor": "Run",
     "Gradle.HeadersTest.getHeader_헤더목록에_있는_헤더_값을_찾을_수_있다.executor": "Run",
     "Gradle.HttpRequestTest.executor": "Run",
     "Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다.executor": "Run",
@@ -96,16 +131,26 @@
     "Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor": "Run",
     "Gradle.Tests in 'codesquad'.executor": "Run",
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
-    "Gradle.Tests in 'java-was.test'.executor": "Run",
+    "Gradle.Tests in 'java-was.test'.executor": "Coverage",
     "Gradle.java-was [:Main.main()].executor": "Run",
+    "Gradle.java-was [run].executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
+    "JUnit.All in java-was.test.executor": "Coverage",
+    "JUnit.LogoutRequestHandlerTest.executor": "Run",
+    "JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Run",
+    "JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다.executor": "Run",
+    "JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다.executor": "Run",
+    "JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다.executor": "Run",
+    "JUnit.SnippetTest.스니펫에_문자열_속성들을_포맷팅_할_수_있다.executor": "Run",
+    "JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor": "Run",
+    "JUnit.codesquad in java-was.test.executor": "Coverage",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
     "git-widget-placeholder": "was2-3",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ihoseok/develop/wootecam/java-was/src/main/resources/templates",
+    "last_opened_file_path": "/Users/woowatech20/develop/wootacam/java-was/src/main/resources/static",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -125,6 +170,7 @@
       <recent name="codesquad.http" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -135,128 +181,100 @@
       <recent name="$PROJECT_DIR$/find_request_handler.png" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="codesquad.web.snippet" />
       <recent name="codesquad.web.handler" />
       <recent name="codesquad.web" />
       <recent name="codesquad.was.http" />
       <recent name="codesquad.http.type" />
-      <recent name="codesquad.http" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
-      <module name="java-was.main" />
+  <component name="RunManager" selected="JUnit.LogoutRequestHandlerTest">
+    <configuration name="LogoutRequestHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="codesquad.*" />
+          <option name="PATTERN" value="codesquad.web.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="codesquad.web.handler" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.LogoutRequestHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginRequestHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.web.handler.LoginRequestHandlerTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="LogoutRequestHandlerTest.로그아웃을_할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.web.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="codesquad.web.handler" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.LogoutRequestHandlerTest" />
+      <option name="METHOD_NAME" value="로그아웃을_할_수_있다" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="LoginRequestHandlerTest.로그인을_할_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.web.handler.LoginRequestHandlerTest.로그인을_할_수_있다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.web.snippet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="codesquad.web.snippet" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.snippet.ResourceSnippetBuilderTest" />
+      <option name="METHOD_NAME" value="ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="LogoutRequestHandlerTest.로그아웃을_할_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.web.handler.LogoutRequestHandlerTest.로그아웃을_할_수_있다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.web.snippet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="codesquad.web.snippet" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.snippet.ResourceSnippetTest" />
+      <option name="METHOD_NAME" value="외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="Tests in 'java-was.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.web.snippet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="codesquad.web.snippet" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.snippet.SnippetBuilderTest" />
+      <option name="METHOD_NAME" value="SnippetBuilder를_통해_스니펫을_생성할_수_있다" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Gradle.Tests in 'java-was.test'" />
-        <item itemvalue="Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다" />
-        <item itemvalue="Gradle.LoginRequestHandlerTest.로그인을_할_수_있다" />
-        <item itemvalue="Gradle.LoginRequestHandlerTest" />
+        <item itemvalue="JUnit.LogoutRequestHandlerTest" />
+        <item itemvalue="JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다" />
+        <item itemvalue="JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다" />
+        <item itemvalue="JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다" />
+        <item itemvalue="JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다" />
       </list>
     </recent_temporary>
   </component>
@@ -318,11 +336,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.sdkman/candidates/java/17.0.11-tem/lib/src.zip!/java.base/java/net/Socket.java</url>
-          <line>1571</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/.sdkman/candidates/java/17.0.11-tem/lib/src.zip!/java.base/java/io/OutputStream.java</url>
           <line>47</line>
           <option name="timeStamp" value="6" />
@@ -333,9 +346,9 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
@@ -345,6 +358,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1720437367689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$codesquad_in_java_was_test.ic" NAME="codesquad in java-was.test Coverage Results" MODIFIED="1720682580651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>codesquad.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1720682515877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test.ic" NAME="All in java-was.test Coverage Results" MODIFIED="1720682536436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

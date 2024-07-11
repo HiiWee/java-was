@@ -1,6 +1,8 @@
 package codesquad.web.io;
 
 import codesquad.web.model.User;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,5 +29,9 @@ public class InMemoryUserDataBase {
                 .stream()
                 .filter(user -> user.getUserId().equals(userId))
                 .findAny();
+    }
+
+    public static List<User> findAll() {
+        return new ArrayList<>(userStore.values());
     }
 }

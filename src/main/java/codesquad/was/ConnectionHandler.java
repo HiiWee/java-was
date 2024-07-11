@@ -25,8 +25,6 @@ public class ConnectionHandler implements Runnable {
         try (InputStream clientInput = clientSocket.getInputStream();
              OutputStream clientOutput = clientSocket.getOutputStream()
         ) {
-            log.debug("Client connected");
-
             HttpRequest httpRequest = new HttpRequest(clientInput);
             log.debug("Http Request = {}", httpRequest);
 

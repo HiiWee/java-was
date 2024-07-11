@@ -1,28 +1,37 @@
 package codesquad.web.handler;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-
 import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
-import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.HeaderType;
-import codesquad.web.model.User;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
-import org.junit.jupiter.api.Test;
 
-class LoginRequestHandlerTest {
+public class HandlerFixture {
 
+    public static void 회원가입을_한다() throws IOException {
+        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler();
+        String httpRequestValue =
+                "POST /user/create HTTP/1.1\r\n"
+                        + "Host: localhost\r\n"
+                        + "Connection: keep-alive\r\n"
+                        + "Content-Type: application/x-www-form-urlencoded\r\n"
+                        + "Content-Length: "
+                        + "userId=test&nickname=nick&password=password&email=email%40email.com".getBytes().length
+                        + "\r\n"
+                        + "\r\n"
+                        + "userId=test&nickname=nick&password=password&email=email%40email.com";
+        InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
+        HttpRequest request = new HttpRequest(clientInput);
+        HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
-    @Test
-    void 로그인을_할_수_있다() throws IOException {
-        // given
-        HandlerFixture.회원가입을_한다();
+        signUpRequestHandler.handlePost(request, response);
+    }
+
+    public static String 로그인을_한다() throws IOException {
         LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
         String httpRequestValue =
                 "POST /user/login HTTP/1.1\r\n"
@@ -38,22 +47,12 @@ class LoginRequestHandlerTest {
         HttpRequest request = new HttpRequest(clientInput);
         HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
-        // when
         loginRequestHandler.handlePost(request, response);
-        String uuid = getUuid(response);
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute(uuid);
 
-        // then
-        assertAll(
-                () -> assertThat(user.getUserId()).isEqualTo("test"),
-                () -> assertThat(user.getNickname()).isEqualTo("nick"),
-                () -> assertThat(user.getPassword()).isEqualTo("password"),
-                () -> assertThat(user.getEmail()).isEqualTo("email@email.com")
-        );
+        return getUuid(response);
     }
 
-    private String getUuid(final HttpResponse response) {
+    private static String getUuid(final HttpResponse response) {
         Headers headers = response.getHeaders();
         List<String> cookies = headers.getHeader(HeaderType.SET_COOKIE);
         String[] split = cookies.get(0).split("; ");

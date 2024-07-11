@@ -91,4 +91,8 @@ public class HttpResponse {
     public Headers getHeaders() {
         return headers;
     }
+
+    public String getStatusCode() {
+        return statusLine.getStatus();
+    }
 }

@@ -47,7 +47,7 @@ public class LoginRequestHandler extends AbstractRequestHandler {
         response.addCookie(cookie);
 
         log.info("sign in user = {}", user);
-        response.sendRedirect("/main");
+        response.sendRedirect("/");
     }
 
     private void validateUserInfo(final String userId, final String password) {

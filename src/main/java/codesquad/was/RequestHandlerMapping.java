@@ -5,6 +5,7 @@ import codesquad.web.handler.HomeRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
+import codesquad.web.handler.UserRequestHandler;
 import java.util.Map;
 
 public class RequestHandlerMapping {
@@ -19,7 +20,8 @@ public class RequestHandlerMapping {
             "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
             "/user/create", new SignUpRequestHandler(),
             "/user/login", new LoginRequestHandler(),
-            "/user/logout", new LogoutRequestHandler()
+            "/user/logout", new LogoutRequestHandler(),
+            "/user/list", new UserRequestHandler()
     );
 
     public RequestHandler read(final String requestPath) {

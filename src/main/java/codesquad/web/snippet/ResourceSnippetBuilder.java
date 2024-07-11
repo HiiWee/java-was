@@ -7,8 +7,7 @@ import java.util.List;
 public class ResourceSnippetBuilder {
 
     private String templatePath;
-    private String snippet;
-    private List<String> attributes = new ArrayList<>();
+    private List<Snippet> snippets = new ArrayList<>();
 
     public static ResourceSnippetBuilder builder() {
         return new ResourceSnippetBuilder();
@@ -20,19 +19,13 @@ public class ResourceSnippetBuilder {
         return this;
     }
 
-    public ResourceSnippetBuilder snippet(final String snippet) {
-        this.snippet = snippet;
-
-        return this;
-    }
-
-    public ResourceSnippetBuilder addAttribute(final String attribute) {
-        attributes.add(attribute);
+    public ResourceSnippetBuilder snippets(final List<Snippet> snippets) {
+        this.snippets.addAll(snippets);
 
         return this;
     }
 
     public ResourceSnippet build() throws IOException {
-        return new ResourceSnippet(templatePath, snippet, attributes);
+        return new ResourceSnippet(templatePath, snippets);
     }
 }
