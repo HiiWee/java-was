@@ -15,8 +15,8 @@ public class Cookie {
         this.value = value;
     }
 
-    public boolean isKey(final String sid) {
-        return key.equals(sid);
+    public boolean isKey(final String key) {
+        return this.key.equals(key);
     }
 
     public void setHttpOnly(final boolean isHttpOnly) {
@@ -29,10 +29,6 @@ public class Cookie {
 
     public void setPath(final String path) {
         this.path = path;
-    }
-
-    public String getKey() {
-        return key;
     }
 
     public String getValue() {
