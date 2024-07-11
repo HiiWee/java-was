@@ -1,6 +1,7 @@
 package codesquad.web.handler;
 
 import codesquad.was.AbstractRequestHandler;
+import codesquad.was.exception.BadRequestException;
 import codesquad.was.http.Cookie;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
@@ -52,7 +53,7 @@ public class LoginRequestHandler extends AbstractRequestHandler {
 
     private void validateUserInfo(final String userId, final String password) {
         if (Objects.isNull(userId) || Objects.isNull(password)) {
-            throw new IllegalArgumentException("사용자의 정보를 찾을 수 없습니다. userId = " + userId + ", password = " + password);
+            throw new BadRequestException("사용자의 정보를 찾을 수 없습니다. userId = " + userId + ", password = " + password);
         }
     }
 }

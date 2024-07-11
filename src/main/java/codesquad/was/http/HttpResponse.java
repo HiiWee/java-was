@@ -39,7 +39,6 @@ public class HttpResponse {
         try (InputStream inputStream = fileUrl.openStream()) {
             byte[] fileBytes = inputStream.readAllBytes();
             headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
-            headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(fileBytes.length));
             statusLine.setResponseStatus(StatusCodeType.OK);
 
             sendResponse(fileBytes);
@@ -48,7 +47,6 @@ public class HttpResponse {
 
     public void dynamicForward(final byte[] bytes, final MimeType mimeType) throws IOException {
         headers.add(HeaderType.CONTENT_TYPE, mimeType.getValue());
-        headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(bytes.length));
         statusLine.setResponseStatus(StatusCodeType.OK);
 
         sendResponse(bytes);
@@ -65,7 +63,15 @@ public class HttpResponse {
         sendResponse(new byte[0]);
     }
 
+    public void sendError(final byte[] bytes, final StatusCodeType statusCodeType, final MimeType mimeType)
+            throws IOException {
+        headers.add(HeaderType.CONTENT_TYPE, mimeType.getValue());
+        statusLine.setResponseStatus(statusCodeType);
+        sendResponse(bytes);
+    }
+
     private void sendResponse(final byte[] responseBytes) throws IOException {
+        headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(responseBytes.length));
         if (!cookies.isEmpty()) {
             headers.addCookies(cookies);
         }
