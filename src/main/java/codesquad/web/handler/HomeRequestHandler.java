@@ -21,16 +21,11 @@ public class HomeRequestHandler extends AbstractRequestHandler {
     @Override
     public void handleGet(final HttpRequest request, final HttpResponse response) throws IOException {
         List<Cookie> cookies = request.getCookies();
-        if (Objects.isNull(cookies) || cookies.isEmpty()) {
-            response.forward("/index.html");
-            return;
-        }
 
         Cookie loginCookie = cookies.stream()
                 .filter(cookie -> cookie.isKey("sid"))
                 .findAny()
                 .orElse(null);
-
         HttpSession session = request.getSession(false);
 
         if (Objects.isNull(loginCookie) || Objects.isNull(session)) {
@@ -38,12 +33,12 @@ public class HomeRequestHandler extends AbstractRequestHandler {
             return;
         }
         User user = (User) session.getAttribute(loginCookie.getValue());
-        ResourceSnippet loginResourceSnippet = createLoginSnippet(user);
+        ResourceSnippet loginResourceSnippet = createLoginHeaderSnippet(user);
         String completeSnippet = loginResourceSnippet.getCompleteSnippet();
         response.dynamicForward(completeSnippet.getBytes(), MimeType.HTML);
     }
 
-    private ResourceSnippet createLoginSnippet(final User user) throws IOException {
+    private ResourceSnippet createLoginHeaderSnippet(final User user) throws IOException {
         Snippet loginSnippet = SnippetBuilder.builder()
                 .snippet(SnippetFixture.LOGIN_HEADER)
                 .attributes(List.of(user.getNickname()))

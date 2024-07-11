@@ -5,34 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/ConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/LoginSnippet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippetBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippetBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/article/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/comment/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/bookMark.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/ci_chevron-left.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/ci_chevron-right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/like.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/sendLink.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/signiture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/img/signiture.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/failed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LogoutRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LogoutRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +113,8 @@
     "Gradle.java-was [:Main.main()].executor": "Run",
     "Gradle.java-was [run].executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
-    "JUnit.All in java-was.test.executor": "Coverage",
+    "JUnit.All in java-was.test (1).executor": "Run",
+    "JUnit.All in java-was.test.executor": "Run",
     "JUnit.LogoutRequestHandlerTest.executor": "Run",
     "JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Run",
     "JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다.executor": "Run",
@@ -143,6 +122,7 @@
     "JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다.executor": "Run",
     "JUnit.SnippetTest.스니펫에_문자열_속성들을_포맷팅_할_수_있다.executor": "Run",
     "JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor": "Run",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다.executor": "Debug",
     "JUnit.codesquad in java-was.test.executor": "Coverage",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -188,7 +168,36 @@
       <recent name="codesquad.http.type" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LogoutRequestHandlerTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
+      <module name="java-was.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in java-was.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in java-was.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LogoutRequestHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <extension name="coverage">
@@ -204,7 +213,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogoutRequestHandlerTest.로그아웃을_할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <extension name="coverage">
         <pattern>
@@ -212,57 +221,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.handler" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.LogoutRequestHandlerTest" />
-      <option name="METHOD_NAME" value="로그아웃을_할_수_있다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.web.snippet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.snippet" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.snippet.ResourceSnippetBuilderTest" />
-      <option name="METHOD_NAME" value="ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.web.snippet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.snippet" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.snippet.ResourceSnippetTest" />
-      <option name="METHOD_NAME" value="외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.web.snippet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.snippet" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.snippet.SnippetBuilderTest" />
-      <option name="METHOD_NAME" value="SnippetBuilder를_통해_스니펫을_생성할_수_있다" />
+      <option name="PACKAGE_NAME" value="codesquad.web.handler.UserRequestHandlerTest.사용자_목록을_요청할때" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면" />
+      <option name="METHOD_NAME" value="응답_코드로_302를_반환한다" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -270,11 +231,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다" />
+        <item itemvalue="JUnit.All in java-was.test (1)" />
+        <item itemvalue="JUnit.All in java-was.test" />
         <item itemvalue="JUnit.LogoutRequestHandlerTest" />
-        <item itemvalue="JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다" />
-        <item itemvalue="JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다" />
-        <item itemvalue="JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다" />
-        <item itemvalue="JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다" />
       </list>
     </recent_temporary>
   </component>
@@ -349,6 +310,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java</url>
           <line>14</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />

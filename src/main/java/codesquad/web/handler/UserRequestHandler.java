@@ -21,22 +21,18 @@ public class UserRequestHandler extends AbstractRequestHandler {
     @Override
     public void handleGet(final HttpRequest request, final HttpResponse response) throws IOException {
         List<Cookie> cookies = request.getCookies();
-        if (Objects.isNull(cookies) || cookies.isEmpty()) {
-            response.sendRedirect("/");
-            return;
-        }
 
         Cookie loginCookie = cookies.stream()
                 .filter(cookie -> cookie.isKey("sid"))
                 .findAny()
                 .orElse(null);
-
         HttpSession session = request.getSession(false);
 
         if (Objects.isNull(loginCookie) || Objects.isNull(session)) {
             response.sendRedirect("/");
             return;
         }
+
         List<User> signedUpUsers = InMemoryUserDataBase.findAll();
         Snippet loginHeaderSnippet = createLoginHeaderSnippet((User) session.getAttribute(loginCookie.getValue()));
         Snippet userListSnippet = createUserListSnippet(signedUpUsers);

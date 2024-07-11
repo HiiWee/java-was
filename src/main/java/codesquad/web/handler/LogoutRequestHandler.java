@@ -13,20 +13,15 @@ public class LogoutRequestHandler extends AbstractRequestHandler {
 
     @Override
     public void handleGet(final HttpRequest request, final HttpResponse response) throws IOException {
-        HttpSession session = request.getSession(false);
         List<Cookie> cookies = request.getCookies();
-
-        if (Objects.isNull(cookies) || Objects.isNull(session)) {
-            response.sendRedirect("/");
-            return;
-        }
 
         Cookie loginCookie = cookies.stream()
                 .filter(cookie -> cookie.isKey("sid"))
                 .findAny()
                 .orElse(null);
+        HttpSession session = request.getSession(false);
 
-        if (Objects.isNull(loginCookie)) {
+        if (Objects.isNull(loginCookie) || Objects.isNull(session)) {
             response.sendRedirect("/");
             return;
         }

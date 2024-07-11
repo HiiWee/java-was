@@ -41,6 +41,7 @@
 <br><br>
 
 ### 2. 동적인 HTML 생성 과정
+
 <img src="image/template1.png" alt="img.png" style="width:80%;height:auto;">
 
 - 템플릿 HTML에서 동적으로 교체되어야 하는 HTML 코드는, 서버의 SnippetFixture의 상수 필드로 매핑되어 있습니다.
