@@ -12,7 +12,7 @@
 
 ## HiiWee's WAS Flow
 
-### 1. 사용자 요청 Multi Thread 분기
+### 1. 사용자 요청 Multi Thread 분기 처리 및 응답 흐름
 
 <img src="image/multi_thread.png" alt="img.png" style="width:80%;height:auto;">
 
@@ -37,3 +37,31 @@
 - `RequestHandler`는 비즈니스 로직을 처리합니다.
 - `RequestHandler`는 HttpResponse에게 redirect 혹은 forward 처리를 요청합니다.
 - `HttpResponse`는 브라우저에게 응답을 반환하여 하나의 사용자 요청이 마무리 됩니다.
+
+<br><br>
+
+### 2. 동적인 HTML 생성 과정
+<img src="image/template1.png" alt="img.png" style="width:80%;height:auto;">
+
+- 템플릿 HTML에서 동적으로 교체되어야 하는 HTML 코드는, 서버의 SnippetFixture의 상수 필드로 매핑되어 있습니다.
+
+<br>
+
+<img src="image/template2.png" alt="img.png" style="width:80%;height:auto;">
+
+- 완성시킬 서버 스니펫을 가져옵니다.
+- `SnippetBuilder`에게 스니펫에 넣을 데이터와, 서버 스니펫을 전달하여 스니펫을 생성합니다.
+
+<br>
+
+<img src="image/template3.png" alt="img.png" style="width:80%;height:auto;">
+
+- 완성된 서버 스니펫을 템플릿 HTML에서 스니펫이 필요한 영역에 치환하는 과정입니다.
+- `ResourceSnippetBuilder`는 외부 템플릿 HTML과 서버에서 생성한 Snippet들을 결합시켜줍니다.
+
+<br>
+
+<img src="image/template4.png" alt="img.png" style="width:80%;height:auto;">
+
+- 완성된 `ResourceSnippet`을 직접 `byte[]`로 변환하여 HttpResponse에 직접 응답을 써줍니다. (`dynamicForward`)
+- HttpResponse가 브라우저에게 응답을 내리면 동적 HTML 생성 및 반환 작업이 종료됩니다.
