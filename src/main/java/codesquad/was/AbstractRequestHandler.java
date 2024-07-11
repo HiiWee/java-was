@@ -1,6 +1,7 @@
 package codesquad.was;
 
 import codesquad.was.exception.CommonException;
+import codesquad.was.http.Cookie;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HttpMethod;
@@ -19,6 +20,9 @@ public abstract class AbstractRequestHandler implements RequestHandler {
     public void process(HttpRequest request, HttpResponse response) throws IOException {
         HttpMethod requestMethod = request.getHttpMethod();
 
+        Cookie cookie = findCookie(request, "sid");
+        ContextHolder.setContext(cookie.getValue());
+
         try {
             if (requestMethod == HttpMethod.GET) {
                 handleGet(request, response);
@@ -36,5 +40,14 @@ public abstract class AbstractRequestHandler implements RequestHandler {
 
             response.sendError(errorPage.getBytes(), e.getStatusCodeType(), MimeType.HTML);
         }
+        ContextHolder.clear();
+    }
+
+    private Cookie findCookie(final HttpRequest request, final String cookieKey) {
+        return request.getCookies()
+                .stream()
+                .filter(cookie -> cookie.isKey(cookieKey))
+                .findAny()
+                .orElse(null);
     }
 }
