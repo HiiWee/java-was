@@ -4,12 +4,15 @@ import static codesquad.web.handler.HandlerFixture.로그인을_한다;
 import static codesquad.web.handler.HandlerFixture.회원가입을_한다;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import codesquad.was.ContextHolder;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -46,12 +49,23 @@ class UserRequestHandlerTest {
         @Nested
         class 만약_로그인이_되어있으면 {
 
+            private String sessionId;
+
+            @BeforeEach
+            void setUp() throws IOException {
+                회원가입을_한다();
+                sessionId = 로그인을_한다();
+                ContextHolder.setContext(sessionId);
+            }
+
+            @AfterEach
+            void tearDown() {
+                ContextHolder.clear();
+            }
+
             @Test
             void 응답_코드로_200을_반환한다() throws IOException {
                 // given
-                회원가입을_한다();
-                String sessionId = 로그인을_한다();
-
                 UserRequestHandler userRequestHandler = new UserRequestHandler();
                 String httpRequestValue =
                         "GET /user/list HTTP/1.1\r\n"
