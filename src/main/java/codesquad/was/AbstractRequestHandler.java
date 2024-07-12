@@ -10,6 +10,7 @@ import codesquad.web.snippet.ResourceSnippetBuilder;
 import codesquad.web.snippet.Snippet;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,9 @@ public abstract class AbstractRequestHandler implements RequestHandler {
         HttpMethod requestMethod = request.getHttpMethod();
 
         Cookie cookie = findCookie(request, "sid");
-        ContextHolder.setContext(cookie.getValue());
+        if (Objects.nonNull(cookie)) {
+            ContextHolder.setContext(cookie.getValue());
+        }
 
         try {
             if (requestMethod == HttpMethod.GET) {
