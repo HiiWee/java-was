@@ -1,5 +1,6 @@
 package codesquad.web.handler;
 
+import codesquad.was.ContextHolder;
 import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
@@ -48,8 +49,10 @@ public class HandlerFixture {
         HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
         loginRequestHandler.handlePost(request, response);
+        String sessionId = getUuid(response);
+        ContextHolder.setContext(sessionId);
 
-        return getUuid(response);
+        return sessionId;
     }
 
     private static String getUuid(final HttpResponse response) {
