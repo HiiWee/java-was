@@ -2,6 +2,7 @@ package codesquad.was;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import codesquad.was.exception.NotFoundException;
 import org.junit.jupiter.api.Test;
 
 class RequestHandlerMappingTest {
@@ -13,7 +14,7 @@ class RequestHandlerMappingTest {
 
         // expect
         assertThatThrownBy(() -> requestHandlerMapping.read("/invalidPath"))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(NotFoundException.class)
                 .hasMessage("요청을 찾을 수 없습니다. requestPath = /invalidPath");
     }
 }
