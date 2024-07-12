@@ -1,20 +1,20 @@
 package codesquad.was;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import codesquad.was.exception.NotFoundException;
 import org.junit.jupiter.api.Test;
 
 class RequestHandlerMappingTest {
 
     @Test
-    void 매핑된_핸들러를_찾지_못하면_예외가_발생한다ㅣ() {
+    void 매핑된_핸들러를_찾지_못하면_null을_반환한다() {
         // given
         RequestHandlerMapping requestHandlerMapping = new RequestHandlerMapping();
 
-        // expect
-        assertThatThrownBy(() -> requestHandlerMapping.read("/invalidPath"))
-                .isInstanceOf(NotFoundException.class)
-                .hasMessage("요청을 찾을 수 없습니다. requestPath = /invalidPath");
+        // when
+        RequestHandler handler = requestHandlerMapping.read("/invalidPath");
+
+        // then
+        assertThat(handler).isNull();
     }
 }
