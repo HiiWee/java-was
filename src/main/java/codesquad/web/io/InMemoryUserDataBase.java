@@ -1,6 +1,8 @@
 package codesquad.web.io;
 
-import codesquad.model.User;
+import codesquad.web.model.User;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,14 +24,14 @@ public class InMemoryUserDataBase {
         userStore.put(user.getId(), user);
     }
 
-    public static Object findById(final long id) {
-        return userStore.get(id);
-    }
-
     public static Optional<User> findByUserId(final String userId) {
         return userStore.values()
                 .stream()
                 .filter(user -> user.getUserId().equals(userId))
                 .findAny();
+    }
+
+    public static List<User> findAll() {
+        return new ArrayList<>(userStore.values());
     }
 }

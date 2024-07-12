@@ -1,5 +1,7 @@
 package codesquad.was.http;
 
+import static codesquad.was.http.type.CharsetType.UTF_8;
+
 import codesquad.utils.StringUtils;
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.MimeType;
@@ -16,7 +18,6 @@ public class HttpResponse {
 
     private static final int ONE_MB = 1048576;
     private static final String CRLF = "\r\n";
-    private static final String UTF_8 = "UTF-8";
 
     private final StatusLine statusLine;
     private final Headers headers = new Headers();
@@ -38,11 +39,17 @@ public class HttpResponse {
         try (InputStream inputStream = fileUrl.openStream()) {
             byte[] fileBytes = inputStream.readAllBytes();
             headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
-            headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(fileBytes.length));
             statusLine.setResponseStatus(StatusCodeType.OK);
 
             sendResponse(fileBytes);
         }
+    }
+
+    public void dynamicForward(final byte[] bytes, final MimeType mimeType) throws IOException {
+        headers.add(HeaderType.CONTENT_TYPE, mimeType.getValue());
+        statusLine.setResponseStatus(StatusCodeType.OK);
+
+        sendResponse(bytes);
     }
 
     public void sendRedirect(final String redirectPath) throws IOException {
@@ -56,18 +63,26 @@ public class HttpResponse {
         sendResponse(new byte[0]);
     }
 
+    public void sendError(final byte[] bytes, final StatusCodeType statusCodeType, final MimeType mimeType)
+            throws IOException {
+        headers.add(HeaderType.CONTENT_TYPE, mimeType.getValue());
+        statusLine.setResponseStatus(statusCodeType);
+        sendResponse(bytes);
+    }
+
     private void sendResponse(final byte[] responseBytes) throws IOException {
+        headers.add(HeaderType.CONTENT_LENGTH, String.valueOf(responseBytes.length));
         if (!cookies.isEmpty()) {
             headers.addCookies(cookies);
         }
         String statusLineMessage = statusLine.createMessage();
         String headersMessage = headers.createMessage();
 
-        bufferedOutputStream.write((statusLineMessage + CRLF).getBytes(UTF_8));
+        bufferedOutputStream.write((statusLineMessage + CRLF).getBytes(UTF_8.getCharset()));
         if (!headersMessage.isEmpty()) {
-            bufferedOutputStream.write((headersMessage + CRLF).getBytes(UTF_8));
+            bufferedOutputStream.write((headersMessage + CRLF).getBytes(UTF_8.getCharset()));
         }
-        bufferedOutputStream.write(CRLF.getBytes(UTF_8));
+        bufferedOutputStream.write(CRLF.getBytes(UTF_8.getCharset()));
         if (responseBytes.length > 0) {
             bufferedOutputStream.write(responseBytes);
         }
@@ -77,5 +92,13 @@ public class HttpResponse {
 
     public void addCookie(final Cookie cookie) {
         cookies.add(cookie);
+    }
+
+    public Headers getHeaders() {
+        return headers;
+    }
+
+    public String getStatusCode() {
+        return statusLine.getStatus();
     }
 }

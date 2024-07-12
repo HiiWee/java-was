@@ -1,5 +1,7 @@
 package codesquad.was.http;
 
+import static codesquad.was.http.type.CharsetType.UTF_8;
+
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.was.http.type.MimeType;
@@ -9,6 +11,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,7 +82,7 @@ public class HttpRequest {
     }
 
     private String[] splitDecodedQueryString(final String queryString) throws UnsupportedEncodingException {
-        String decodedQueryString = URLDecoder.decode(queryString, "UTF-8");
+        String decodedQueryString = URLDecoder.decode(queryString, UTF_8.getCharset());
 
         return decodedQueryString.split("\\?");
     }
@@ -103,7 +106,7 @@ public class HttpRequest {
     public List<Cookie> getCookies() {
         List<String> cookies = headers.getHeader(HeaderType.COOKIE);
         if (Objects.isNull(cookies) || cookies.isEmpty()) {
-            return null;
+            return Collections.emptyList();
         }
 
         return cookies.stream()

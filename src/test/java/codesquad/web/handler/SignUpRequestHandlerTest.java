@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import codesquad.model.User;
 import codesquad.was.exception.MethodNotAllowedException;
 import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
@@ -13,6 +12,7 @@ import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.web.io.InMemoryUserDataBase;
+import codesquad.web.model.User;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -46,7 +46,7 @@ class SignUpRequestHandlerTest {
                         + "Connection: keep-alive\r\n"
                         + "Content-Type: application/x-www-form-urlencoded\r\n"
                         + "Content-Length: "
-                        + "userId=javajigi&password=password&nickname=%EB%B0%95%EC%9E%AC%EC%84%B1&email=javajigi%40slipp.net".length()
+                        + "userId=javajigi&password=password&nickname=%EB%B0%95%EC%9E%AC%EC%84%B1&email=javajigi%40slipp.net".getBytes().length
                         + "\r\n"
                         + "\r\n"
                         + "userId=javajigi&password=password&nickname=%EB%B0%95%EC%9E%AC%EC%84%B1&email=javajigi%40slipp.net";
@@ -55,12 +55,11 @@ class SignUpRequestHandlerTest {
 
         // when
         signUpRequestHandler.handlePost(httpRequest,
-                new HttpResponse(DataOutputStream.nullOutputStream(), httpRequest.getHttpVersion()));
-        User user = (User) InMemoryUserDataBase.findById(1);
+                new HttpResponse(OutputStream.nullOutputStream(), httpRequest.getHttpVersion()));
+        User user = InMemoryUserDataBase.findByUserId("javajigi").get();
 
         // then
         assertAll(
-                () -> assertThat(user.getId()).isEqualTo(1L),
                 () -> assertThat(user.getUserId()).isEqualTo("javajigi"),
                 () -> assertThat(user.getNickname()).isEqualTo("박재성"),
                 () -> assertThat(user.getPassword()).isEqualTo("password"),

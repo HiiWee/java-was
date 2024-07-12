@@ -49,7 +49,8 @@ class HttpResponseTest {
                 String responseMessage = byteArrayOutputStream.toString("UTF-8");
 
                 // then
-                assertThat(responseMessage).isEqualTo("HTTP/1.1 302 Found\r\nLocation: /test/path\r\n\r\n");
+                assertThat(responseMessage).isEqualTo(
+                        "HTTP/1.1 302 Found\r\nLocation: /test/path\r\nContent-Length: 0\r\n\r\n");
             }
         }
     }
@@ -71,7 +72,7 @@ class HttpResponseTest {
                 String responseMessage = byteArrayOutputStream.toString("UTF-8");
 
                 // then
-                assertThat(responseMessage).isEqualTo("HTTP/1.1 400 Bad Request\r\n\r\n");
+                assertThat(responseMessage).isEqualTo("HTTP/1.1 400 Bad Request\r\nContent-Length: 0\r\n\r\n");
             }
         }
     }

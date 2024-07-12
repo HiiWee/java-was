@@ -1,12 +1,13 @@
 package codesquad.web.handler;
 
-import codesquad.model.User;
 import codesquad.was.AbstractRequestHandler;
+import codesquad.was.exception.BadRequestException;
 import codesquad.was.http.Cookie;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.web.io.InMemoryUserDataBase;
+import codesquad.web.model.User;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.UUID;
@@ -33,6 +34,7 @@ public class LoginRequestHandler extends AbstractRequestHandler {
 
         if (Objects.isNull(user) || !user.isValidPassword(password)) {
             response.sendRedirect("/user/login-failed");
+            return;
         }
         HttpSession session = request.getSession();
 
@@ -46,12 +48,12 @@ public class LoginRequestHandler extends AbstractRequestHandler {
         response.addCookie(cookie);
 
         log.info("sign in user = {}", user);
-        response.sendRedirect("/main");
+        response.sendRedirect("/");
     }
 
     private void validateUserInfo(final String userId, final String password) {
         if (Objects.isNull(userId) || Objects.isNull(password)) {
-            throw new IllegalArgumentException("사용자의 정보를 찾을 수 없습니다. userId = " + userId + ", password = " + password);
+            throw new BadRequestException("사용자의 정보를 찾을 수 없습니다. userId = " + userId + ", password = " + password);
         }
     }
 }

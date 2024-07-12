@@ -1,9 +1,11 @@
 package codesquad.was;
 
 import codesquad.utils.StringUtils;
+import codesquad.web.handler.HomeRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
+import codesquad.web.handler.UserRequestHandler;
 import java.util.Map;
 
 public class RequestHandlerMapping {
@@ -12,13 +14,14 @@ public class RequestHandlerMapping {
 
     private final Map<String, RequestHandler> handlerMappings = Map.of(
             "static", (request, response) -> response.forward(request.getRequestPath()),
-            "/", (request, response) -> response.forward("/index.html"),
+            "/", new HomeRequestHandler(),
             "/main", (request, response) -> response.forward("/main/index.html"),
             "/registration", (request, response) -> response.forward("/registration/index.html"),
             "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
             "/user/create", new SignUpRequestHandler(),
             "/user/login", new LoginRequestHandler(),
-            "/user/logout", new LogoutRequestHandler()
+            "/user/logout", new LogoutRequestHandler(),
+            "/user/list", new UserRequestHandler()
     );
 
     public RequestHandler read(final String requestPath) {

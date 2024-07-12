@@ -21,6 +21,10 @@ public class StatusLine {
         this.responseStatus = responseStatus;
     }
 
+    public String getStatus() {
+        return responseStatus.getStatusCode();
+    }
+
     @Override
     public String toString() {
         return "StatusLine{" +
