@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/AbstractRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -314,24 +313,9 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java</url>
           <line>76</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/AbstractRequestHandler.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
