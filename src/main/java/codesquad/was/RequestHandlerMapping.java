@@ -1,7 +1,6 @@
 package codesquad.was;
 
 import codesquad.utils.StringUtils;
-import codesquad.was.exception.NotFoundException;
 import codesquad.web.handler.HomeRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
@@ -35,7 +34,7 @@ public class RequestHandlerMapping {
                 .filter(entry -> entry.getKey().equals(requestPath))
                 .map(Map.Entry::getValue)
                 .findAny()
-                .orElseThrow(() -> new NotFoundException("요청을 찾을 수 없습니다. requestPath = " + requestPath));
+                .orElse(null);
     }
 
     private boolean isStaticPath(final String requestPath) {
