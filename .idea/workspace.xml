@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/AbstractRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/exception/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HandlerFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HandlerFixture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,67 +85,74 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build java-was.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeadersTest.getHeader_헤더목록에_있는_헤더_값을_찾을_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequestTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpResponse_객체를_생성하면.HttpResponse_메시지를_만들_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LoginRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LoginRequestHandlerTest.로그인을_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MessageBodyTest.httpRequest의_요청바디가_비어있다면_바디는_비어있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MimeTypeTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MimeTypeTest.알_수_없는_mimeType이라면_octet_stream이_반환된다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RawTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'codesquad'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'codesquad.http'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'java-was.test'.executor&quot;: &quot;Coverage&quot;,
-    &quot;Gradle.java-was [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.java-was [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in java-was.test (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in java-was.test (2).executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.All in java-was.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LogoutRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SnippetTest.스니펫에_문자열_속성들을_포맷팅_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.codesquad in java-was.test.executor&quot;: &quot;Coverage&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;was2-3&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/woowatech20/develop/wootacam/java-was/src/main/resources/static&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build java-was.executor": "Run",
+    "Gradle.HeadersTest.getHeader_헤더목록에_있는_헤더_값을_찾을_수_있다.executor": "Run",
+    "Gradle.HttpRequestTest.executor": "Run",
+    "Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다.executor": "Run",
+    "Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다.executor": "Run",
+    "Gradle.HttpResponse_객체를_생성하면.HttpResponse_메시지를_만들_수_있다.executor": "Run",
+    "Gradle.LoginRequestHandlerTest.executor": "Run",
+    "Gradle.LoginRequestHandlerTest.로그인을_할_수_있다.executor": "Run",
+    "Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Run",
+    "Gradle.MessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor": "Run",
+    "Gradle.MessageBodyTest.httpRequest의_요청바디가_비어있다면_바디는_비어있다.executor": "Run",
+    "Gradle.MimeTypeTest.executor": "Run",
+    "Gradle.MimeTypeTest.알_수_없는_mimeType이라면_octet_stream이_반환된다.executor": "Run",
+    "Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor": "Run",
+    "Gradle.RawTest.test.executor": "Run",
+    "Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1).executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor": "Run",
+    "Gradle.Tests in 'codesquad'.executor": "Run",
+    "Gradle.Tests in 'codesquad.http'.executor": "Run",
+    "Gradle.Tests in 'java-was.test'.executor": "Coverage",
+    "Gradle.java-was [:Main.main()].executor": "Run",
+    "Gradle.java-was [run].executor": "Run",
+    "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
+    "JUnit.All in java-was.test (1).executor": "Coverage",
+    "JUnit.All in java-was.test (2).executor": "Debug",
+    "JUnit.All in java-was.test (3).executor": "Coverage",
+    "JUnit.All in java-was.test (4).executor": "Coverage",
+    "JUnit.All in java-was.test.executor": "Coverage",
+    "JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
+    "JUnit.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다.executor": "Run",
+    "JUnit.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다.executor": "Run",
+    "JUnit.LoginRequestHandlerTest$로그인_정보가_모두_존재하지_않으면.예외가_발생한다.executor": "Run",
+    "JUnit.LogoutRequestHandlerTest.executor": "Run",
+    "JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Debug",
+    "JUnit.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_예외가_발생한다ㅣ.executor": "Run",
+    "JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다.executor": "Run",
+    "JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다.executor": "Run",
+    "JUnit.SignUpRequestHandlerTest$회원가입_정보를_하나라도_입력하지_않으면.예외가_발생한다.executor": "Run",
+    "JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다.executor": "Run",
+    "JUnit.SnippetTest.스니펫에_문자열_속성들을_포맷팅_할_수_있다.executor": "Run",
+    "JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor": "Run",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor": "Run",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다.executor": "Debug",
+    "JUnit.codesquad in java-was.test.executor": "Coverage",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "was2-3",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/woowatech20/develop/wootacam/java-was/src/main/resources/static",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="codesquad.web" />
@@ -169,20 +179,15 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in java-was.test">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
-      <module name="java-was.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="All in java-was.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-was.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in java-was.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in java-was.test (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -198,33 +203,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="codesquad.was.*" />
+          <option name="PATTERN" value="codesquad.web.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="codesquad.was.http.HttpResponseTest.sendError_메소드는" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.was.http.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면" />
-      <option name="METHOD_NAME" value="해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다" />
+      <option name="PACKAGE_NAME" value="codesquad.web.handler.HomeRequestHandlerTest.홈_화면을_요청할때" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면" />
+      <option name="METHOD_NAME" value="응답_코드로_200을_반환한다" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="codesquad.was.*" />
+          <option name="PATTERN" value="codesquad.web.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="codesquad.was.http.HttpResponseTest.sendRedirect_메소드는" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.was.http.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면" />
-      <option name="METHOD_NAME" value="해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다" />
+      <option name="PACKAGE_NAME" value="codesquad.web.handler.UserRequestHandlerTest.사용자_목록을_요청할때" />
+      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면" />
+      <option name="METHOD_NAME" value="응답_코드로_200을_반환한다" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -233,10 +238,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in java-was.test" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다" />
+        <item itemvalue="JUnit.All in java-was.test (3)" />
+        <item itemvalue="JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다" />
         <item itemvalue="JUnit.All in java-was.test (1)" />
-        <item itemvalue="JUnit.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다" />
-        <item itemvalue="JUnit.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다" />
       </list>
     </recent_temporary>
   </component>
@@ -314,24 +319,34 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java</url>
           <line>76</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/AbstractRequestHandler.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="20" />
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/HandlerFixture.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/LogoutRequestHandler.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
@@ -359,12 +374,14 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__2_.ic" NAME="All in java-was.test (2) Coverage Results" MODIFIED="1720714876419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$codesquad_in_java_was_test.ic" NAME="codesquad in java-was.test Coverage Results" MODIFIED="1720682580651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>codesquad.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__4_.ic" NAME="All in java-was.test (4) Coverage Results" MODIFIED="1720758549156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__1_.ic" NAME="All in java-was.test (1) Coverage Results" MODIFIED="1720760678418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__2_.ic" NAME="All in java-was.test (2) Coverage Results" MODIFIED="1720714876419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1720682515877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test.ic" NAME="All in java-was.test Coverage Results" MODIFIED="1720682536436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__1_.ic" NAME="All in java-was.test (1) Coverage Results" MODIFIED="1720715014344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__3_.ic" NAME="All in java-was.test (3) Coverage Results" MODIFIED="1720761069651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test.ic" NAME="All in java-was.test Coverage Results" MODIFIED="1720761165739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

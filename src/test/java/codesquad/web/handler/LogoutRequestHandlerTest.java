@@ -4,6 +4,7 @@ import static codesquad.web.handler.HandlerFixture.로그인을_한다;
 import static codesquad.web.handler.HandlerFixture.회원가입을_한다;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import codesquad.was.ContextHolder;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
@@ -11,9 +12,15 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 class LogoutRequestHandlerTest {
+
+    @AfterEach
+    void tearDown() {
+        ContextHolder.clear();
+    }
 
     @Test
     void 로그아웃을_할_수_있다() throws IOException {

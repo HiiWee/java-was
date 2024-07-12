@@ -23,7 +23,7 @@ public class UserRequestHandler extends AbstractRequestHandler {
         HttpSession session = request.getSession(false);
 
         if (sessionId == null || session == null) {
-            response.sendRedirect("/");
+            response.sendRedirect("/user/login");
             return;
         }
 

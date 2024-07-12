@@ -34,7 +34,7 @@ public class RequestHandlerMapping {
                 .filter(entry -> entry.getKey().equals(requestPath))
                 .map(Map.Entry::getValue)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("요청을 찾을 수 없습니다. requestPath = " + requestPath));
+                .orElse(null);
     }
 
     private boolean isStaticPath(final String requestPath) {
