@@ -1,6 +1,7 @@
 package codesquad.was.http;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import codesquad.was.http.type.HeaderType;
 import java.io.BufferedReader;
@@ -42,5 +43,31 @@ class HeadersTest {
         // then
         assertThat(headerMessage).isEqualTo(
                 "Content-Type: text/html; text/plain\r\nSet-Cookie: key1=value1\r\nSet-Cookie: key2=value2");
+    }
+
+    @Test
+    void 헤더_OWS_여부에_관계없이_파싱_할_수_있다() throws IOException {
+        // given
+        String httpRequestHeaders = "Host:localhost\r\n" +
+                "Connection: keep-alive\r\n" +
+                "Accept : text/html\r\n" +
+                "Content-Type :text/html\r\n" +
+                "\r\n";
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(httpRequestHeaders));
+        Headers headers = new Headers(bufferedReader);
+
+        // when
+        String value1 = headers.getHeader(HeaderType.HOST).get(0);
+        String value2 = headers.getHeader(HeaderType.CONNECTION).get(0);
+        String value3 = headers.getHeader(HeaderType.ACCEPT).get(0);
+        String value4 = headers.getHeader(HeaderType.CONTENT_TYPE).get(0);
+
+        // then
+        assertAll(
+                () -> assertThat(value1).isEqualTo("localhost"),
+                () -> assertThat(value2).isEqualTo("keep-alive"),
+                () -> assertThat(value3).isEqualTo("text/html"),
+                () -> assertThat(value4).isEqualTo("text/html")
+        );
     }
 }
