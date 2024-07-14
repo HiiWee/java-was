@@ -50,6 +50,20 @@ public class HttpRequest {
         }
     }
 
+    private RequestLine createRequestLine(final String requestLine) throws UnsupportedEncodingException {
+        String[] splitLines = requestLine.split(ONE_SPACE);
+        HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
+        String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
+        String requestPath = pathWithQueryString[PATH_INDEX];
+
+        if (pathWithQueryString.length == RequestParameters.KEY_VALUE_LENGTH) {
+            parameters.putParameters(pathWithQueryString[QUERY_STRING_INDEX]);
+        }
+        String httpVersion = splitLines[VERSION_INDEX];
+
+        return new RequestLine(method, requestPath, httpVersion);
+    }
+
     private String parseContentLength() {
         List<String> headerValues = headers.getHeader(HeaderType.CONTENT_LENGTH);
         if (Objects.isNull(headerValues) || headerValues.isEmpty()) {
@@ -66,19 +80,6 @@ public class HttpRequest {
         String contentType = headerValues.get(0);
 
         return contentType.contains(MimeType.APPLICATION_X_WWW_FORM_ENCODED.getValue());
-    }
-
-    private RequestLine createRequestLine(final String requestLine) throws UnsupportedEncodingException {
-        String[] splitLines = requestLine.split(ONE_SPACE);
-        HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
-        String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
-        String requestPath = pathWithQueryString[PATH_INDEX];
-        if (pathWithQueryString.length == RequestParameters.KEY_VALUE_LENGTH) {
-            parameters.putParameters(pathWithQueryString[QUERY_STRING_INDEX]);
-        }
-        String httpVersion = splitLines[VERSION_INDEX];
-
-        return new RequestLine(method, requestPath, httpVersion);
     }
 
     private String[] splitDecodedQueryString(final String queryString) throws UnsupportedEncodingException {
@@ -105,6 +106,7 @@ public class HttpRequest {
 
     public List<Cookie> getCookies() {
         List<String> cookies = headers.getHeader(HeaderType.COOKIE);
+
         if (Objects.isNull(cookies) || cookies.isEmpty()) {
             return Collections.emptyList();
         }
