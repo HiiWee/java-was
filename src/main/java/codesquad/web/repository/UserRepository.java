@@ -1,4 +1,4 @@
-package codesquad.web.io;
+package codesquad.web.repository;
 
 import codesquad.web.model.User;
 import java.util.List;
