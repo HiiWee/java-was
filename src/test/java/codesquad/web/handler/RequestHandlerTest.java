@@ -18,13 +18,9 @@ public class RequestHandlerTest {
 
     protected UserRepository userRepository;
 
-    protected String sessionId;
-
     @BeforeEach
-    void cleanStorage() throws IOException {
+    void cleanStorage() {
         userRepository = new InMemoryUserRepository();
-        로그아웃을_한다();
-        System.out.println(sessionId);
         ContextHolder.clear();
     }
 
@@ -47,7 +43,7 @@ public class RequestHandlerTest {
         signUpRequestHandler.handlePost(request, response);
     }
 
-    protected void 로그인을_한다() throws IOException {
+    protected String 로그인을_한다() throws IOException {
         LoginRequestHandler loginRequestHandler = new LoginRequestHandler(new InMemoryUserRepository());
         String httpRequestValue =
                 "POST /user/login HTTP/1.1\r\n"
@@ -64,11 +60,13 @@ public class RequestHandlerTest {
         HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
         loginRequestHandler.handlePost(request, response);
-        sessionId = getUuid(response);
+        String sessionId = getUuid(response);
         ContextHolder.setContext(sessionId);
+
+        return sessionId;
     }
 
-    protected void 로그아웃을_한다() throws IOException {
+    protected void 로그아웃을_한다(String sessionId) throws IOException {
         LogoutRequestHandler logoutRequestHandler = new LogoutRequestHandler();
         String httpRequestValue =
                 "GET /user/logout HTTP/1.1\r\n"
