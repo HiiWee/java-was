@@ -6,23 +6,30 @@ import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.handler.UserRequestHandler;
+import codesquad.web.io.InMemoryUserRepository;
+import codesquad.web.io.UserRepository;
 import java.util.Map;
 
 public class RequestHandlerMapping {
 
     private static final String STATIC_HANDLER_MAPPING = "static";
 
-    private final Map<String, RequestHandler> handlerMappings = Map.of(
-            "static", (request, response) -> response.forward(request.getRequestPath()),
-            "/", new HomeRequestHandler(),
-            "/main", (request, response) -> response.forward("/main/index.html"),
-            "/registration", (request, response) -> response.forward("/registration/index.html"),
-            "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
-            "/user/create", new SignUpRequestHandler(),
-            "/user/login", new LoginRequestHandler(),
-            "/user/logout", new LogoutRequestHandler(),
-            "/user/list", new UserRequestHandler()
-    );
+    private final Map<String, RequestHandler> handlerMappings;
+
+    public RequestHandlerMapping() {
+        UserRepository userRepository = new InMemoryUserRepository();
+
+        handlerMappings = Map.of(
+                "static", (request, response) -> response.forward(request.getRequestPath()),
+                "/", new HomeRequestHandler(),
+                "/main", (request, response) -> response.forward("/main/index.html"),
+                "/registration", (request, response) -> response.forward("/registration/index.html"),
+                "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
+                "/user/create", new SignUpRequestHandler(userRepository),
+                "/user/login", new LoginRequestHandler(userRepository),
+                "/user/logout", new LogoutRequestHandler(),
+                "/user/list", new UserRequestHandler(userRepository));
+    }
 
     public RequestHandler read(final String requestPath) {
         if (isStaticPath(requestPath)) {

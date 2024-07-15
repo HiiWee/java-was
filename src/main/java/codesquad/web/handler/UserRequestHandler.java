@@ -6,7 +6,7 @@ import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.MimeType;
-import codesquad.web.io.InMemoryUserDataBase;
+import codesquad.web.io.UserRepository;
 import codesquad.web.model.User;
 import codesquad.web.snippet.ResourceSnippetBuilder;
 import codesquad.web.snippet.Snippet;
@@ -16,6 +16,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserRequestHandler extends AbstractRequestHandler {
+
+    private final UserRepository userRepository;
+
+    public UserRequestHandler(final UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public void handleGet(final HttpRequest request, final HttpResponse response) throws IOException {
@@ -27,7 +33,7 @@ public class UserRequestHandler extends AbstractRequestHandler {
             return;
         }
 
-        List<User> signedUpUsers = InMemoryUserDataBase.findAll();
+        List<User> signedUpUsers = userRepository.findAll();
         Snippet loginHeaderSnippet = createLoginHeaderSnippet((User) session.getAttribute(sessionId));
         Snippet userListSnippet = createUserListSnippet(signedUpUsers);
 

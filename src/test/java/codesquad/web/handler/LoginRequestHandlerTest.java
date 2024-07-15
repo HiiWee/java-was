@@ -10,23 +10,32 @@ import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.HeaderType;
+import codesquad.web.io.InMemoryUserRepository;
+import codesquad.web.io.UserRepository;
 import codesquad.web.model.User;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class LoginRequestHandlerTest {
 
+    private UserRepository userRepository;
+
+    @BeforeEach
+    void setUp() {
+        userRepository = new InMemoryUserRepository();
+    }
 
     @Test
     void 로그인을_할_수_있다() throws IOException {
         // given
         HandlerFixture.회원가입을_한다();
-        LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
+        LoginRequestHandler loginRequestHandler = new LoginRequestHandler(userRepository);
         String httpRequestValue =
                 "POST /user/login HTTP/1.1\r\n"
                         + "Host: localhost\r\n"
@@ -63,7 +72,7 @@ class LoginRequestHandlerTest {
         void 예외가_발생한다() throws IOException {
             // given
             HandlerFixture.회원가입을_한다();
-            LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
+            LoginRequestHandler loginRequestHandler = new LoginRequestHandler(userRepository);
             String httpRequestValue =
                     "POST /user/login HTTP/1.1\r\n"
                             + "Host: localhost\r\n"

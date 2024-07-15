@@ -12,22 +12,31 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
-import codesquad.web.io.InMemoryUserDataBase;
+import codesquad.web.io.InMemoryUserRepository;
+import codesquad.web.io.UserRepository;
 import codesquad.web.model.User;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class SignUpRequestHandlerTest {
 
+    private UserRepository userRepository;
+
+    @BeforeEach
+    void setUp() {
+        userRepository = new InMemoryUserRepository();
+    }
+
     @Test
     void GET으로_회원가입을_시도하면_예외가_발생한다() {
         // given
-        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler();
+        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(userRepository);
 
         // expect
         assertThatThrownBy(() -> signUpRequestHandler.handleGet(
@@ -41,7 +50,7 @@ class SignUpRequestHandlerTest {
     @Test
     void 회원가입을_하면_메모리_DB에_사용자가_저장된다() throws IOException {
         // given
-        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler();
+        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(userRepository);
         String httpRequestValue =
                 "GET /create HTTP/1.1\r\n"
                         + "Host: localhost\r\n"
@@ -58,7 +67,7 @@ class SignUpRequestHandlerTest {
         // when
         signUpRequestHandler.handlePost(httpRequest,
                 new HttpResponse(OutputStream.nullOutputStream(), httpRequest.getHttpVersion()));
-        User user = InMemoryUserDataBase.findByUserId("javajigi").get();
+        User user = userRepository.findByUserId("javajigi").get();
 
         // then
         assertAll(
@@ -75,7 +84,7 @@ class SignUpRequestHandlerTest {
         @Test
         void 예외가_발생한다() throws IOException {
             // given
-            SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler();
+            SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(userRepository);
             String httpRequestValue =
                     "GET /create HTTP/1.1\r\n"
                             + "Host: localhost\r\n"

@@ -2,22 +2,16 @@ package codesquad.web.model;
 
 public class User {
 
-    private final long id;
     private final String userId;
     private final String nickname;
     private final String password;
     private final String email;
 
-    public User(final long id, final String userId, final String nickname, final String password, final String email) {
-        this.id = id;
+    public User(final String userId, final String nickname, final String password, final String email) {
         this.userId = userId;
         this.nickname = nickname;
         this.password = password;
         this.email = email;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getUserId() {
@@ -43,8 +37,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", userId='" + userId + '\'' +
+                "userId='" + userId + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +

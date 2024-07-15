@@ -6,7 +6,7 @@ import codesquad.was.http.Cookie;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
-import codesquad.web.io.InMemoryUserDataBase;
+import codesquad.web.io.UserRepository;
 import codesquad.web.model.User;
 import java.io.IOException;
 import java.util.Objects;
@@ -17,6 +17,12 @@ import org.slf4j.LoggerFactory;
 public class LoginRequestHandler extends AbstractRequestHandler {
 
     private final Logger log = LoggerFactory.getLogger(LoginRequestHandler.class);
+
+    private final UserRepository userRepository;
+
+    public LoginRequestHandler(final UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public void handleGet(final HttpRequest request, final HttpResponse response) throws IOException {
@@ -29,7 +35,7 @@ public class LoginRequestHandler extends AbstractRequestHandler {
         String password = request.getParameter("password");
 
         validateUserInfo(userId, password);
-        User user = InMemoryUserDataBase.findByUserId(userId)
+        User user = userRepository.findByUserId(userId)
                 .orElse(null);
 
         if (Objects.isNull(user) || !user.isValidPassword(password)) {
