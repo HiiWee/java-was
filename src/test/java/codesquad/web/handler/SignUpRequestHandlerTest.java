@@ -12,26 +12,16 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
-import codesquad.web.io.InMemoryUserRepository;
-import codesquad.web.io.UserRepository;
 import codesquad.web.model.User;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class SignUpRequestHandlerTest {
-
-    private UserRepository userRepository;
-
-    @BeforeEach
-    void setUp() {
-        userRepository = new InMemoryUserRepository();
-    }
+class SignUpRequestHandlerTest extends RequestHandlerTest {
 
     @Test
     void GET으로_회원가입을_시도하면_예외가_발생한다() {

@@ -5,16 +5,31 @@ import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HeaderType;
+import codesquad.web.io.InMemoryUserRepository;
+import codesquad.web.io.UserRepository;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 
-public class HandlerFixture {
+public class RequestHandlerTest {
 
-    public static void 회원가입을_한다() throws IOException {
-        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler();
+    protected UserRepository userRepository;
+
+    protected String sessionId;
+
+    @BeforeEach
+    void cleanStorage() throws IOException {
+        userRepository = new InMemoryUserRepository();
+        로그아웃을_한다();
+        System.out.println(sessionId);
+        ContextHolder.clear();
+    }
+
+    protected void 회원가입을_한다() throws IOException {
+        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(new InMemoryUserRepository());
         String httpRequestValue =
                 "POST /user/create HTTP/1.1\r\n"
                         + "Host: localhost\r\n"
@@ -32,8 +47,8 @@ public class HandlerFixture {
         signUpRequestHandler.handlePost(request, response);
     }
 
-    public static String 로그인을_한다() throws IOException {
-        LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
+    protected void 로그인을_한다() throws IOException {
+        LoginRequestHandler loginRequestHandler = new LoginRequestHandler(new InMemoryUserRepository());
         String httpRequestValue =
                 "POST /user/login HTTP/1.1\r\n"
                         + "Host: localhost\r\n"
@@ -49,13 +64,25 @@ public class HandlerFixture {
         HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
         loginRequestHandler.handlePost(request, response);
-        String sessionId = getUuid(response);
+        sessionId = getUuid(response);
         ContextHolder.setContext(sessionId);
-
-        return sessionId;
     }
 
-    private static String getUuid(final HttpResponse response) {
+    protected void 로그아웃을_한다() throws IOException {
+        LogoutRequestHandler logoutRequestHandler = new LogoutRequestHandler();
+        String httpRequestValue =
+                "GET /user/logout HTTP/1.1\r\n"
+                        + "Host: localhost\r\n"
+                        + "Cookie: sid=" + sessionId + "\r\n"
+                        + "\r\n";
+        InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
+        HttpRequest request = new HttpRequest(clientInput);
+        HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
+
+        logoutRequestHandler.handleGet(request, response);
+    }
+
+    private String getUuid(final HttpResponse response) {
         Headers headers = response.getHeaders();
         List<String> cookies = headers.getHeader(HeaderType.SET_COOKIE);
         String[] split = cookies.get(0).split("; ");
