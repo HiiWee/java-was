@@ -60,7 +60,7 @@ class PostRequestHandlerTest extends RequestHandlerTest {
                 // given
                 회원가입을_한다();
                 sessionId = 로그인을_한다();
-                UserRequestHandler userRequestHandler = new UserRequestHandler(userRepository);
+                PostRequestHandler postRequestHandler = new PostRequestHandler(postRepository);
                 String httpRequestValue =
                         "GET /post HTTP/1.1\r\n"
                                 + "Host: localhost\r\n"
@@ -72,7 +72,7 @@ class PostRequestHandlerTest extends RequestHandlerTest {
                 HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
                 // when
-                userRequestHandler.handleGet(request, response);
+                postRequestHandler.handleGet(request, response);
 
                 // then
                 assertThat(response).extracting(HttpResponse::getStatusCode)
