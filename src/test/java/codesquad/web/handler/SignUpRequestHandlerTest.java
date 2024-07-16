@@ -38,7 +38,7 @@ class SignUpRequestHandlerTest extends RequestHandlerTest {
     }
 
     @Test
-    void 회원가입을_하면_메모리_DB에_사용자가_저장된다() throws IOException {
+    void 회원가입을_하면_DB에_사용자가_저장된다() throws IOException {
         // given
         SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(userRepository);
         String httpRequestValue =
