@@ -8,10 +8,12 @@ import java.util.Optional;
 
 public class JdbcUserRepository implements UserRepository {
 
-    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private final JdbcTemplate jdbcTemplate;
 
-    public JdbcUserRepository() {
-        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS users (\n"
+    public JdbcUserRepository(final JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+
+        this.jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS users (\n"
                 + "    id BIGINT AUTO_INCREMENT PRIMARY KEY,\n"
                 + "    user_id VARCHAR(255),\n"
                 + "    nickname VARCHAR(255),\n"
