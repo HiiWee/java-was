@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
+import codesquad.web.handler.fixture.RequestHandlerTest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

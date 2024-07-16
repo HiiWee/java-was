@@ -2,6 +2,7 @@ package codesquad.was;
 
 import codesquad.utils.StringUtils;
 import codesquad.was.database.JdbcTemplate;
+import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
 import codesquad.web.handler.HomeRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
@@ -9,6 +10,7 @@ import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.PostRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.handler.UserRequestHandler;
+import codesquad.web.infrastructure.JdbcPostRepository;
 import codesquad.web.infrastructure.JdbcUserRepository;
 import java.util.Map;
 
@@ -21,6 +23,7 @@ public class RequestHandlerMapping {
     public RequestHandlerMapping() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         UserRepository userRepository = new JdbcUserRepository(jdbcTemplate);
+        PostRepository postRepository = new JdbcPostRepository(jdbcTemplate);
 
         handlerMappings = Map.of(
                 "static", (request, response) -> response.forward(request.getRequestPath()),

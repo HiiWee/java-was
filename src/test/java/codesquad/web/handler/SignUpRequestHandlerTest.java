@@ -13,6 +13,7 @@ import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.web.domain.User;
+import codesquad.web.handler.fixture.RequestHandlerTest;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

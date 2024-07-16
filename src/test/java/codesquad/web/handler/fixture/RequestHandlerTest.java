@@ -1,4 +1,4 @@
-package codesquad.web.handler;
+package codesquad.web.handler.fixture;
 
 import codesquad.was.ContextHolder;
 import codesquad.was.database.JdbcTemplate;
@@ -8,6 +8,9 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HeaderType;
 import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
+import codesquad.web.handler.LoginRequestHandler;
+import codesquad.web.handler.LogoutRequestHandler;
+import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.infrastructure.JdbcPostRepository;
 import codesquad.web.infrastructure.JdbcUserRepository;
 import java.io.ByteArrayInputStream;
@@ -15,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class RequestHandlerTest {
@@ -34,7 +38,12 @@ public class RequestHandlerTest {
         userRepository = new JdbcUserRepository(jdbcTemplate);
         postRepository = new JdbcPostRepository(jdbcTemplate);
 
+    }
+
+    @AfterEach
+    void cleanDatabase() {
         ContextHolder.clear();
+        databaseCleaner.clean();
     }
 
     protected void 회원가입을_한다() throws IOException {

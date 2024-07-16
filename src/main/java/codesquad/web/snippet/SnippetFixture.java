@@ -10,7 +10,7 @@ public class SnippetFixture {
                 <div class="btn_ghost btn_size_s">%s</div>
             </li>
             <li class="header__menu__item">
-                <a class="btn btn_contained btn_size_s" href="/article">글쓰기</a>
+                <a class="btn btn_contained btn_size_s" href="/post">글쓰기</a>
             </li>
             <li class="header__menu__item">
                 <form id="logout-form" action="/user/logout">

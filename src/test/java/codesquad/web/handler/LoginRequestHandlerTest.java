@@ -11,6 +11,7 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.HeaderType;
 import codesquad.web.domain.User;
+import codesquad.web.handler.fixture.RequestHandlerTest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
