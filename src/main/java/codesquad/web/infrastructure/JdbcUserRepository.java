@@ -1,7 +1,8 @@
-package codesquad.web.repository;
+package codesquad.web.infrastructure;
 
 import codesquad.was.database.JdbcTemplate;
-import codesquad.web.model.User;
+import codesquad.web.domain.User;
+import codesquad.web.domain.UserRepository;
 import java.util.List;
 import java.util.Optional;
 

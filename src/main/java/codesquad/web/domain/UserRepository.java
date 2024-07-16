@@ -1,6 +1,5 @@
-package codesquad.web.repository;
+package codesquad.web.domain;
 
-import codesquad.web.model.User;
 import java.util.List;
 import java.util.Optional;
 

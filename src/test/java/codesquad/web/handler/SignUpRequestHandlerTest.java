@@ -12,7 +12,7 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
-import codesquad.web.model.User;
+import codesquad.web.domain.User;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

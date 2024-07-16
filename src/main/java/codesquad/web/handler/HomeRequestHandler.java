@@ -6,7 +6,7 @@ import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.MimeType;
-import codesquad.web.model.User;
+import codesquad.web.domain.User;
 import codesquad.web.snippet.ResourceSnippet;
 import codesquad.web.snippet.ResourceSnippetBuilder;
 import codesquad.web.snippet.Snippet;

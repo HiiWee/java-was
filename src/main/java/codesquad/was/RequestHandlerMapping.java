@@ -6,8 +6,8 @@ import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.handler.UserRequestHandler;
-import codesquad.web.repository.JdbcUserRepository;
-import codesquad.web.repository.UserRepository;
+import codesquad.web.infrastructure.JdbcUserRepository;
+import codesquad.web.domain.UserRepository;
 import java.util.Map;
 
 public class RequestHandlerMapping {

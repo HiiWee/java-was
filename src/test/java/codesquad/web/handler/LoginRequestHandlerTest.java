@@ -10,7 +10,7 @@ import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.HeaderType;
-import codesquad.web.model.User;
+import codesquad.web.domain.User;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

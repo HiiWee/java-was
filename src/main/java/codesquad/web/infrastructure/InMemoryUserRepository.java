@@ -1,6 +1,7 @@
-package codesquad.web.repository;
+package codesquad.web.infrastructure;
 
-import codesquad.web.model.User;
+import codesquad.web.domain.User;
+import codesquad.web.domain.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
