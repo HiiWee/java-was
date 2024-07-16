@@ -68,4 +68,28 @@ public class SnippetFixture {
                     %s
                 </p>
             </div>""";
+
+    public static final String COMMENT_WRAPPER = """
+            <ul class="comment">
+                %s
+            </ul>
+            <nav class="nav">
+                <ul class="nav__menu">
+                    <li class="nav__menu__item">
+                        <a class="btn btn_ghost btn_size_m">댓글 작성</a>
+                    </li>
+                </ul>
+            </nav>""";
+
+    public static final String COMMENT_INFO = """
+            <li class="comment__item">
+                <div class="comment__item__user">
+                    <img class="comment__item__user__img"/>
+                    <p class="comment__item__user__nickname">%s</p>
+                </div>
+                <p class="comment__item__article">
+                    %s
+                </p>
+            </li>""";
+
 }

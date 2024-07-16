@@ -13,13 +13,14 @@ public class JdbcUserRepository implements UserRepository {
     public JdbcUserRepository(final JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
 
-        this.jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS users (\n"
-                + "    id BIGINT AUTO_INCREMENT PRIMARY KEY,\n"
-                + "    user_id VARCHAR(255),\n"
-                + "    nickname VARCHAR(255),\n"
-                + "    password VARCHAR(255),\n"
-                + "    email VARCHAR(255)\n"
-                + ")");
+        this.jdbcTemplate.execute(
+                "CREATE TABLE IF NOT EXISTS users (\n"
+                        + "    id BIGINT AUTO_INCREMENT PRIMARY KEY,\n"
+                        + "    user_id VARCHAR(255),\n"
+                        + "    nickname VARCHAR(255),\n"
+                        + "    password VARCHAR(255),\n"
+                        + "    email VARCHAR(255)\n"
+                        + ")");
     }
 
     @Override

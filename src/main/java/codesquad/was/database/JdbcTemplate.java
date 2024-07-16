@@ -73,6 +73,31 @@ public class JdbcTemplate {
         }
     }
 
+    public <T> List<T> selectAll(final String query,
+                                 final PreparedStatementSetter setter, final ResultSetMapper<T> mapper) {
+        try (Connection conn = dataSourceManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
+            setter.setValues(ps);
+
+            return getValues(mapper, ps);
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            throw new InternalServerException();
+        }
+    }
+
+    private static <T> List<T> getValues(final ResultSetMapper<T> mapper, final PreparedStatement ps)
+            throws SQLException {
+        try (ResultSet resultSet = ps.executeQuery()) {
+            List<T> results = new ArrayList<>();
+            while (resultSet.next()) {
+                results.add(mapper.map(resultSet));
+            }
+            return results;
+        }
+    }
+
     public void execute(final String query) {
         try (Connection conn = dataSourceManager.getConnection();
              Statement statement = conn.createStatement()) {

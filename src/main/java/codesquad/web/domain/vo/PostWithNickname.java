@@ -1,8 +1,10 @@
 package codesquad.web.domain.vo;
 
 public record PostWithNickname(
-        String nickname,
+        Long id,
         String title,
-        String content
+        String content,
+        Long userPrimaryId,
+        String nickname
 ) {
 }

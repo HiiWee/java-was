@@ -56,13 +56,15 @@ public class JdbcPostRepository implements PostRepository {
 
     @Override
     public List<PostWithNickname> findAllWithJoinUser() {
-        String sql = "SELECT user_id, title, content FROM post p join users u on p.user_primary_id = u.id ORDER BY p.id DESC";
+        String sql = "SELECT p.id, p.title, p.content, p.user_primary_id, u.user_id FROM post p join users u on p.user_primary_id = u.id ORDER BY p.id DESC";
         return jdbcTemplate.selectAll(
                 sql,
                 rs -> new PostWithNickname(
-                        rs.getString("user_id"),
+                        rs.getLong("id"),
                         rs.getString("title"),
-                        rs.getString("content")
+                        rs.getString("content"),
+                        rs.getLong("user_primary_id"),
+                        rs.getString("user_id")
                 )
         );
 

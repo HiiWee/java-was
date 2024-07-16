@@ -6,11 +6,13 @@ import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HeaderType;
+import codesquad.web.domain.CommentRepository;
 import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
+import codesquad.web.infrastructure.JdbcCommentRepository;
 import codesquad.web.infrastructure.JdbcPostRepository;
 import codesquad.web.infrastructure.JdbcUserRepository;
 import java.io.ByteArrayInputStream;
@@ -29,6 +31,8 @@ public class RequestHandlerTest {
 
     protected PostRepository postRepository;
 
+    protected CommentRepository commentRepository;
+
     protected DatabaseCleaner databaseCleaner;
 
     @BeforeEach
@@ -37,7 +41,7 @@ public class RequestHandlerTest {
         databaseCleaner = new DatabaseCleaner(jdbcTemplate);
         userRepository = new JdbcUserRepository(jdbcTemplate);
         postRepository = new JdbcPostRepository(jdbcTemplate);
-
+        commentRepository = new JdbcCommentRepository(jdbcTemplate);
     }
 
     @AfterEach
