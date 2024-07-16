@@ -1,11 +1,14 @@
 package codesquad.web.handler;
 
 import codesquad.was.ContextHolder;
+import codesquad.was.database.JdbcTemplate;
 import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HeaderType;
+import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
+import codesquad.web.infrastructure.JdbcPostRepository;
 import codesquad.web.infrastructure.JdbcUserRepository;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -16,11 +19,21 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class RequestHandlerTest {
 
+    protected JdbcTemplate jdbcTemplate;
+
     protected UserRepository userRepository;
 
+    protected PostRepository postRepository;
+
+    protected DatabaseCleaner databaseCleaner;
+
     @BeforeEach
-    void cleanStorage() {
-        userRepository = new JdbcUserRepository();
+    void setUpTest() {
+        jdbcTemplate = new JdbcTemplate();
+        databaseCleaner = new DatabaseCleaner(jdbcTemplate);
+        userRepository = new JdbcUserRepository(jdbcTemplate);
+        postRepository = new JdbcPostRepository(jdbcTemplate);
+
         ContextHolder.clear();
     }
 

@@ -7,8 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JdbcTemplate {
+
+    private final Logger log = LoggerFactory.getLogger(JdbcTemplate.class);
 
     private final DataSourceManager dataSourceManager = new DataSourceManager();
 
@@ -19,6 +23,7 @@ public class JdbcTemplate {
 
             ps.executeUpdate();
         } catch (SQLException e) {
+            log.error(e.getMessage(), e);
             throw new InternalServerException();
         }
     }
@@ -36,6 +41,7 @@ public class JdbcTemplate {
             }
             return null;
         } catch (SQLException e) {
+            log.error(e.getMessage(), e);
             throw new InternalServerException();
         }
     }
@@ -52,6 +58,7 @@ public class JdbcTemplate {
 
             return results;
         } catch (SQLException e) {
+            log.error(e.getMessage(), e);
             throw new InternalServerException();
         }
     }
@@ -62,6 +69,7 @@ public class JdbcTemplate {
                     .execute(query);
 
         } catch (SQLException e) {
+            log.error(e.getMessage(), e);
             throw new InternalServerException();
         }
     }

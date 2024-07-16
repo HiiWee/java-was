@@ -7,8 +7,12 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ResourceSnippet {
+
+    private final Logger log = LoggerFactory.getLogger(ResourceSnippet.class);
 
     private final String completeSnippet;
 
@@ -16,6 +20,7 @@ public class ResourceSnippet {
         URL templateUrl = getClass().getClassLoader().getResource("templates" + templatePath);
 
         if (templateUrl == null) {
+            log.error("templateUrl을 찾을 수 없습니다.");
             throw new InternalServerException();
         }
 
@@ -35,6 +40,7 @@ public class ResourceSnippet {
 
             contentBuilder.append(content);
         } catch (IOException e) {
+            log.error(e.getMessage(), e);
             throw new InternalServerException();
         }
         return contentBuilder.toString();
