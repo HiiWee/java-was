@@ -5,7 +5,7 @@ public class Post {
     private Long id;
     private final String title;
     private final String content;
-    private final long userPrimaryId;
+    private final Long userPrimaryId;
 
     public Post(final String title, final String content, final long userPrimaryId) {
         this.title = title;
@@ -13,14 +13,14 @@ public class Post {
         this.userPrimaryId = userPrimaryId;
     }
 
-    public Post(final long id, final String title, final String content, final long userPrimaryId) {
+    public Post(final Long id, final String title, final String content, final Long userPrimaryId) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.userPrimaryId = userPrimaryId;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -32,7 +32,7 @@ public class Post {
         return content;
     }
 
-    public long getUserPrimaryId() {
+    public Long getUserPrimaryId() {
         return userPrimaryId;
     }
 

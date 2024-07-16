@@ -2,7 +2,7 @@ package codesquad.web.domain;
 
 public class User {
 
-    private long id;
+    private Long id;
     private final String userId;
     private final String nickname;
     private final String password;
@@ -15,7 +15,7 @@ public class User {
         this.email = email;
     }
 
-    public User(final long id, final String userId, final String nickname, final String password, final String email) {
+    public User(final Long id, final String userId, final String nickname, final String password, final String email) {
         this.id = id;
         this.userId = userId;
         this.nickname = nickname;
@@ -23,7 +23,7 @@ public class User {
         this.email = email;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
