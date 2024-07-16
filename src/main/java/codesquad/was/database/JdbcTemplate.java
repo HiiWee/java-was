@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
@@ -17,8 +18,9 @@ public class JdbcTemplate {
     private final DataSourceManager dataSourceManager = new DataSourceManager();
 
     public void insert(final String query, final PreparedStatementSetter psSetter) {
-        try (Connection conn = dataSourceManager.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(query);
+        try (Connection conn = dataSourceManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
             psSetter.setValues(ps);
 
             ps.executeUpdate();
@@ -30,26 +32,34 @@ public class JdbcTemplate {
 
     public <T> T selectOne(final String query, final PreparedStatementSetter setter,
                            final ResultSetMapper<T> mapper) {
-        try (Connection conn = dataSourceManager.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(query);
+        try (Connection conn = dataSourceManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
             setter.setValues(ps);
 
-            ResultSet resultSet = ps.executeQuery();
-
-            if (resultSet.next()) {
-                return mapper.map(resultSet);
-            }
-            return null;
+            return getValue(mapper, ps);
         } catch (SQLException e) {
             log.error(e.getMessage(), e);
             throw new InternalServerException();
         }
     }
 
+    private <T> T getValue(final ResultSetMapper<T> mapper, final PreparedStatement ps) throws SQLException {
+        T value = null;
+
+        try (ResultSet resultSet = ps.executeQuery()) {
+            if (resultSet.next()) {
+                value = mapper.map(resultSet);
+            }
+        }
+
+        return value;
+    }
+
     public <T> List<T> selectAll(final String query, final ResultSetMapper<T> setter) {
-        try (Connection conn = dataSourceManager.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(query);
-            ResultSet resultSet = ps.executeQuery();
+        try (Connection conn = dataSourceManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet resultSet = ps.executeQuery()) {
 
             List<T> results = new ArrayList<>();
             while (resultSet.next()) {
@@ -64,9 +74,10 @@ public class JdbcTemplate {
     }
 
     public void execute(final String query) {
-        try (Connection conn = dataSourceManager.getConnection()) {
-            conn.createStatement()
-                    .execute(query);
+        try (Connection conn = dataSourceManager.getConnection();
+             Statement statement = conn.createStatement()) {
+
+            statement.execute(query);
 
         } catch (SQLException e) {
             log.error(e.getMessage(), e);

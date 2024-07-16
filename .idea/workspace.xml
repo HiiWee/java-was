@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/fixture/RequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/fixture/RequestHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +174,7 @@
       <recent name="codesquad.http.type" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'codesquad.web'">
+  <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
     <configuration name="PostRequestHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -259,7 +247,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="만약_로그인이_되어있다면" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'java-was.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -271,8 +259,6 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.web.handler.PostRequestHandlerTest$글쓰기를_완료하고_POST_요청을_보낼때$만약_로그인이_되어있다면&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -309,11 +295,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.Tests in 'codesquad.web'" />
         <item itemvalue="Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다" />
         <item itemvalue="Gradle.Tests in 'codesquad.web.handler'" />
         <item itemvalue="Gradle.PostRequestHandlerTest" />
-        <item itemvalue="Gradle.만약_로그인이_되어있다면" />
       </list>
     </recent_temporary>
   </component>
