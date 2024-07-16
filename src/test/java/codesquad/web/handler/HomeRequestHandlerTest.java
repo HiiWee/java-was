@@ -31,7 +31,7 @@ class HomeRequestHandlerTest extends RequestHandlerTest {
             @Test
             void 응답_코드로_200을_반환한다() throws IOException {
                 // given
-                HomeRequestHandler homeRequestHandler = new HomeRequestHandler();
+                HomeRequestHandler homeRequestHandler = new HomeRequestHandler(postRepository);
                 String httpRequestValue =
                         "GET / HTTP/1.1\r\n"
                                 + "Host: localhost\r\n"
@@ -58,7 +58,7 @@ class HomeRequestHandlerTest extends RequestHandlerTest {
                 // given
                 회원가입을_한다();
                 sessionId = 로그인을_한다();
-                HomeRequestHandler homeRequestHandler = new HomeRequestHandler();
+                HomeRequestHandler homeRequestHandler = new HomeRequestHandler(postRepository);
                 String httpRequestValue =
                         "GET / HTTP/1.1\r\n"
                                 + "Host: localhost\r\n"

@@ -3,6 +3,8 @@ package codesquad.web.infrastructure;
 import codesquad.was.database.JdbcTemplate;
 import codesquad.web.domain.Post;
 import codesquad.web.domain.PostRepository;
+import codesquad.web.domain.vo.PostWithNickname;
+import java.util.List;
 import java.util.Optional;
 
 public class JdbcPostRepository implements PostRepository {
@@ -50,5 +52,19 @@ public class JdbcPostRepository implements PostRepository {
         );
 
         return Optional.ofNullable(post);
+    }
+
+    @Override
+    public List<PostWithNickname> findAllWithJoinUser() {
+        String sql = "SELECT user_id, title, content FROM post p join users u on p.user_primary_id = u.id ORDER BY p.id DESC";
+        return jdbcTemplate.selectAll(
+                sql,
+                rs -> new PostWithNickname(
+                        rs.getString("user_id"),
+                        rs.getString("title"),
+                        rs.getString("content")
+                )
+        );
+
     }
 }

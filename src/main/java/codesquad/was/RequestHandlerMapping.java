@@ -27,8 +27,7 @@ public class RequestHandlerMapping {
 
         handlerMappings = Map.of(
                 "static", (request, response) -> response.forward(request.getRequestPath()),
-                "/", new HomeRequestHandler(),
-                "/main", (request, response) -> response.forward("/main/index.html"),
+                "/", new HomeRequestHandler(postRepository),
                 "/registration", (request, response) -> response.forward("/registration/index.html"),
                 "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
                 "/user/create", new SignUpRequestHandler(userRepository),

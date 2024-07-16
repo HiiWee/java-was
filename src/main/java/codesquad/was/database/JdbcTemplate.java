@@ -56,14 +56,14 @@ public class JdbcTemplate {
         return value;
     }
 
-    public <T> List<T> selectAll(final String query, final ResultSetMapper<T> setter) {
+    public <T> List<T> selectAll(final String query, final ResultSetMapper<T> mapper) {
         try (Connection conn = dataSourceManager.getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
              ResultSet resultSet = ps.executeQuery()) {
 
             List<T> results = new ArrayList<>();
             while (resultSet.next()) {
-                results.add(setter.map(resultSet));
+                results.add(mapper.map(resultSet));
             }
 
             return results;

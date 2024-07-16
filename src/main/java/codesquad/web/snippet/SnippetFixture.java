@@ -5,6 +5,16 @@ public class SnippetFixture {
     private SnippetFixture() {
     }
 
+    public static final String NONE_LOGIN_HEADER = """
+            <li class="header__menu__item">
+                <a class="btn btn_contained btn_size_s" href="/user/login">로그인</a>
+            </li>
+            <li class="header__menu__item">
+                <a class="btn btn_ghost btn_size_s" href="/registration">
+                    회원 가입
+                </a>
+            </li>""";
+
     public static final String LOGIN_HEADER = """
             <li class="header__menu__item">
                 <div class="btn_ghost btn_size_s">%s</div>
@@ -27,5 +37,35 @@ public class SnippetFixture {
                     <div class="user-id">%s</div>
                     <div class="user-email">%s</div>
                 </div>
+            </div>""";
+
+    public static final String POST_INFO = """
+            <div class="post">
+                <div class="post__account">
+                    <img class="post__account__img"/>
+                    <p class="post__account__nickname">%s</p>
+                    <h1>%s</h1>
+                </div>
+                <img class="post__img"/>
+                <div class="post__menu">
+                    <ul class="post__menu__personal">
+                        <li>
+                            <button class="post__menu__btn">
+                                <img src="./img/like.svg"/>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="post__menu__btn">
+                                <img src="./img/sendLink.svg"/>
+                            </button>
+                        </li>
+                    </ul>
+                    <button class="post__menu__btn">
+                        <img src="./img/bookMark.svg"/>
+                    </button>
+                </div>
+                <p class="post__article">
+                    %s
+                </p>
             </div>""";
 }

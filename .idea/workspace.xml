@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/PostRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/PostRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/snippet/ResourceSnippetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/snippet/ResourceSnippetTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/PostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/post/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/post/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +59,7 @@
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -176,6 +186,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
+      <module name="java-was.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -190,30 +213,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;codesquad.web.snippet.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in 'codesquad.web'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.web.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -297,10 +296,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.만약_로그인이_되어있다면.응답_코드로_200을_반환한다" />
         <item itemvalue="Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다" />
         <item itemvalue="Gradle.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다" />
-        <item itemvalue="Gradle.Tests in 'codesquad.web'" />
       </list>
     </recent_temporary>
   </component>
@@ -403,6 +402,11 @@
           <line>45</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/PostRequestHandler.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
           <option name="timeStamp" value="9" />
@@ -425,7 +429,7 @@
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__4_.ic" NAME="All in java-was.test (4) Coverage Results" MODIFIED="1720758549156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__1_.ic" NAME="All in java-was.test (1) Coverage Results" MODIFIED="1721099385542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__2_.ic" NAME="All in java-was.test (2) Coverage Results" MODIFIED="1720714876419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1721118182164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1721127235895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__3_.ic" NAME="All in java-was.test (3) Coverage Results" MODIFIED="1721100069640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test.ic" NAME="All in java-was.test Coverage Results" MODIFIED="1720761165739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
