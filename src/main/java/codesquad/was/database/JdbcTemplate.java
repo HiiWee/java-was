@@ -11,9 +11,9 @@ public class JdbcTemplate {
 
     private final DataSourceManager dataSourceManager = new DataSourceManager();
 
-    public void insert(final String sql, final PreparedStatementSetter psSetter) {
+    public void insert(final String query, final PreparedStatementSetter psSetter) {
         try (Connection conn = dataSourceManager.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(query);
             psSetter.setValues(ps);
 
             ps.executeUpdate();
@@ -22,16 +22,16 @@ public class JdbcTemplate {
         }
     }
 
-    public <T> T selectOne(final String sql, final PreparedStatementSetter psSetter,
-                           final ResultSetSetter<T> rsSetter) {
+    public <T> T selectOne(final String query, final PreparedStatementSetter setter,
+                           final ResultSetMapper<T> mapper) {
         try (Connection conn = dataSourceManager.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            psSetter.setValues(ps);
+            PreparedStatement ps = conn.prepareStatement(query);
+            setter.setValues(ps);
 
             ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                return rsSetter.setValues(resultSet);
+                return mapper.map(resultSet);
             }
             return null;
         } catch (SQLException e) {
@@ -39,14 +39,14 @@ public class JdbcTemplate {
         }
     }
 
-    public <T> List<T> selectAll(final String sql, final ResultSetSetter<T> rsSetter) {
+    public <T> List<T> selectAll(final String query, final ResultSetMapper<T> setter) {
         try (Connection conn = dataSourceManager.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(query);
             ResultSet resultSet = ps.executeQuery();
 
             List<T> results = new ArrayList<>();
             while (resultSet.next()) {
-                results.add(rsSetter.setValues(resultSet));
+                results.add(setter.map(resultSet));
             }
 
             return results;
@@ -55,10 +55,10 @@ public class JdbcTemplate {
         }
     }
 
-    public void execute(final String sql) {
+    public void execute(final String query) {
         try (Connection conn = dataSourceManager.getConnection()) {
             conn.createStatement()
-                    .execute(sql);
+                    .execute(query);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

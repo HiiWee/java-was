@@ -1,13 +1,13 @@
 package codesquad.was;
 
 import codesquad.utils.StringUtils;
+import codesquad.web.domain.UserRepository;
 import codesquad.web.handler.HomeRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.handler.UserRequestHandler;
 import codesquad.web.infrastructure.JdbcUserRepository;
-import codesquad.web.domain.UserRepository;
 import java.util.Map;
 
 public class RequestHandlerMapping {
