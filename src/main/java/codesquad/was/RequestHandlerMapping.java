@@ -6,7 +6,7 @@ import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.handler.UserRequestHandler;
-import codesquad.web.repository.InMemoryUserRepository;
+import codesquad.web.repository.JdbcUserRepository;
 import codesquad.web.repository.UserRepository;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public class RequestHandlerMapping {
     private final Map<String, RequestHandler> handlerMappings;
 
     public RequestHandlerMapping() {
-        UserRepository userRepository = new InMemoryUserRepository();
+        UserRepository userRepository = new JdbcUserRepository();
 
         handlerMappings = Map.of(
                 "static", (request, response) -> response.forward(request.getRequestPath()),

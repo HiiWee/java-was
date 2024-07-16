@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/DataSourceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/database/DataSourceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/JdbcTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/io/InMemoryUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/repository/InMemoryUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/io/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/repository/JdbcUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/repository/JdbcUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/was/JdbcTemplateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/was/JdbcTemplateTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/RequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/RequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,9 +65,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -118,7 +117,7 @@
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
     "JUnit.All in java-was.test (1).executor": "Run",
     "JUnit.All in java-was.test (2).executor": "Run",
-    "JUnit.All in java-was.test (3).executor": "Coverage",
+    "JUnit.All in java-was.test (3).executor": "Run",
     "JUnit.All in java-was.test (4).executor": "Coverage",
     "JUnit.All in java-was.test.executor": "Run",
     "JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
@@ -152,7 +151,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
@@ -185,6 +184,19 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in java-was.test (2)">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
+      <module name="java-was.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codesquad.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in java-was.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <option name="PACKAGE_NAME" value="" />
@@ -209,23 +221,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.web.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.handler.HomeRequestHandlerTest.홈_화면을_요청할때" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면" />
-      <option name="METHOD_NAME" value="응답_코드로_200을_반환한다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HomeRequestHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="codesquad.web.handler in java-was.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-was.test" />
       <extension name="coverage">
         <pattern>
@@ -234,8 +230,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="codesquad.web.handler" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.HomeRequestHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -244,9 +239,9 @@
       <list>
         <item itemvalue="JUnit.All in java-was.test (2)" />
         <item itemvalue="JUnit.All in java-was.test (1)" />
-        <item itemvalue="JUnit.HomeRequestHandlerTest" />
-        <item itemvalue="JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다" />
         <item itemvalue="JUnit.All in java-was.test" />
+        <item itemvalue="JUnit.codesquad.web.handler in java-was.test" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -325,24 +320,14 @@
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java</url>
           <line>43</line>
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="31" />
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
@@ -350,6 +335,11 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="codesquad.web.handler.HomeRequestHandlerTest" memberName="sessionId" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/java_was$codesquad_in_java_was_test.ic" NAME="codesquad in java-was.test Coverage Results" MODIFIED="1720682580651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

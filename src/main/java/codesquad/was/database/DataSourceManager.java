@@ -1,4 +1,4 @@
-package codesquad.was;
+package codesquad.was.database;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,13 +16,15 @@ public class DataSourceManager {
     private static DataSource dataSource;
 
     public DataSourceManager() {
-        Properties props = new Properties();
-        loadProperties(props);
-        String url = props.getProperty("datasource.url");
-        String user = props.getProperty("datasource.user");
-        String password = props.getProperty("datasource.password");
+        if (dataSource == null) {
+            Properties props = new Properties();
+            loadProperties(props);
+            String url = props.getProperty("datasource.url");
+            String user = props.getProperty("datasource.user");
+            String password = props.getProperty("datasource.password");
 
-        dataSource = JdbcConnectionPool.create(url, user, password);
+            dataSource = JdbcConnectionPool.create(url, user, password);
+        }
     }
 
     private void loadProperties(final Properties props) {

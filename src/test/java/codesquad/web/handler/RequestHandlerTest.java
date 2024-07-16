@@ -5,7 +5,7 @@ import codesquad.was.http.Headers;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.type.HeaderType;
-import codesquad.web.repository.InMemoryUserRepository;
+import codesquad.web.repository.JdbcUserRepository;
 import codesquad.web.repository.UserRepository;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,12 +20,12 @@ public class RequestHandlerTest {
 
     @BeforeEach
     void cleanStorage() {
-        userRepository = new InMemoryUserRepository();
+        userRepository = new JdbcUserRepository();
         ContextHolder.clear();
     }
 
     protected void 회원가입을_한다() throws IOException {
-        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(new InMemoryUserRepository());
+        SignUpRequestHandler signUpRequestHandler = new SignUpRequestHandler(userRepository);
         String httpRequestValue =
                 "POST /user/create HTTP/1.1\r\n"
                         + "Host: localhost\r\n"
@@ -44,7 +44,7 @@ public class RequestHandlerTest {
     }
 
     protected String 로그인을_한다() throws IOException {
-        LoginRequestHandler loginRequestHandler = new LoginRequestHandler(new InMemoryUserRepository());
+        LoginRequestHandler loginRequestHandler = new LoginRequestHandler(userRepository);
         String httpRequestValue =
                 "POST /user/login HTTP/1.1\r\n"
                         + "Host: localhost\r\n"
