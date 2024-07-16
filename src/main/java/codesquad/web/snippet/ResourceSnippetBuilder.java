@@ -1,6 +1,5 @@
 package codesquad.web.snippet;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ResourceSnippetBuilder {
         return this;
     }
 
-    public ResourceSnippet build() throws IOException {
+    public ResourceSnippet build() {
         return new ResourceSnippet(templatePath, snippets);
     }
 }

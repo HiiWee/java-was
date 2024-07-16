@@ -1,17 +1,14 @@
 package codesquad.was.database;
 
+import codesquad.was.exception.InternalServerException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.h2.jdbcx.JdbcConnectionPool;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DataSourceManager {
-
-    private final Logger log = LoggerFactory.getLogger(DataSourceManager.class);
 
     private static DataSource dataSource;
 
@@ -31,7 +28,7 @@ public class DataSourceManager {
         try {
             props.load(getClass().getClassLoader().getResourceAsStream("config/datasource.properties"));
         } catch (IOException e) {
-            log.error(e.getMessage());
+            throw new InternalServerException();
         }
     }
 

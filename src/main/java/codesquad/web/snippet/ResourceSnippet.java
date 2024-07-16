@@ -1,5 +1,6 @@
 package codesquad.web.snippet;
 
+import codesquad.was.exception.InternalServerException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,11 +12,11 @@ public class ResourceSnippet {
 
     private final String completeSnippet;
 
-    public ResourceSnippet(final String templatePath, final List<Snippet> snippets) throws IOException {
+    public ResourceSnippet(final String templatePath, final List<Snippet> snippets) {
         URL templateUrl = getClass().getClassLoader().getResource("templates" + templatePath);
 
         if (templateUrl == null) {
-            throw new IllegalArgumentException("파일을 찾을 수 없습니다. templatePath = " + templatePath);
+            throw new InternalServerException();
         }
 
         String templateContent = readTemplate(templateUrl);
@@ -26,13 +27,15 @@ public class ResourceSnippet {
         completeSnippet = String.format(templateContent, snippetValues.toArray());
     }
 
-    private static String readTemplate(final URL fileUrl) throws IOException {
+    private String readTemplate(final URL fileUrl) {
         StringBuilder contentBuilder = new StringBuilder();
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(fileUrl.openStream()))) {
             String content = fileReader.lines()
                     .collect(Collectors.joining(System.lineSeparator()));
 
             contentBuilder.append(content);
+        } catch (IOException e) {
+            throw new InternalServerException();
         }
         return contentBuilder.toString();
     }

@@ -32,7 +32,7 @@ public class HomeRequestHandler extends AbstractRequestHandler {
         response.dynamicForward(completeSnippet.getBytes(), MimeType.HTML);
     }
 
-    private ResourceSnippet createLoginHeaderSnippet(final User user) throws IOException {
+    private ResourceSnippet createLoginHeaderSnippet(final User user) {
         Snippet loginSnippet = SnippetBuilder.builder()
                 .snippet(SnippetFixture.LOGIN_HEADER)
                 .attributes(List.of(user.getNickname()))
