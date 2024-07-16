@@ -6,4 +6,6 @@ import java.util.List;
 public interface CommentRepository {
 
     List<CommentWithNickname> findAllByPostIdWithJoinUser(Long postId);
+
+    void save(Comment comment);
 }

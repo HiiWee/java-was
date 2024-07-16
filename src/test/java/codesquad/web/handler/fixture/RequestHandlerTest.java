@@ -11,6 +11,7 @@ import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
+import codesquad.web.handler.PostRequestHandler;
 import codesquad.web.handler.SignUpRequestHandler;
 import codesquad.web.infrastructure.JdbcCommentRepository;
 import codesquad.web.infrastructure.JdbcPostRepository;
@@ -104,6 +105,25 @@ public class RequestHandlerTest {
         HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
 
         logoutRequestHandler.handleGet(request, response);
+    }
+
+    protected void 게시글을_작성한다() throws IOException {
+        PostRequestHandler postRequestHandler = new PostRequestHandler(postRepository);
+        String httpRequestValue =
+                "POST /post HTTP/1.1\r\n"
+                        + "Host: localhost\r\n"
+                        + "Connection: keep-alive\r\n"
+                        + "Content-Type: application/x-www-form-urlencoded\r\n"
+                        + "Content-Length: "
+                        + "title=title&content=content".getBytes().length
+                        + "\r\n"
+                        + "\r\n"
+                        + "title=title&content=content";
+        InputStream clientInput = new ByteArrayInputStream(httpRequestValue.getBytes("UTF-8"));
+        HttpRequest request = new HttpRequest(clientInput);
+        HttpResponse response = new HttpResponse(OutputStream.nullOutputStream(), request.getHttpVersion());
+
+        postRequestHandler.handlePost(request, response);
     }
 
     private String getUuid(final HttpResponse response) {

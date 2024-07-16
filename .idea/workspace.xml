@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/database/JdbcTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/PostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/post/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/post/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +97,7 @@
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
     "Gradle.Tests in 'codesquad.web'.executor": "Run",
     "Gradle.Tests in 'codesquad.web.handler'.executor": "Run",
-    "Gradle.Tests in 'java-was.test'.executor": "Coverage",
+    "Gradle.Tests in 'java-was.test'.executor": "Run",
     "Gradle.java-was [:Main.main()].executor": "Run",
     "Gradle.java-was [run].executor": "Run",
     "Gradle.만약_로그인이_되어있다면.executor": "Run",

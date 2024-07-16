@@ -73,13 +73,25 @@ public class SnippetFixture {
             <ul class="comment">
                 %s
             </ul>
-            <nav class="nav">
-                <ul class="nav__menu">
-                    <li class="nav__menu__item">
-                        <a class="btn btn_ghost btn_size_m">댓글 작성</a>
-                    </li>
-                </ul>
-            </nav>""";
+            <form class="form" action="/post/comment" method="post">
+                <div class="textfield textfield_size_m" style="height: auto">
+                    <input type="hidden" name="postId" value="%s">
+                    <textarea
+                            class="input_textfield"
+                            placeholder="댓글을 작성하세요"
+                            autocomplete="username"
+                            name="content"
+                    ></textarea>
+                </div>
+                <button
+                        id="registration-btn"
+                        class="btn btn_contained btn_size_s"
+                        style="margin-top: 24px"
+                        type="submit"
+                >
+                    댓글 작성
+                </button>
+            </form>""";
 
     public static final String COMMENT_INFO = """
             <li class="comment__item">

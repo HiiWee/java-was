@@ -4,19 +4,19 @@ public class Comment {
 
     private Long id;
     private final String content;
-    private final Long userPrimaryId;
+    private final Long usersPrimaryId;
     private final Long postPrimaryId;
 
-    public Comment(final Long id, final String content, final Long userPrimaryId, final Long postPrimaryId) {
+    public Comment(final Long id, final String content, final Long usersPrimaryId, final Long postPrimaryId) {
         this.id = id;
         this.content = content;
-        this.userPrimaryId = userPrimaryId;
+        this.usersPrimaryId = usersPrimaryId;
         this.postPrimaryId = postPrimaryId;
     }
 
-    public Comment(final String content, final Long userPrimaryId, final Long postPrimaryId) {
+    public Comment(final String content, final Long usersPrimaryId, final Long postPrimaryId) {
         this.content = content;
-        this.userPrimaryId = userPrimaryId;
+        this.usersPrimaryId = usersPrimaryId;
         this.postPrimaryId = postPrimaryId;
     }
 
@@ -28,8 +28,8 @@ public class Comment {
         return content;
     }
 
-    public Long getUserPrimaryId() {
-        return userPrimaryId;
+    public Long getUsersPrimaryId() {
+        return usersPrimaryId;
     }
 
     public Long getPostPrimaryId() {

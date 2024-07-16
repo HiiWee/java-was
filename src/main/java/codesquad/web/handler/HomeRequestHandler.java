@@ -81,7 +81,7 @@ public class HomeRequestHandler extends AbstractRequestHandler {
 
         Snippet complemteCommentSnippet = SnippetBuilder.builder()
                 .snippet(SnippetFixture.COMMENT_WRAPPER)
-                .attributes(List.of(allCommentBySinglePost.getCompleteSnippet()))
+                .attributes(List.of(allCommentBySinglePost.getCompleteSnippet(), String.valueOf(post.id())))
                 .build();
 
         return Snippet.combineAll(List.of(postSnippet, complemteCommentSnippet));

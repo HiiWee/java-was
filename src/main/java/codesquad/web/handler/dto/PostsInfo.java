@@ -5,6 +5,7 @@ import codesquad.web.domain.vo.PostWithNickname;
 import java.util.List;
 
 public record PostsInfo(
+        Long id,
         String writerNickname,
         String title,
         String content,
@@ -15,6 +16,6 @@ public record PostsInfo(
                 .map(comment -> new CommentInfo(comment.nickname(), comment.content()))
                 .toList();
 
-        return new PostsInfo(post.nickname(), post.title(), post.content(), commentInfos);
+        return new PostsInfo(post.id(), post.nickname(), post.title(), post.content(), commentInfos);
     }
 }

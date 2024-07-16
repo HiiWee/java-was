@@ -5,6 +5,7 @@ import codesquad.was.database.JdbcTemplate;
 import codesquad.web.domain.CommentRepository;
 import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
+import codesquad.web.handler.CommentRequestHandler;
 import codesquad.web.handler.HomeRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
@@ -37,7 +38,8 @@ public class RequestHandlerMapping {
                 "/user/login", new LoginRequestHandler(userRepository),
                 "/user/logout", new LogoutRequestHandler(),
                 "/user/list", new UserRequestHandler(userRepository),
-                "/post", new PostRequestHandler(postRepository)
+                "/post", new PostRequestHandler(postRepository),
+                "/post/comment", new CommentRequestHandler(commentRepository)
         );
     }
 
