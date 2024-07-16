@@ -10,6 +10,7 @@ import codesquad.web.domain.CommentRepository;
 import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.User;
 import codesquad.web.domain.vo.PostWithNickname;
+import codesquad.web.handler.dto.CommentInfo;
 import codesquad.web.handler.dto.PostsInfo;
 import codesquad.web.snippet.ResourceSnippetBuilder;
 import codesquad.web.snippet.Snippet;
@@ -65,26 +66,33 @@ public class HomeRequestHandler extends AbstractRequestHandler {
     }
 
     private Snippet createSinglePostSnippet(final PostsInfo post) {
-        Snippet postSnippet = SnippetBuilder.builder()
+        Snippet postSnippet = createPostInfoSnippet(post);
+        Snippet commentsBySinglePost = createCommentInfoSnippet(post.commentInfos());
+
+        Snippet complemteCommentSnippet = SnippetBuilder.builder()
+                .snippet(SnippetFixture.COMMENT_WRAPPER)
+                .attributes(List.of(commentsBySinglePost.getCompleteSnippet(), String.valueOf(post.id())))
+                .build();
+
+        return Snippet.combineAll(List.of(postSnippet, complemteCommentSnippet));
+    }
+
+    private static Snippet createPostInfoSnippet(final PostsInfo post) {
+        return SnippetBuilder.builder()
                 .snippet(SnippetFixture.POST_INFO)
                 .attributes(List.of(post.writerNickname(), post.title(), post.content()))
                 .build();
+    }
 
-        List<Snippet> postPerCommentSnippets = post.commentInfos()
-                .stream()
+    private static Snippet createCommentInfoSnippet(final List<CommentInfo> commentInfos) {
+        List<Snippet> postPerCommentSnippets = commentInfos.stream()
                 .map(comment -> SnippetBuilder.builder()
                         .attributes(List.of(comment.commentWriterNickname(), comment.content()))
                         .snippet(SnippetFixture.COMMENT_INFO)
                         .build())
                 .toList();
-        Snippet allCommentBySinglePost = Snippet.combineAll(postPerCommentSnippets);
 
-        Snippet complemteCommentSnippet = SnippetBuilder.builder()
-                .snippet(SnippetFixture.COMMENT_WRAPPER)
-                .attributes(List.of(allCommentBySinglePost.getCompleteSnippet(), String.valueOf(post.id())))
-                .build();
-
-        return Snippet.combineAll(List.of(postSnippet, complemteCommentSnippet));
+        return Snippet.combineAll(postPerCommentSnippets);
     }
 
     private Snippet createLoginHeaderSnippet(final User user) {
