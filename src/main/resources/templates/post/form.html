@@ -7,6 +7,7 @@
     <link href="../global.css" rel="stylesheet"/>
     <link href="../main.css" rel="stylesheet"/>
     <link href="../post-form.css" rel="stylesheet"/>
+
 </head>
 <body>
 <div class="container">
@@ -18,10 +19,15 @@
     </header>
     <div class="wrapper">
         <div class="post">
-            <form class="post-form" method="post" action="/post">
+            <form class="post-form" method="post" action="/post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="post-title">제목</label>
                     <input type="text" id="post-title" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="post-file">파일 첨부</label>
+                    <input type="file" id="post-file" name="file" class="form-control" onchange="readURL(this);">
+                    <img id="preview"/>
                 </div>
                 <div class="form-group">
                     <label for="post-content">본문</label>
@@ -32,6 +38,21 @@
                     <a type="button" class="btn btn-secondary" href="/">취소</a>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('preview').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            document.getElementById('preview').src = "";
+        }
+    }
+</script>
+</body>
