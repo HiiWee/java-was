@@ -40,6 +40,7 @@ public abstract class AbstractRequestHandler implements RequestHandler {
             log.error(e.getMessage(), e);
             responseInternalServerError(response);
         } catch (CommonException e) {
+            System.out.println("억울해!!!!!!!!!!!!!");
             responseErrorPage(response, e);
         }
         ContextHolder.clear();

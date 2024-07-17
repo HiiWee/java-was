@@ -1,8 +1,6 @@
 package codesquad.was.http;
 
 import codesquad.was.http.type.HeaderType;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -25,28 +23,33 @@ public class Headers {
     public Headers() {
     }
 
-    public Headers(final BufferedReader requestReader) throws IOException {
-        Map<HeaderType, List<String>> requestHeaderFields = new LinkedHashMap<>();
+    public Headers(final List<String> headerValues) {
+        headers.putAll(headerValues.stream()
+                .map(this::parseKeyAndValue)
+                .filter(headers -> HeaderType.find(headers[HEADER_NAME_INDEX]) != HeaderType.NONE)
+                .collect(Collectors.groupingBy(
+                        headers -> HeaderType.find(headers[HEADER_NAME_INDEX].trim()),
+                        Collectors.flatMapping(
+                                headers -> Arrays.stream(headers[HEADER_VALUE_INDEX].split(";")).map(String::trim),
+                                Collectors.toList()
+                        )
+                )));
+        System.out.println(headers);
+    }
 
-        String headerLine;
+    private String[] parseKeyAndValue(final String header) {
+        String[] splits = header.split(":");
 
-        while (!(headerLine = requestReader.readLine()).isEmpty()) {
-            String[] headerSplits = headerLine.split(":");
-            HeaderType headerType = HeaderType.find(headerSplits[HEADER_NAME_INDEX].trim());
+        if (splits.length > 2) {
+            String[] newSplits = new String[2];
+            newSplits[HEADER_NAME_INDEX] = splits[HEADER_NAME_INDEX];
+            String valueFormat = "%s" + ":%s".repeat(splits.length - 2);
+            String[] args = Arrays.copyOfRange(splits, 1, splits.length);
+            newSplits[HEADER_VALUE_INDEX] = String.format(valueFormat, args);
 
-            if (headerType == HeaderType.NONE) {
-                log.warn("{} 헤더를 찾지 못했습니다.", headerSplits[HEADER_NAME_INDEX].trim());
-                continue;
-            }
-            List<String> headerValueSplits = Arrays.stream(headerSplits[HEADER_VALUE_INDEX].split(";"))
-                    .map(String::trim)
-                    .toList();
-
-            requestHeaderFields.computeIfAbsent(headerType, k -> new ArrayList<>())
-                    .addAll(headerValueSplits);
+            return newSplits;
         }
-
-        headers.putAll(requestHeaderFields);
+        return splits;
     }
 
 

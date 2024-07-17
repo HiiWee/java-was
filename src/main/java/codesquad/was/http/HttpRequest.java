@@ -5,10 +5,9 @@ import static codesquad.was.http.type.CharsetType.UTF_8;
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.was.http.type.MimeType;
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Collections;
@@ -27,9 +26,9 @@ public class HttpRequest {
     private static HttpSession httpSession;
 
     private final RequestLine requestLine;
-    private final Headers headers;
+    private  Headers headers;
     private final RequestParameters parameters = new RequestParameters();
-    private final RequestMessageBody requestBody;
+    private  RequestMessageBody requestBody;
 
     public HttpRequest(final RequestLine requestLine, final Headers headers, final RequestMessageBody requestBody) {
         this.requestLine = requestLine;
@@ -38,20 +37,27 @@ public class HttpRequest {
     }
 
     public HttpRequest(final InputStream clientInput) throws IOException {
-        BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientInput));
-        requestLine = createRequestLine(requestReader.readLine());
-        headers = new Headers(requestReader);
-        String contentLengthValue = parseContentLength();
-        requestBody = new RequestMessageBody(requestReader, contentLengthValue);
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(clientInput);
+        RequestInputStreamReader reader = new RequestInputStreamReader(bufferedInputStream);
+        String requestLineValue = reader.readRequestLine();
 
-        if (isFormData()) {
-            String bodyData = requestBody.getBodyData();
-            parameters.putParameters(bodyData);
-        }
+        requestLine = createRequestLine(requestLineValue);
+        List<String> headerValues = reader.readHeaders();
+        headers = new Headers(headerValues);
+
+        System.out.println(headers.getHeader(HeaderType.CONTENT_TYPE));
+//        // 여기서 멀티파티인지 판단하고, 파싱을 다르게 가져가기
+        String contentLengthValue = parseContentLength();
+//        requestBody = new RequestMessageBody(requestReader, contentLengthValue);
+//
+//        if (isFormData()) {
+//            String bodyData = requestBody.getBodyData();
+//            parameters.putParameters(bodyData);
+//        }
     }
 
-    private RequestLine createRequestLine(final String requestLine) throws UnsupportedEncodingException {
-        String[] splitLines = requestLine.split(ONE_SPACE);
+    private RequestLine createRequestLine(final String requestLineValue) throws UnsupportedEncodingException {
+        String[] splitLines = requestLineValue.split(ONE_SPACE);
         HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
         String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
         String requestPath = pathWithQueryString[PATH_INDEX];

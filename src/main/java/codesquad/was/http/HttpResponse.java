@@ -86,6 +86,7 @@ public class HttpResponse {
         if (responseBytes.length > 0) {
             bufferedOutputStream.write(responseBytes);
         }
+        System.out.println("================================================================================================================");
         bufferedOutputStream.flush();
         bufferedOutputStream.close();
     }
