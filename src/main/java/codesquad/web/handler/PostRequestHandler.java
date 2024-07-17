@@ -2,25 +2,28 @@ package codesquad.web.handler;
 
 import codesquad.was.AbstractRequestHandler;
 import codesquad.was.ContextHolder;
+import codesquad.was.exception.BadRequestException;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
 import codesquad.was.http.HttpSession;
 import codesquad.was.http.type.MimeType;
+import codesquad.web.domain.Post;
+import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.User;
-import codesquad.web.domain.UserRepository;
 import codesquad.web.snippet.ResourceSnippetBuilder;
 import codesquad.web.snippet.Snippet;
 import codesquad.web.snippet.SnippetBuilder;
 import codesquad.web.snippet.SnippetFixture;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
-public class UserRequestHandler extends AbstractRequestHandler {
+public class PostRequestHandler extends AbstractRequestHandler {
 
-    private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
-    public UserRequestHandler(final UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public PostRequestHandler(final PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
     @Override
@@ -32,14 +35,11 @@ public class UserRequestHandler extends AbstractRequestHandler {
             response.sendRedirect("/user/login");
             return;
         }
-
-        List<User> signedUpUsers = userRepository.findAll();
         Snippet loginHeaderSnippet = createLoginHeaderSnippet((User) session.getAttribute(sessionId));
-        Snippet userListSnippet = createUserListSnippet(signedUpUsers);
 
         String completeSnippet = ResourceSnippetBuilder.builder()
-                .templatePath("/user/list.html")
-                .snippets(List.of(loginHeaderSnippet, userListSnippet))
+                .templatePath("/post/form.html")
+                .snippets(List.of(loginHeaderSnippet))
                 .build()
                 .getCompleteSnippet();
 
@@ -53,14 +53,31 @@ public class UserRequestHandler extends AbstractRequestHandler {
                 .build();
     }
 
-    private Snippet createUserListSnippet(final List<User> users) {
-        List<Snippet> snippets = users.stream()
-                .map(user -> SnippetBuilder.builder()
-                        .snippet(SnippetFixture.USER_INFO)
-                        .attributes(List.of(user.getNickname(), user.getUserId(), user.getEmail()))
-                        .build())
-                .toList();
+    @Override
+    public void handlePost(final HttpRequest request, final HttpResponse response) throws IOException {
+        String sessionId = ContextHolder.getContext();
+        HttpSession session = request.getSession(false);
 
-        return Snippet.combineAll(snippets);
+        if (sessionId == null || session == null) {
+            response.sendRedirect("/user/login");
+            return;
+        }
+        User loginedUser = (User) session.getAttribute(sessionId);
+
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+
+        validatePost(title, content);
+
+        Post post = new Post(title, content, loginedUser.getId());
+        postRepository.save(post);
+
+        response.sendRedirect("/");
+    }
+
+    private void validatePost(final String title, final String content) {
+        if (Objects.isNull(title) || Objects.isNull(content)) {
+            throw new BadRequestException("제목과 본문은 반드시 입력해야 합니다.");
+        }
     }
 }

@@ -1,12 +1,10 @@
 package codesquad.web.handler;
 
-import static codesquad.web.handler.HandlerFixture.로그인을_한다;
-import static codesquad.web.handler.HandlerFixture.회원가입을_한다;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import codesquad.was.ContextHolder;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
+import codesquad.web.handler.fixture.RequestHandlerTest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +13,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class HomeRequestHandlerTest {
+class HomeRequestHandlerTest extends RequestHandlerTest {
+
+    private String sessionId;
+
+    @AfterEach
+    void tearDown() throws IOException {
+        로그아웃을_한다(sessionId);
+    }
 
     @Nested
     class 홈_화면을_요청할때 {
@@ -26,7 +31,7 @@ class HomeRequestHandlerTest {
             @Test
             void 응답_코드로_200을_반환한다() throws IOException {
                 // given
-                HomeRequestHandler homeRequestHandler = new HomeRequestHandler();
+                HomeRequestHandler homeRequestHandler = new HomeRequestHandler(postRepository, commentRepository);
                 String httpRequestValue =
                         "GET / HTTP/1.1\r\n"
                                 + "Host: localhost\r\n"
@@ -48,17 +53,12 @@ class HomeRequestHandlerTest {
         @Nested
         class 만약_로그인이_되어있다면 {
 
-            @AfterEach
-            void tearDown() {
-                ContextHolder.clear();
-            }
-
             @Test
             void 응답_코드로_200을_반환한다() throws IOException {
                 // given
                 회원가입을_한다();
-                String sessionId = 로그인을_한다();
-                HomeRequestHandler homeRequestHandler = new HomeRequestHandler();
+                sessionId = 로그인을_한다();
+                HomeRequestHandler homeRequestHandler = new HomeRequestHandler(postRepository, commentRepository);
                 String httpRequestValue =
                         "GET / HTTP/1.1\r\n"
                                 + "Host: localhost\r\n"

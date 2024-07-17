@@ -4,8 +4,8 @@ import codesquad.was.AbstractRequestHandler;
 import codesquad.was.exception.BadRequestException;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
-import codesquad.web.io.InMemoryUserDataBase;
-import codesquad.web.model.User;
+import codesquad.web.domain.User;
+import codesquad.web.domain.UserRepository;
 import java.io.IOException;
 import java.util.Objects;
 import org.slf4j.Logger;
@@ -15,6 +15,12 @@ public class SignUpRequestHandler extends AbstractRequestHandler {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    private final UserRepository userRepository;
+
+    public SignUpRequestHandler(final UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public void handlePost(final HttpRequest request, final HttpResponse response) throws IOException {
         String userId = request.getParameter("userId");
@@ -23,12 +29,11 @@ public class SignUpRequestHandler extends AbstractRequestHandler {
         String email = request.getParameter("email");
 
         validateSignUpInfo(userId, nickname, password, email);
-        long id = InMemoryUserDataBase.generateId();
 
-        User user = new User(id, userId, nickname, password, email);
+        User user = new User(userId, nickname, password, email);
         log.info("회원가입 유저 = {}", user);
 
-        InMemoryUserDataBase.saveUser(user);
+        userRepository.save(user);
         response.sendRedirect("/");
     }
 

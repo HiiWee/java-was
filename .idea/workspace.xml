@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/exception/NotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HandlerFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HandlerFixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/HomeRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +35,6 @@
                 <item name="java-was" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="java-was" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="java-was" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -66,6 +49,7 @@
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -101,24 +85,34 @@
     "Gradle.MimeTypeTest.executor": "Run",
     "Gradle.MimeTypeTest.알_수_없는_mimeType이라면_octet_stream이_반환된다.executor": "Run",
     "Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor": "Run",
+    "Gradle.PostRequestHandlerTest.executor": "Run",
     "Gradle.RawTest.test.executor": "Run",
     "Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor": "Run",
+    "Gradle.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다.executor": "Run",
     "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1).executor": "Run",
     "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor": "Run",
     "Gradle.SignUpRequestHandlerTest.executor": "Run",
     "Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor": "Run",
     "Gradle.Tests in 'codesquad'.executor": "Run",
     "Gradle.Tests in 'codesquad.http'.executor": "Run",
-    "Gradle.Tests in 'java-was.test'.executor": "Coverage",
+    "Gradle.Tests in 'codesquad.web'.executor": "Run",
+    "Gradle.Tests in 'codesquad.web.handler'.executor": "Run",
+    "Gradle.Tests in 'java-was.test'.executor": "Run",
     "Gradle.java-was [:Main.main()].executor": "Run",
     "Gradle.java-was [run].executor": "Run",
+    "Gradle.만약_로그인이_되어있다면.executor": "Run",
+    "Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다.executor": "Debug",
+    "Gradle.만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
+    "Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다 (1).executor": "Run",
+    "Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다.executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
-    "JUnit.All in java-was.test (1).executor": "Coverage",
-    "JUnit.All in java-was.test (2).executor": "Debug",
+    "JUnit.All in java-was.test (1).executor": "Run",
+    "JUnit.All in java-was.test (2).executor": "Run",
     "JUnit.All in java-was.test (3).executor": "Coverage",
     "JUnit.All in java-was.test (4).executor": "Coverage",
-    "JUnit.All in java-was.test.executor": "Coverage",
+    "JUnit.All in java-was.test.executor": "Run",
     "JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
+    "JUnit.HomeRequestHandlerTest.executor": "Debug",
     "JUnit.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다.executor": "Run",
     "JUnit.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다.executor": "Run",
     "JUnit.LoginRequestHandlerTest$로그인_정보가_모두_존재하지_않으면.예외가_발생한다.executor": "Run",
@@ -133,12 +127,15 @@
     "JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor": "Run",
     "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor": "Run",
     "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다.executor": "Debug",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때.executor": "Run",
     "JUnit.codesquad in java-was.test.executor": "Coverage",
+    "JUnit.codesquad.web in java-was.test.executor": "Run",
+    "JUnit.codesquad.web.handler in java-was.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "was2-3",
+    "git-widget-placeholder": "was3-1",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/woowatech20/develop/wootacam/java-was/src/main/resources/static",
     "node.js.detected.package.eslint": "true",
@@ -146,7 +143,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
@@ -171,85 +168,136 @@
       <recent name="$PROJECT_DIR$/find_request_handler.png" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="codesquad.web.snippet" />
       <recent name="codesquad.web.handler" />
+      <recent name="codesquad.web.snippet" />
       <recent name="codesquad.web" />
       <recent name="codesquad.was.http" />
       <recent name="codesquad.http.type" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in java-was.test">
-    <configuration name="All in java-was.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in java-was.test (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in java-was.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
+  <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
+      <module name="java-was.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="codesquad.web.handler.*" />
+          <option name="PATTERN" value="codesquad.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.handler.HomeRequestHandlerTest.홈_화면을_요청할때" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면" />
-      <option name="METHOD_NAME" value="응답_코드로_200을_반환한다" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java-was.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.web.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="codesquad.web.handler.UserRequestHandlerTest.사용자_목록을_요청할때" />
-      <option name="MAIN_CLASS_NAME" value="codesquad.web.handler.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면" />
-      <option name="METHOD_NAME" value="응답_코드로_200을_반환한다" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.web.snippet.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'java-was.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="만약_로그인이_되어있다면.응답_코드로_200을_반환한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.web.handler.PostRequestHandlerTest$글쓰기_페이지에_GET요청을_할_때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.web.handler.PostRequestHandlerTest$글쓰기를_완료하고_POST_요청을_보낼때$만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in java-was.test" />
-        <item itemvalue="JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다" />
-        <item itemvalue="JUnit.All in java-was.test (3)" />
-        <item itemvalue="JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다" />
-        <item itemvalue="JUnit.All in java-was.test (1)" />
+        <item itemvalue="Gradle.Tests in 'java-was.test'" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.만약_로그인이_되어있다면.응답_코드로_200을_반환한다" />
+        <item itemvalue="Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다" />
+        <item itemvalue="Gradle.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -272,6 +320,7 @@
       <workItem from="1720486629289" duration="13024000" />
       <workItem from="1720623341419" duration="9949000" />
       <workItem from="1720746427540" duration="989000" />
+      <workItem from="1721047714447" duration="4983000" />
     </task>
     <servers />
   </component>
@@ -314,74 +363,64 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/snippet/ResourceSnippet.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpResponse.java</url>
           <line>76</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/LoginRequestHandler.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LoginRequestHandlerTest.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/HandlerFixture.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/PostRequestHandlerTest.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/LogoutRequestHandler.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/PostRequestHandlerTest.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/LogoutRequestHandlerTest.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="28" />
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/fixture/RequestHandlerTest.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/PostRequestHandler.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="codesquad.web.exception.MethodNotAllowedException" package="codesquad.web.exception" />
           <option name="timeStamp" value="9" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/ContextHolder.java</url>
-          <line>9</line>
-          <properties class="codesquad.was.ContextHolder" method="setContext">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/ContextHolder.java</url>
-          <line>13</line>
-          <properties class="codesquad.was.ContextHolder" method="getContext">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="codesquad.web.infrastructure.JdbcPostRepository" memberName="jdbcTemplate" />
+        <PinnedItemInfo parentTag="codesquad.was.database.JdbcTemplate" memberName="dataSourceManager" />
+        <PinnedItemInfo parentTag="org.h2.jdbcx.JdbcConnectionPool" memberName="recycledConnections" />
+        <PinnedItemInfo parentTag="codesquad.web.handler.HomeRequestHandlerTest" memberName="sessionId" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/java_was$codesquad_in_java_was_test.ic" NAME="codesquad in java-was.test Coverage Results" MODIFIED="1720682580651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>codesquad.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__4_.ic" NAME="All in java-was.test (4) Coverage Results" MODIFIED="1720758549156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__1_.ic" NAME="All in java-was.test (1) Coverage Results" MODIFIED="1720760678418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__1_.ic" NAME="All in java-was.test (1) Coverage Results" MODIFIED="1721099385542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__2_.ic" NAME="All in java-was.test (2) Coverage Results" MODIFIED="1720714876419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1720682515877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__3_.ic" NAME="All in java-was.test (3) Coverage Results" MODIFIED="1720761069651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$Tests_in__java_was_test_.ic" NAME="Tests in 'java-was.test' Coverage Results" MODIFIED="1721127235895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test__3_.ic" NAME="All in java-was.test (3) Coverage Results" MODIFIED="1721100069640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/java_was$All_in_java_was_test.ic" NAME="All in java-was.test Coverage Results" MODIFIED="1720761165739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

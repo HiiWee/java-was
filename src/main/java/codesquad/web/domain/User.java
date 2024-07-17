@@ -1,14 +1,21 @@
-package codesquad.web.model;
+package codesquad.web.domain;
 
 public class User {
 
-    private final long id;
+    private Long id;
     private final String userId;
     private final String nickname;
     private final String password;
     private final String email;
 
-    public User(final long id, final String userId, final String nickname, final String password, final String email) {
+    public User(final String userId, final String nickname, final String password, final String email) {
+        this.userId = userId;
+        this.nickname = nickname;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(final Long id, final String userId, final String nickname, final String password, final String email) {
         this.id = id;
         this.userId = userId;
         this.nickname = nickname;
@@ -16,7 +23,7 @@ public class User {
         this.email = email;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -43,8 +50,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", userId='" + userId + '\'' +
+                "userId='" + userId + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
