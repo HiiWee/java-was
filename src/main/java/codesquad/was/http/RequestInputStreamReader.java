@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 public class RequestInputStreamReader {
 
     private static final byte CR = 13;
-    private static final byte LF = 10;
     private static final int START_POSITION = 0;
 
     private final Logger log = LoggerFactory.getLogger(RequestInputStreamReader.class);
@@ -26,12 +25,12 @@ public class RequestInputStreamReader {
     public RequestInputStreamReader(final BufferedInputStream bufferedInputStream) throws IOException {
         this.requestInputStream = new BufferedInputStream(bufferedInputStream);
 
-        requestLineBytes = readBytesUntilSymbol(LF);
+        requestLineBytes = readBytesUntilSymbol(CR);
 
         byte[] currentHeaderBytes;
         do {
             skipByte(2);
-            currentHeaderBytes = readBytesUntilSymbol(LF);
+            currentHeaderBytes = readBytesUntilSymbol(CR);
             headerBytes.add(currentHeaderBytes);
         } while (currentHeaderBytes.length > 1);
 
@@ -44,7 +43,7 @@ public class RequestInputStreamReader {
         int count = countLine(requestInputStream, symbol);
         requestInputStream.reset();
 
-        readBytes = new byte[count - 1];
+        readBytes = new byte[count];
         requestInputStream.read(readBytes);
 
         return readBytes;
