@@ -12,6 +12,7 @@ import codesquad.was.http.HttpResponse;
 import codesquad.was.http.RequestLine;
 import codesquad.was.http.RequestMessageBody;
 import codesquad.was.http.type.HttpMethod;
+import codesquad.was.http.type.MimeType;
 import codesquad.web.domain.User;
 import codesquad.web.handler.fixture.RequestHandlerTest;
 import java.io.ByteArrayInputStream;
@@ -32,7 +33,7 @@ class SignUpRequestHandlerTest extends RequestHandlerTest {
         // expect
         assertThatThrownBy(() -> signUpRequestHandler.handleGet(
                 new HttpRequest(new RequestLine(HttpMethod.GET, "/path", "HTTP/1.1"), new Headers(),
-                        new RequestMessageBody("data")),
+                        new RequestMessageBody(new byte[0], MimeType.APPLICATION_OCTET_STREAM)),
                 new HttpResponse(new DataOutputStream(OutputStream.nullOutputStream()), "HTTP/1.1")))
                 .isInstanceOf(MethodNotAllowedException.class)
                 .hasMessage("Method Not Allowed");

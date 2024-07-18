@@ -1,13 +1,13 @@
 package codesquad.was.http;
 
 import codesquad.was.http.type.HeaderType;
-import java.io.BufferedReader;
-import java.io.IOException;
+import codesquad.was.http.type.MimeType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,30 +25,32 @@ public class Headers {
     public Headers() {
     }
 
-    public Headers(final BufferedReader requestReader) throws IOException {
-        Map<HeaderType, List<String>> requestHeaderFields = new LinkedHashMap<>();
-
-        String headerLine;
-
-        while (!(headerLine = requestReader.readLine()).isEmpty()) {
-            String[] headerSplits = headerLine.split(":");
-            HeaderType headerType = HeaderType.find(headerSplits[HEADER_NAME_INDEX].trim());
-
-            if (headerType == HeaderType.NONE) {
-                log.warn("{} 헤더를 찾지 못했습니다.", headerSplits[HEADER_NAME_INDEX].trim());
-                continue;
-            }
-            List<String> headerValueSplits = Arrays.stream(headerSplits[HEADER_VALUE_INDEX].split(";"))
-                    .map(String::trim)
-                    .toList();
-
-            requestHeaderFields.computeIfAbsent(headerType, k -> new ArrayList<>())
-                    .addAll(headerValueSplits);
-        }
-
-        headers.putAll(requestHeaderFields);
+    public Headers(final List<String> headerValues) {
+        headers.putAll(headerValues.stream()
+                .map(this::parseKeyAndValue)
+                .filter(headers -> HeaderType.find(headers[HEADER_NAME_INDEX].trim()) != HeaderType.NONE)
+                .collect(Collectors.groupingBy(
+                        headers -> HeaderType.find(headers[HEADER_NAME_INDEX].trim()),
+                        Collectors.flatMapping(
+                                headers -> Arrays.stream(headers[HEADER_VALUE_INDEX].split(";")).map(String::trim),
+                                Collectors.toList()
+                        )
+                )));
     }
 
+    private String[] parseKeyAndValue(final String header) {
+        String[] splits = header.split(":");
+
+        if (splits.length > 2) {
+            String[] newSplits = new String[2];
+            newSplits[HEADER_NAME_INDEX] = splits[HEADER_NAME_INDEX];
+            String valueFormat = "%s" + ":%s".repeat(splits.length - 2);
+            newSplits[HEADER_VALUE_INDEX] = String.format(valueFormat, Arrays.copyOfRange(splits, 1, splits.length));
+
+            return newSplits;
+        }
+        return splits;
+    }
 
     public void add(final HeaderType headerType, final String value) {
         headers.computeIfAbsent(headerType, k -> new ArrayList<>())
@@ -89,6 +91,14 @@ public class Headers {
 
     public List<String> getHeader(final HeaderType headerType) {
         return headers.get(headerType);
+    }
+
+    public MimeType getMimeType() {
+        List<String> headerValues = headers.get(HeaderType.CONTENT_TYPE);
+        if (Objects.isNull(headerValues) || headerValues.isEmpty()) {
+            return MimeType.APPLICATION_OCTET_STREAM;
+        }
+        return MimeType.findMimeType(headerValues.get(0));
     }
 
     @Override

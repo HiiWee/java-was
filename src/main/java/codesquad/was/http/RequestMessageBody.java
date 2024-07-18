@@ -2,44 +2,35 @@ package codesquad.was.http;
 
 import static codesquad.was.http.type.CharsetType.UTF_8;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.URLDecoder;
-import java.util.Objects;
+import codesquad.was.http.type.MimeType;
+import java.io.UnsupportedEncodingException;
 
 public class RequestMessageBody {
 
-    private static final String EMPTY_DATA = "";
-    private static final int END_STREAM = -1;
-    private static final int NO_DATA = 0;
+    private final byte[] bodyData;
+    private final MimeType mimeType;
+    private final RequestParameters formParameters = new RequestParameters();
 
-    private final String bodyData;
-
-    public RequestMessageBody(final String bodyData) {
+    public RequestMessageBody(final byte[] bodyData, final MimeType mimeType) throws UnsupportedEncodingException {
         this.bodyData = bodyData;
-    }
+        this.mimeType = mimeType;
 
-    public RequestMessageBody(final BufferedReader requestReader, final String contentLengthValue) throws IOException {
-        if (Objects.isNull(contentLengthValue) || "0".equals(contentLengthValue.trim())) {
-            bodyData = EMPTY_DATA;
-            return;
+        if (mimeType == MimeType.APPLICATION_X_WWW_FORM_ENCODED) {
+            formParameters.putParameters(new String(bodyData, UTF_8.getCharset()));
         }
-        bodyData = parseRequestMessageBody(requestReader, contentLengthValue);
+        // 멀티파트 파싱 구현
     }
 
-    private String parseRequestMessageBody(final BufferedReader requestReader,
-                                           final String contentLengthValue) throws IOException {
-        int contentLength = Integer.parseInt(contentLengthValue.trim());
-        char[] buffer = new char[contentLength];
-        int result = requestReader.read(buffer);
-        if (result == NO_DATA || result == END_STREAM) {
-            return EMPTY_DATA;
-        }
-        return URLDecoder.decode(String.valueOf(buffer).trim(), UTF_8.getCharset());
+    public boolean containsParameter(final String key) {
+        return formParameters.contains(key);
     }
 
-    public String getBodyData() {
+    public byte[] getBodyData() {
         return bodyData;
+    }
+
+    public String getParameter(final String key) {
+        return formParameters.get(key);
     }
 
     @Override

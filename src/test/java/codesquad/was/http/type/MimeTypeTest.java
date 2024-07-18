@@ -12,7 +12,7 @@ class MimeTypeTest {
         String extension = "html";
 
         // when
-        String mimeValue = MimeType.findMimeValue(extension);
+        String mimeValue = MimeType.findValue(extension);
 
         // then
         assertThat(mimeValue).isEqualTo("text/html");
@@ -21,6 +21,6 @@ class MimeTypeTest {
     @Test
     void 알_수_없는_mimeType이라면_octet_stream이_반환된다() {
         // expect
-        assertThat(MimeType.findMimeValue("undefined-type")).isEqualTo("application/octet-stream");
+        assertThat(MimeType.findValue("undefined-type")).isEqualTo("application/octet-stream");
     }
 }
