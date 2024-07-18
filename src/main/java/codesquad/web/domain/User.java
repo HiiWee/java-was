@@ -1,5 +1,7 @@
 package codesquad.web.domain;
 
+import java.util.Objects;
+
 public class User {
 
     private Long id;
@@ -49,6 +51,9 @@ public class User {
     }
 
     public String getImageName() {
+        if (Objects.isNull(imageName)) {
+            return "";
+        }
         return imageName;
     }
 

@@ -18,15 +18,7 @@ public record PostsInfo(
                 .map(comment -> new CommentInfo(comment.nickname(), comment.imageName(), comment.content()))
                 .toList();
 
-        String userImageName = post.userImageName();
-        String postImageName = post.postImageName();
-        if (post.userImageName() == null) {
-            userImageName = "NONE";
-        }
-        if (post.postImageName() == null) {
-            postImageName = "NONE";
-        }
-        return new PostsInfo(post.id(), userImageName, post.nickname(), post.title(), post.content(), postImageName,
-                commentInfos);
+        return new PostsInfo(post.id(), post.userImageName(), post.nickname(), post.title(), post.content(),
+                post.postImageName(), commentInfos);
     }
 }

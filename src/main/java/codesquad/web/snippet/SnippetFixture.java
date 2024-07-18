@@ -31,7 +31,7 @@ public class SnippetFixture {
     public static final String USER_INFO = """
             <div class="user-card">
                 <div class="user-header"></div>
-                <div class="user-avatar"></div>
+                <img src="/image?imageName=%s" class="user-avatar">
                 <div class="user-info">
                     <div class="user-name">%s</div>
                     <div class="user-id">%s</div>

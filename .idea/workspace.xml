@@ -6,20 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/CommentWithNickname.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/CommentWithNickname.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/PostWithNickname.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/PostWithNickname.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/ImageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/ImageRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/CommentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/CommentInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/PostsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/PostsInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcCommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcCommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/registration/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/registration/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +124,7 @@
     "Gradle.만약_로그인이_되어있다면.executor": "Run",
     "Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다.executor": "Debug",
     "Gradle.만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
+    "Gradle.만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor": "Run",
     "Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다 (1).executor": "Run",
     "Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다.executor": "Run",
     "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
@@ -266,30 +259,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="RequestMessageBodyTest.RequestMessageBody에서_form_parameter를_읽을_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;codesquad.was.http.RequestMessageBodyTest.RequestMessageBody에서_form_parameter를_읽을_수_있다&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="Tests in 'java-was.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -312,13 +281,37 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="만약_로그인이_되어있으면.응답_코드로_200을_반환한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.web.handler.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.만약_로그인이_되어있으면.응답_코드로_200을_반환한다" />
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_null을_반환한다" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다" />
-        <item itemvalue="Gradle.RequestMessageBodyTest.RequestMessageBody에서_form_parameter를_읽을_수_있다" />
       </list>
     </recent_temporary>
   </component>
@@ -401,6 +394,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/PostRequestHandler.java</url>
           <line>73</line>
           <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/codesquad/web/handler/UserRequestHandlerTest.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/UserRequestHandler.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="118" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

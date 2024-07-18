@@ -1,5 +1,7 @@
 package codesquad.web.domain;
 
+import java.util.Objects;
+
 public class Post {
 
     private Long id;
@@ -37,6 +39,9 @@ public class Post {
     }
 
     public String getImageName() {
+        if (Objects.isNull(imageName)) {
+            return "";
+        }
         return imageName;
     }
 

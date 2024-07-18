@@ -57,7 +57,7 @@ public class UserRequestHandler extends AbstractRequestHandler {
         List<Snippet> snippets = users.stream()
                 .map(user -> SnippetBuilder.builder()
                         .snippet(SnippetFixture.USER_INFO)
-                        .attributes(List.of(user.getNickname(), user.getUserId(), user.getEmail()))
+                        .attributes(List.of(user.getImageName(), user.getNickname(), user.getUserId(), user.getEmail()))
                         .build())
                 .toList();
 
