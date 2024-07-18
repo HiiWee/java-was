@@ -9,6 +9,7 @@ public record PostsInfo(
         String writerNickname,
         String title,
         String content,
+        String imageName,
         List<CommentInfo> commentInfos
 ) {
     public static PostsInfo from(final PostWithNickname post, final List<CommentWithNickname> commentWithNicknames) {
@@ -16,6 +17,6 @@ public record PostsInfo(
                 .map(comment -> new CommentInfo(comment.nickname(), comment.content()))
                 .toList();
 
-        return new PostsInfo(post.id(), post.nickname(), post.title(), post.content(), commentInfos);
+        return new PostsInfo(post.id(), post.nickname(), post.title(), post.content(), post.imageName(), commentInfos);
     }
 }

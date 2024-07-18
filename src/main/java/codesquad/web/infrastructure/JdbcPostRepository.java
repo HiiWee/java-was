@@ -18,6 +18,7 @@ public class JdbcPostRepository implements PostRepository {
                         + "    id BIGINT AUTO_INCREMENT PRIMARY KEY,\n"
                         + "    title VARCHAR(255),\n"
                         + "    content TEXT,\n"
+                        + "    image_name VARCHAR(255),\n"
                         + "    user_primary_id BIGINT,\n"
                         + "    FOREIGN KEY (user_primary_id) REFERENCES users(id)\n"
                         + ");"
@@ -26,27 +27,29 @@ public class JdbcPostRepository implements PostRepository {
 
     @Override
     public void save(final Post post) {
-        String sql = "INSERT INTO post (title, content, user_primary_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO post (title, content, image_name, user_primary_id) VALUES (?, ?, ?, ?)";
         jdbcTemplate.insert(
                 sql,
                 ps -> {
                     ps.setString(1, post.getTitle());
                     ps.setString(2, post.getContent());
-                    ps.setLong(3, post.getUserPrimaryId());
+                    ps.setString(3, post.getImageName());
+                    ps.setLong(4, post.getUserPrimaryId());
                 }
         );
     }
 
     @Override
     public Optional<Post> findById(final long id) {
-        String sql = "SELECT id, title, content, user_primary_id FROM post WHERE id = ?";
+        String sql = "SELECT id, title, content, image_name, user_primary_id FROM post WHERE id = ?";
         Post post = jdbcTemplate.selectOne(
                 sql,
                 ps -> ps.setLong(1, id),
                 rs -> new Post(
-                        rs.getLong(1),
+                        rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("content"),
+                        rs.getString("image_name"),
                         rs.getLong("user_primary_id")
                 )
         );
@@ -56,13 +59,14 @@ public class JdbcPostRepository implements PostRepository {
 
     @Override
     public List<PostWithNickname> findAllWithJoinUser() {
-        String sql = "SELECT p.id, p.title, p.content, p.user_primary_id, u.user_id FROM post p join users u on p.user_primary_id = u.id ORDER BY p.id DESC";
+        String sql = "SELECT p.id, p.title, p.content, p.image_name, p.user_primary_id, u.user_id FROM post p join users u on p.user_primary_id = u.id ORDER BY p.id DESC";
         return jdbcTemplate.selectAll(
                 sql,
                 rs -> new PostWithNickname(
                         rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("content"),
+                        rs.getString("image_name"),
                         rs.getLong("user_primary_id"),
                         rs.getString("user_id")
                 )

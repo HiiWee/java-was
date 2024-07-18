@@ -46,7 +46,7 @@ public class SnippetFixture {
                     <p class="post__account__nickname">%s</p>
                     <h1>%s</h1>
                 </div>
-                <img class="post__img"/>
+                <img src="/image?imageName=%s" class="post__img"/>
                 <div class="post__menu">
                     <ul class="post__menu__personal">
                         <li>

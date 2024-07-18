@@ -13,7 +13,9 @@ public enum MimeType {
     PNG(Set.of("png"), "image/png"),
     JPG(Set.of("jpg", "jpeg"), "image/jpeg"),
     SVG(Set.of("svg"), "image/svg+xml"),
+    GIF(Set.of("gif"), "image/gif"),
     APPLICATION_X_WWW_FORM_ENCODED(Collections.emptySet(), "application/x-www-form-urlencoded"),
+    MULTIPART_FORM_DATA(Collections.emptySet(), "multipart/form-data"),
     APPLICATION_OCTET_STREAM(Collections.emptySet(), "application/octet-stream");
 
     private final Set<String> extensions;

@@ -4,11 +4,8 @@ import static codesquad.was.http.type.CharsetType.UTF_8;
 
 import codesquad.was.http.type.MimeType;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.function.Supplier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class RequestMessageBody {
 
