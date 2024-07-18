@@ -25,6 +25,10 @@ public class ImageRequestHandler extends AbstractRequestHandler {
             log.debug("이미지를 찾을 수 없습니다.");
             return;
         }
+        if (imageName.equals("NONE")) {
+            response.dynamicForward(new byte[0], MimeType.APPLICATION_OCTET_STREAM);
+            return;
+        }
         File imageFile = new File(UPLOAD_PATH + "/", imageName);
         FileInputStream fileInputStream = new FileInputStream(imageFile);
         byte[] bytes = fileInputStream.readAllBytes();

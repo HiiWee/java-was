@@ -34,7 +34,6 @@ public class MultipartParser {
     private MultipartFile multipartFile;
 
     public MultipartParser(final byte[] bodyData, final List<String> mimeTypeValues) throws IOException {
-        // boundary 만들기
         String boundarySymbol = getBoundarySymbol(mimeTypeValues);
         splitBoundary = DASH + boundarySymbol;
         endBoundary = DASH + boundarySymbol + DASH;
@@ -45,24 +44,20 @@ public class MultipartParser {
             Map<String, String> contentDispositionValues = getContentDispositions(
                     new String(readUntilSymbol(CR, inputStream), UTF_8.getCharset()));
 
-            // 그냥 form데이터
             if (contentDispositionValues.size() == ONLY_FORM_DATA_SIZE) {
                 inputStream.skip(2);
                 String formKey = contentDispositionValues.get("name");
                 String formValue = new String(readUntilSymbol(CR, inputStream));
                 formParameters.put(formKey, formValue);
             }
-            // byte 데이터가 입력되면 filename,
             if (contentDispositionValues.size() == MIME_DATA_SIZE) {
                 MimeType mimeType = getMimeType(new String(readUntilSymbol(CR, inputStream), UTF_8.getCharset()));
 
-                // application/octet-stream이거나 filename이 비어있다면 스킵
                 if (mimeType == MimeType.APPLICATION_OCTET_STREAM || contentDispositionValues.get("filename")
                         .isEmpty()) {
                     inputStream.skip(4);
                     continue;
                 }
-                // filename에서 확장자를 가져와서 mime type을 찾는다.
                 String filename = contentDispositionValues.get("filename");
                 inputStream.skip(2);
 

@@ -5,25 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/RequestHandlerMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/HttpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestMessageBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestMessageBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/MimeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/MimeType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/CommentWithNickname.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/CommentWithNickname.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/PostWithNickname.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/domain/vo/PostWithNickname.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/HomeRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/PostRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/PostRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/ImageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/ImageRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/CommentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/CommentInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/PostsInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/handler/dto/PostsInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcCommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcCommentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcPostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/infrastructure/JdbcUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/web/snippet/SnippetFixture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/registration/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/registration/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/was/http/RequestMessageBodyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/was/http/RequestMessageBodyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/codesquad/web/handler/SignUpRequestHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +78,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.sdkman/candidates/java/17.0.11-tem/lib/src.zip!/java.base/java/io/BufferedInputStream.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.sdkman/candidates/java/17.0.11-tem/lib/src.zip!/java.base/java/io/InputStream.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.sdkman/candidates/java/17.0.11-tem/lib/src.zip!/java.base/java/lang/ArrayIndexOutOfBoundsException.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.sdkman/candidates/java/17.0.11-tem/lib/src.zip!/java.base/java/util/Arrays.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="JvmLoggingSettingsStorage">
     <option name="loggerId" value="Slf4j" />
@@ -206,7 +204,7 @@
       <recent name="codesquad.http.type" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'java-was.test'">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
       <module name="java-was.main" />
@@ -391,23 +389,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/SignUpRequestHandler.java</url>
-          <line>32</line>
+          <line>40</line>
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="95" />
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/ImageRequestHandler.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="100" />
+          <url>file://$PROJECT_DIR$/src/main/java/codesquad/web/handler/PostRequestHandler.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -42,7 +42,7 @@ public class SnippetFixture {
     public static final String POST_INFO = """
             <div class="post">
                 <div class="post__account">
-                    <img class="post__account__img"/>
+                    <img src="/image?imageName=%s" class="post__account__img"/>
                     <p class="post__account__nickname">%s</p>
                     <h1>%s</h1>
                 </div>
@@ -96,7 +96,7 @@ public class SnippetFixture {
     public static final String COMMENT_INFO = """
             <li class="comment__item">
                 <div class="comment__item__user">
-                    <img class="comment__item__user__img"/>
+                    <img src="/image?imageName=%s"class="comment__item__user__img"/>
                     <p class="comment__item__user__nickname">%s</p>
                 </div>
                 <p class="comment__item__article">
