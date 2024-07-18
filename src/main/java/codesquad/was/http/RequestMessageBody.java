@@ -3,22 +3,34 @@ package codesquad.was.http;
 import static codesquad.was.http.type.CharsetType.UTF_8;
 
 import codesquad.was.http.type.MimeType;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RequestMessageBody {
 
     private final byte[] bodyData;
     private final MimeType mimeType;
+    private MultipartParser multipartParser;
+
     private final RequestParameters formParameters = new RequestParameters();
 
-    public RequestMessageBody(final byte[] bodyData, final MimeType mimeType) throws UnsupportedEncodingException {
+
+    public RequestMessageBody(final byte[] bodyData, final MimeType mimeType,
+                              Supplier<List<String>> contentTypeSupplier) throws IOException {
         this.bodyData = bodyData;
         this.mimeType = mimeType;
 
         if (mimeType == MimeType.APPLICATION_X_WWW_FORM_ENCODED) {
             formParameters.putParameters(new String(bodyData, UTF_8.getCharset()));
         }
-        // 멀티파트 파싱 구현
+        if (mimeType == MimeType.MULTIPART_FORM_DATA) {
+            multipartParser = new MultipartParser(bodyData, contentTypeSupplier.get());
+            formParameters.putAll(multipartParser.getFormParameters());
+        }
     }
 
     public boolean containsParameter(final String key) {

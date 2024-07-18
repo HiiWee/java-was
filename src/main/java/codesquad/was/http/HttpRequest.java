@@ -50,7 +50,7 @@ public class HttpRequest {
         byte[] bodyBytes = reader.readBody(Integer.parseInt(contentLengthValue));
 
         MimeType mimeType = headers.getMimeType();
-        requestBody = new RequestMessageBody(bodyBytes, mimeType);
+        requestBody = new RequestMessageBody(bodyBytes, mimeType, () -> headers.getHeader(HeaderType.CONTENT_TYPE));
     }
 
     private RequestLine createRequestLine(final String requestLineValue) throws UnsupportedEncodingException {

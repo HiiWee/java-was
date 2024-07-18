@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import codesquad.was.http.type.MimeType;
 import java.io.IOException;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 class RequestMessageBodyTest {
@@ -13,7 +14,7 @@ class RequestMessageBodyTest {
         // given
         byte[] bodyBytes = "name=사람이름".getBytes();
         RequestMessageBody requestMessageBody = new RequestMessageBody(bodyBytes,
-                MimeType.APPLICATION_X_WWW_FORM_ENCODED);
+                MimeType.APPLICATION_X_WWW_FORM_ENCODED, Collections::emptyList);
 
         // when
         String name = requestMessageBody.getParameter("name");

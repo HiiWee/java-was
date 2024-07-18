@@ -84,7 +84,7 @@ public class HomeRequestHandler extends AbstractRequestHandler {
                 .build();
     }
 
-    private static Snippet createCommentInfoSnippet(final List<CommentInfo> commentInfos) {
+    private Snippet createCommentInfoSnippet(final List<CommentInfo> commentInfos) {
         List<Snippet> postPerCommentSnippets = commentInfos.stream()
                 .map(comment -> SnippetBuilder.builder()
                         .attributes(List.of(comment.commentWriterNickname(), comment.content()))

@@ -27,6 +27,10 @@ public class RequestParameters {
                 .collect(Collectors.toMap(splitParams -> splitParams[0].trim(), splitParams -> splitParams[1].trim()));
     }
 
+    public void putAll(final Map<String, String> parameters) {
+        requestParameters.putAll(parameters);
+    }
+
     public boolean contains(final String key) {
         return requestParameters.containsKey(key);
     }
