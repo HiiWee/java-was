@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/MimeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/type/MimeType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="was3-2" />
+        <entry key="$PROJECT_DIR$" value="e80d4dec9b07cb74bba9373cb3ba18d5c603b38e" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -308,11 +305,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.만약_로그인이_되어있으면.응답_코드로_200을_반환한다" />
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_null을_반환한다" />
         <item itemvalue="Gradle.HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -404,22 +401,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>121</line>
+          <line>116</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>149</line>
+          <line>142</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>156</line>
+          <line>148</line>
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
