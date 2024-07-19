@@ -80,7 +80,12 @@ public class RequestInputStreamReader {
 
     public byte[] readBody(final int contentLength) throws IOException {
         byte[] bytes = new byte[contentLength];
-        requestInputStream.read(bytes);
+        int read = requestInputStream.read(bytes);
+        if (read < contentLength) {
+            while (read < contentLength) {
+                read += requestInputStream.read(bytes, read, contentLength - read);
+            }
+        }
 
         return bytes;
     }

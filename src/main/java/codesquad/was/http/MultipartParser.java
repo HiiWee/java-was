@@ -4,16 +4,13 @@ import static codesquad.was.http.type.CharsetType.UTF_8;
 
 import codesquad.utils.StringUtils;
 import codesquad.was.http.type.MimeType;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,41 +25,41 @@ public class MultipartParser {
 
     private final Logger log = LoggerFactory.getLogger(MultipartParser.class);
 
+    private final byte[] bodyData;
+    private int offset;
     private final String splitBoundary;
     private final String endBoundary;
     private final Map<String, String> formParameters = new HashMap<>();
     private MultipartFile multipartFile;
 
     public MultipartParser(final byte[] bodyData, final List<String> mimeTypeValues) throws IOException {
+        this.bodyData = bodyData;
         String boundarySymbol = getBoundarySymbol(mimeTypeValues);
         splitBoundary = DASH + boundarySymbol;
         endBoundary = DASH + boundarySymbol + DASH;
 
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(bodyData);
-
-        while (!(new String(readUntilSymbol(CR, inputStream), UTF_8.getCharset())).equals(endBoundary)) {
+        while (!(new String(readUntilSymbol(CR), UTF_8.getCharset())).equals(endBoundary)) {
             Map<String, String> contentDispositionValues = getContentDispositions(
-                    new String(readUntilSymbol(CR, inputStream), UTF_8.getCharset()));
+                    new String(readUntilSymbol(CR), UTF_8.getCharset()));
 
             if (contentDispositionValues.size() == ONLY_FORM_DATA_SIZE) {
-                inputStream.skip(2);
+                skipByte(2);
                 String formKey = contentDispositionValues.get("name");
-                String formValue = new String(readUntilSymbol(CR, inputStream));
+                String formValue = new String(readUntilSymbol(CR));
                 formParameters.put(formKey, formValue);
             }
             if (contentDispositionValues.size() == MIME_DATA_SIZE) {
-                MimeType mimeType = getMimeType(new String(readUntilSymbol(CR, inputStream), UTF_8.getCharset()));
+                MimeType mimeType = getMimeType(new String(readUntilSymbol(CR), UTF_8.getCharset()));
 
                 if (mimeType == MimeType.APPLICATION_OCTET_STREAM || contentDispositionValues.get("filename")
                         .isEmpty()) {
-                    inputStream.skip(4);
+                    skipByte(4);
                     continue;
                 }
                 String filename = contentDispositionValues.get("filename");
-                inputStream.skip(2);
+                skipByte(2);
 
-                byte[] multipartBytes = readUntilSymbol((CRLF + splitBoundary).getBytes(UTF_8.getCharset()),
-                        inputStream);
+                byte[] multipartBytes = readUntilSymbol(CRLF + splitBoundary);
                 log.debug("read multipart file byte = {}", multipartBytes.length);
 
                 multipartFile = new MultipartFile(filename, StringUtils.getFilenameExtension(filename), multipartBytes,
@@ -75,15 +72,16 @@ public class MultipartParser {
         return mimeTypeValues.get(1).split("=")[1];
     }
 
-    private byte[] readUntilSymbol(final byte symbol, final InputStream inputStream) throws IOException {
-        byte[] bytes;
-        inputStream.mark(0);
-        int count = countLine(inputStream, symbol);
-        inputStream.reset();
+    private byte[] readUntilSymbol(final byte symbol) {
+        int count = countLine(symbol);
+        byte[] bytes = new byte[count];
 
-        bytes = new byte[count];
-        inputStream.read(bytes);
-        skipByte(inputStream, 2);
+        for (int i = offset; i < offset + count; i++) {
+            bytes[i - offset] = bodyData[i];
+        }
+        offset += count;
+
+        skipByte(2);
 
         return bytes;
     }
@@ -107,18 +105,21 @@ public class MultipartParser {
         return MimeType.findMimeType(contentAndMimeTypes[1].trim());
     }
 
-    private byte[] readUntilSymbol(final byte[] bytes, final ByteArrayInputStream inputStream) {
-        List<Byte> byteStore = new ArrayList<>();
-        inputStream.mark(0);
-        while (!isEndOfBoundary(byteStore, bytes)) {
-            byteStore.add((byte) inputStream.read());
+    private byte[] readUntilSymbol(final String symbol) throws UnsupportedEncodingException {
+        byte[] symbolBytes = symbol.getBytes(UTF_8.getCharset());
+        int start = offset;
+        int end = offset;
+        while (!isEndOfBoundary(symbolBytes, end)) {
+            end++;
         }
-        List<Byte> findBytes = byteStore.subList(0, byteStore.size() - bytes.length);
-        inputStream.reset();
-        inputStream.skip(findBytes.size());
-        inputStream.skip(2);
+        byte[] findBytes = new byte[end - start - symbolBytes.length];
+        offset = end - symbolBytes.length;
+        System.arraycopy(bodyData, start, findBytes, 0, end - start - symbolBytes.length);
 
-        return toArray(findBytes);
+        String s = new String(findBytes, UTF_8.getCharset());
+        skipByte(2);
+
+        return findBytes;
     }
 
     private byte[] toArray(final List<Byte> bytes) {
@@ -130,20 +131,27 @@ public class MultipartParser {
         return convertedBytes;
     }
 
-    private boolean isEndOfBoundary(final List<Byte> byteStore, final byte[] bytes) {
-        if (byteStore.size() < bytes.length) {
+    private boolean isEndOfBoundary(final byte[] symbolBytes, final int end) {
+        if (end - offset < symbolBytes.length) {
             return false;
         }
-        List<Byte> compareBytes = byteStore.subList(byteStore.size() - bytes.length, byteStore.size());
-        return IntStream.range(0, compareBytes.size())
-                .allMatch(i -> compareBytes.get(i) == bytes[i]);
+        byte[] bytes = new byte[symbolBytes.length];
+        for (int i = end - symbolBytes.length; i < end; i++) {
+            bytes[i - (end - symbolBytes.length)] = bodyData[i];
+        }
+
+        for (int i = 0; i < symbolBytes.length; i++) {
+            if (symbolBytes[i] != bytes[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    private int countLine(final InputStream inputStream, final byte specificByte) throws IOException {
+    private int countLine(final byte specificByte) {
         int count = 0;
-        int value;
-        while ((value = inputStream.read()) != specificByte) {
-            if (value == -1) {
+        for (int i = offset; i < bodyData.length; i++) {
+            if (bodyData[i] == specificByte) {
                 break;
             }
             count++;
@@ -151,8 +159,8 @@ public class MultipartParser {
         return count;
     }
 
-    private void skipByte(final InputStream inputStream, int count) throws IOException {
-        inputStream.skip(count);
+    private void skipByte(int count) {
+        offset += count;
     }
 
     public Map<String, String> getFormParameters() {
