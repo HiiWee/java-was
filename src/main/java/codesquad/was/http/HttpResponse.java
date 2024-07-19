@@ -38,7 +38,7 @@ public class HttpResponse {
 
         try (InputStream inputStream = fileUrl.openStream()) {
             byte[] fileBytes = inputStream.readAllBytes();
-            headers.add(HeaderType.CONTENT_TYPE, MimeType.findMimeValue(StringUtils.getFilenameExtension(requestPath)));
+            headers.add(HeaderType.CONTENT_TYPE, MimeType.findValue(StringUtils.getFilenameExtension(requestPath)));
             statusLine.setResponseStatus(StatusCodeType.OK);
 
             sendResponse(fileBytes);

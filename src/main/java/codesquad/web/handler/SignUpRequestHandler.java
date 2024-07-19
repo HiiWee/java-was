@@ -1,11 +1,16 @@
 package codesquad.web.handler;
 
+import static codesquad.web.handler.ImageRequestHandler.UPLOAD_PATH;
+
 import codesquad.was.AbstractRequestHandler;
 import codesquad.was.exception.BadRequestException;
 import codesquad.was.http.HttpRequest;
 import codesquad.was.http.HttpResponse;
+import codesquad.was.http.MultipartFile;
 import codesquad.web.domain.User;
 import codesquad.web.domain.UserRepository;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Objects;
 import org.slf4j.Logger;
@@ -30,7 +35,10 @@ public class SignUpRequestHandler extends AbstractRequestHandler {
 
         validateSignUpInfo(userId, nickname, password, email);
 
-        User user = new User(userId, nickname, password, email);
+        MultipartFile multipartFile = request.getMultipartFile();
+        String imageName = uploadFile(multipartFile);
+
+        User user = new User(userId, nickname, password, email, imageName);
         log.info("회원가입 유저 = {}", user);
 
         userRepository.save(user);
@@ -42,5 +50,28 @@ public class SignUpRequestHandler extends AbstractRequestHandler {
         if (Objects.isNull(userId) || Objects.isNull(nickname) || Objects.isNull(password) || Objects.isNull(email)) {
             throw new BadRequestException("회원가입 정보를 모두 입력해야 합니다.");
         }
+    }
+
+    private String uploadFile(final MultipartFile multipartFile) throws IOException {
+        if (Objects.isNull(multipartFile)) {
+            return null;
+        }
+        createDirectory();
+        return writeBytes(multipartFile);
+    }
+
+    private void createDirectory() {
+        File file = new File(UPLOAD_PATH);
+        file.mkdirs();
+    }
+
+    private String writeBytes(final MultipartFile multipartFile) throws IOException {
+        String randomName = multipartFile.randomName();
+        File file = new File(UPLOAD_PATH + "/" + randomName);
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        fileOutputStream.write(multipartFile.getBytes());
+        fileOutputStream.close();
+
+        return randomName;
     }
 }

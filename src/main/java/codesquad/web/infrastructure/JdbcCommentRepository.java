@@ -26,12 +26,13 @@ public class JdbcCommentRepository implements CommentRepository {
 
     @Override
     public List<CommentWithNickname> findAllByPostIdWithJoinUser(final Long postId) {
-        String sql = "SELECT u.user_id, c.content FROM comment c join users u on u.id=c.users_primary_id where c.post_primary_id=?";
+        String sql = "SELECT u.user_id, u.image_name, c.content FROM comment c join users u on u.id=c.users_primary_id where c.post_primary_id=?";
         return jdbcTemplate.selectAll(
                 sql,
                 ps -> ps.setLong(1, postId),
                 rs -> new CommentWithNickname(
                         rs.getString("user_id"),
+                        rs.getString("image_name"),
                         rs.getString("content")
                 )
         );

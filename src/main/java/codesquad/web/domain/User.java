@@ -1,5 +1,7 @@
 package codesquad.web.domain;
 
+import java.util.Objects;
+
 public class User {
 
     private Long id;
@@ -7,20 +9,25 @@ public class User {
     private final String nickname;
     private final String password;
     private final String email;
+    private final String imageName;
 
-    public User(final String userId, final String nickname, final String password, final String email) {
+    public User(final String userId, final String nickname, final String password, final String email,
+                final String imageName) {
         this.userId = userId;
         this.nickname = nickname;
         this.password = password;
         this.email = email;
+        this.imageName = imageName;
     }
 
-    public User(final Long id, final String userId, final String nickname, final String password, final String email) {
+    public User(final Long id, final String userId, final String nickname, final String password, final String email,
+                final String imageName) {
         this.id = id;
         this.userId = userId;
         this.nickname = nickname;
         this.password = password;
         this.email = email;
+        this.imageName = imageName;
     }
 
     public Long getId() {
@@ -41,6 +48,13 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getImageName() {
+        if (Objects.isNull(imageName)) {
+            return "";
+        }
+        return imageName;
     }
 
     public boolean isValidPassword(final String password) {

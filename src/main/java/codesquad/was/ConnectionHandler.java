@@ -33,9 +33,8 @@ public class ConnectionHandler implements Runnable {
              OutputStream clientOutput = clientSocket.getOutputStream()
         ) {
             HttpRequest httpRequest = new HttpRequest(clientInput);
-            log.debug("Http Request = {}", httpRequest);
-
             HttpResponse httpResponse = new HttpResponse(clientOutput, httpRequest.getHttpVersion());
+            log.debug("Http Request = {}", httpRequest);
 
             RequestHandler requestHandler = requestHandlerMapping.read(httpRequest.getRequestPath());
             validateHandler(httpRequest, httpResponse, requestHandler);

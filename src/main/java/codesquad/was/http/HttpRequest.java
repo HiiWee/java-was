@@ -5,10 +5,9 @@ import static codesquad.was.http.type.CharsetType.UTF_8;
 import codesquad.was.http.type.HeaderType;
 import codesquad.was.http.type.HttpMethod;
 import codesquad.was.http.type.MimeType;
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Collections;
@@ -17,6 +16,7 @@ import java.util.Objects;
 
 public class HttpRequest {
 
+    private static final int TWO_MB = 2 * 1024 * 1024;
     private static final String ONE_SPACE = " ";
     private static final int METHOD_INDEX = 0;
     private static final int URI_INDEX = 1;
@@ -28,7 +28,7 @@ public class HttpRequest {
 
     private final RequestLine requestLine;
     private final Headers headers;
-    private final RequestParameters parameters = new RequestParameters();
+    private final RequestParameters queryParameters = new RequestParameters();
     private final RequestMessageBody requestBody;
 
     public HttpRequest(final RequestLine requestLine, final Headers headers, final RequestMessageBody requestBody) {
@@ -38,26 +38,29 @@ public class HttpRequest {
     }
 
     public HttpRequest(final InputStream clientInput) throws IOException {
-        BufferedReader requestReader = new BufferedReader(new InputStreamReader(clientInput));
-        requestLine = createRequestLine(requestReader.readLine());
-        headers = new Headers(requestReader);
-        String contentLengthValue = parseContentLength();
-        requestBody = new RequestMessageBody(requestReader, contentLengthValue);
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(clientInput, TWO_MB);
+        RequestInputStreamReader reader = new RequestInputStreamReader(bufferedInputStream);
+        String requestLineValue = reader.readRequestLine();
+        requestLine = createRequestLine(requestLineValue);
 
-        if (isFormData()) {
-            String bodyData = requestBody.getBodyData();
-            parameters.putParameters(bodyData);
-        }
+        List<String> headerValues = reader.readHeaders();
+        headers = new Headers(headerValues);
+
+        String contentLengthValue = parseContentLength();
+        byte[] bodyBytes = reader.readBody(Integer.parseInt(contentLengthValue));
+
+        MimeType mimeType = headers.getMimeType();
+        requestBody = new RequestMessageBody(bodyBytes, mimeType, () -> headers.getHeader(HeaderType.CONTENT_TYPE));
     }
 
-    private RequestLine createRequestLine(final String requestLine) throws UnsupportedEncodingException {
-        String[] splitLines = requestLine.split(ONE_SPACE);
+    private RequestLine createRequestLine(final String requestLineValue) throws UnsupportedEncodingException {
+        String[] splitLines = requestLineValue.split(ONE_SPACE);
         HttpMethod method = HttpMethod.find(splitLines[METHOD_INDEX].toUpperCase());
         String[] pathWithQueryString = splitDecodedQueryString(splitLines[URI_INDEX]);
         String requestPath = pathWithQueryString[PATH_INDEX];
 
         if (pathWithQueryString.length == RequestParameters.KEY_VALUE_LENGTH) {
-            parameters.putParameters(pathWithQueryString[QUERY_STRING_INDEX]);
+            queryParameters.putParameters(pathWithQueryString[QUERY_STRING_INDEX]);
         }
         String httpVersion = splitLines[VERSION_INDEX];
 
@@ -67,19 +70,9 @@ public class HttpRequest {
     private String parseContentLength() {
         List<String> headerValues = headers.getHeader(HeaderType.CONTENT_LENGTH);
         if (Objects.isNull(headerValues) || headerValues.isEmpty()) {
-            return null;
+            return "0";
         }
-        return String.join("; ", headerValues);
-    }
-
-    private boolean isFormData() {
-        List<String> headerValues = headers.getHeader(HeaderType.CONTENT_TYPE);
-        if (Objects.isNull(headerValues) || headerValues.isEmpty()) {
-            return false;
-        }
-        String contentType = headerValues.get(0);
-
-        return contentType.contains(MimeType.APPLICATION_X_WWW_FORM_ENCODED.getValue());
+        return headerValues.get(0);
     }
 
     private String[] splitDecodedQueryString(final String queryString) throws UnsupportedEncodingException {
@@ -88,20 +81,14 @@ public class HttpRequest {
         return decodedQueryString.split("\\?");
     }
 
-    public String getRequestPath() {
-        return requestLine.getRequestPath();
-    }
-
-    public String getHttpVersion() {
-        return requestLine.getHttpVersion();
-    }
-
-    public HttpMethod getHttpMethod() {
-        return requestLine.getMethod();
-    }
-
     public String getParameter(final String name) {
-        return parameters.get(name);
+        if (queryParameters.contains(name)) {
+            return queryParameters.get(name);
+        }
+        if (requestBody.containsParameter(name)) {
+            return requestBody.getParameter(name);
+        }
+        return null;
     }
 
     public List<Cookie> getCookies() {
@@ -131,12 +118,28 @@ public class HttpRequest {
         return httpSession;
     }
 
+    public String getRequestPath() {
+        return requestLine.getRequestPath();
+    }
+
+    public String getHttpVersion() {
+        return requestLine.getHttpVersion();
+    }
+
+    public HttpMethod getHttpMethod() {
+        return requestLine.getMethod();
+    }
+
+    public MultipartFile getMultipartFile() {
+        return requestBody.getMultipartFile();
+    }
+
     @Override
     public String toString() {
         return "HttpRequest{" +
                 "requestLine=" + requestLine +
                 ", headers=" + headers +
-                ", parameters=" + parameters +
+                ", parameters=" + queryParameters +
                 ", requestBody=" + requestBody +
                 '}';
     }

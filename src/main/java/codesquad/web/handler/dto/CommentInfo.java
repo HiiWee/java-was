@@ -1,7 +1,8 @@
 package codesquad.web.handler.dto;
 
 public record CommentInfo(
-        String commentWriterNickname,
+        String writerNickname,
+        String writerImageName,
         String content
 ) {
 }

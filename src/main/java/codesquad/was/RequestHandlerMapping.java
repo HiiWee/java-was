@@ -7,6 +7,7 @@ import codesquad.web.domain.PostRepository;
 import codesquad.web.domain.UserRepository;
 import codesquad.web.handler.CommentRequestHandler;
 import codesquad.web.handler.HomeRequestHandler;
+import codesquad.web.handler.ImageRequestHandler;
 import codesquad.web.handler.LoginRequestHandler;
 import codesquad.web.handler.LogoutRequestHandler;
 import codesquad.web.handler.PostRequestHandler;
@@ -15,6 +16,7 @@ import codesquad.web.handler.UserRequestHandler;
 import codesquad.web.infrastructure.JdbcCommentRepository;
 import codesquad.web.infrastructure.JdbcPostRepository;
 import codesquad.web.infrastructure.JdbcUserRepository;
+import java.util.HashMap;
 import java.util.Map;
 
 public class RequestHandlerMapping {
@@ -29,18 +31,18 @@ public class RequestHandlerMapping {
         PostRepository postRepository = new JdbcPostRepository(jdbcTemplate);
         CommentRepository commentRepository = new JdbcCommentRepository(jdbcTemplate);
 
-        handlerMappings = Map.of(
-                "static", (request, response) -> response.forward(request.getRequestPath()),
-                "/", new HomeRequestHandler(postRepository, commentRepository),
-                "/registration", (request, response) -> response.forward("/registration/index.html"),
-                "/user/login-failed", (request, response) -> response.forward("/login/failed.html"),
-                "/user/create", new SignUpRequestHandler(userRepository),
-                "/user/login", new LoginRequestHandler(userRepository),
-                "/user/logout", new LogoutRequestHandler(),
-                "/user/list", new UserRequestHandler(userRepository),
-                "/post", new PostRequestHandler(postRepository),
-                "/post/comment", new CommentRequestHandler(commentRepository)
-        );
+        handlerMappings = new HashMap<>();
+        handlerMappings.put("static", (request, response) -> response.forward(request.getRequestPath()));
+        handlerMappings.put("/", new HomeRequestHandler(postRepository, commentRepository));
+        handlerMappings.put("/registration", (request, response) -> response.forward("/registration/index.html"));
+        handlerMappings.put("/user/login-failed", (request, response) -> response.forward("/login/failed.html"));
+        handlerMappings.put("/user/create", new SignUpRequestHandler(userRepository));
+        handlerMappings.put("/user/login", new LoginRequestHandler(userRepository));
+        handlerMappings.put("/user/logout", new LogoutRequestHandler());
+        handlerMappings.put("/user/list", new UserRequestHandler(userRepository));
+        handlerMappings.put("/post", new PostRequestHandler(postRepository));
+        handlerMappings.put("/post/comment", new CommentRequestHandler(commentRepository));
+        handlerMappings.put("/image", new ImageRequestHandler());
     }
 
     public RequestHandler read(final String requestPath) {

@@ -80,14 +80,15 @@ public class HomeRequestHandler extends AbstractRequestHandler {
     private static Snippet createPostInfoSnippet(final PostsInfo post) {
         return SnippetBuilder.builder()
                 .snippet(SnippetFixture.POST_INFO)
-                .attributes(List.of(post.writerNickname(), post.title(), post.content()))
+                .attributes(List.of(post.writerImageName(), post.writerNickname(), post.title(), post.postImageName(),
+                        post.content()))
                 .build();
     }
 
-    private static Snippet createCommentInfoSnippet(final List<CommentInfo> commentInfos) {
+    private Snippet createCommentInfoSnippet(final List<CommentInfo> commentInfos) {
         List<Snippet> postPerCommentSnippets = commentInfos.stream()
                 .map(comment -> SnippetBuilder.builder()
-                        .attributes(List.of(comment.commentWriterNickname(), comment.content()))
+                        .attributes(List.of(comment.writerImageName(), comment.writerNickname(), comment.content()))
                         .snippet(SnippetFixture.COMMENT_INFO)
                         .build())
                 .toList();

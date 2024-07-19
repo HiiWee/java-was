@@ -4,9 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import codesquad.was.http.type.HeaderType;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -15,12 +13,7 @@ class HeadersTest {
     @Test
     void getHeader_헤더목록에_있는_헤더_값을_찾을_수_있다() throws IOException {
         // given
-        String httpRequestHeaders = "Host: localhost\r\n" +
-                "Connection: keep-alive\r\n" +
-                "Accept: text/html\r\n" +
-                "\r\n";
-        BufferedReader bufferedReader = new BufferedReader(new StringReader(httpRequestHeaders));
-        Headers headers = new Headers(bufferedReader);
+        Headers headers = new Headers(List.of("Host: localhost", "Connection: keep-alive", "Accept: text/html"));
 
         // when
         String headerValue = headers.getHeader(HeaderType.HOST).get(0);
@@ -48,13 +41,8 @@ class HeadersTest {
     @Test
     void 헤더_OWS_여부에_관계없이_파싱_할_수_있다() throws IOException {
         // given
-        String httpRequestHeaders = "Host:localhost\r\n" +
-                "Connection: keep-alive\r\n" +
-                "Accept : text/html\r\n" +
-                "Content-Type :text/html\r\n" +
-                "\r\n";
-        BufferedReader bufferedReader = new BufferedReader(new StringReader(httpRequestHeaders));
-        Headers headers = new Headers(bufferedReader);
+        Headers headers = new Headers(
+                List.of("Host:localhost", "Connection :keep-alive", "Accept: text/html", "Content-Type :text/html"));
 
         // when
         String value1 = headers.getHeader(HeaderType.HOST).get(0);

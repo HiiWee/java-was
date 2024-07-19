@@ -19,24 +19,26 @@ public class JdbcUserRepository implements UserRepository {
                         + "    user_id VARCHAR(255),\n"
                         + "    nickname VARCHAR(255),\n"
                         + "    password VARCHAR(255),\n"
+                        + "    image_name VARCHAR(255),\n"
                         + "    email VARCHAR(255)\n"
                         + ")");
     }
 
     @Override
     public void save(final User user) {
-        String sql = "INSERT INTO users (user_id, nickname, password, email) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO users (user_id, nickname, password, email, image_name) VALUES (?, ?, ?, ?, ?)";
         jdbcTemplate.insert(sql, ps -> {
             ps.setString(1, user.getUserId());
             ps.setString(2, user.getNickname());
             ps.setString(3, user.getPassword());
             ps.setString(4, user.getEmail());
+            ps.setString(5, user.getImageName());
         });
     }
 
     @Override
     public Optional<User> findByUserId(final String userId) {
-        String sql = "SELECT id, user_id, nickname, password, email FROM users where user_id = ?";
+        String sql = "SELECT id, user_id, nickname, password, email, image_name FROM users where user_id = ?";
         User findUser = jdbcTemplate.selectOne(
                 sql,
                 ps -> ps.setString(1, userId),
@@ -45,7 +47,8 @@ public class JdbcUserRepository implements UserRepository {
                         rs.getString("user_id"),
                         rs.getString("nickname"),
                         rs.getString("password"),
-                        rs.getString("email")
+                        rs.getString("email"),
+                        rs.getString("image_name")
                 )
         );
 
@@ -54,7 +57,7 @@ public class JdbcUserRepository implements UserRepository {
 
     @Override
     public List<User> findAll() {
-        String sql = "SELECT id, user_id, nickname, password, email FROM users";
+        String sql = "SELECT id, user_id, nickname, password, email, image_name FROM users";
         return jdbcTemplate.selectAll(
                 sql,
                 rs -> new User(
@@ -62,7 +65,8 @@ public class JdbcUserRepository implements UserRepository {
                         rs.getString("user_id"),
                         rs.getString("nickname"),
                         rs.getString("password"),
-                        rs.getString("email")
+                        rs.getString("email"),
+                        rs.getString("image_name")
                 )
         );
     }

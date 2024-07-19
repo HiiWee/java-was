@@ -2,44 +2,46 @@ package codesquad.was.http;
 
 import static codesquad.was.http.type.CharsetType.UTF_8;
 
-import java.io.BufferedReader;
+import codesquad.was.http.type.MimeType;
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.util.Objects;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class RequestMessageBody {
 
-    private static final String EMPTY_DATA = "";
-    private static final int END_STREAM = -1;
-    private static final int NO_DATA = 0;
+    private final byte[] bodyData;
+    private final MimeType mimeType;
+    private MultipartParser multipartParser;
+    private MultipartFile multipartFile;
 
-    private final String bodyData;
+    private final RequestParameters formParameters = new RequestParameters();
 
-    public RequestMessageBody(final String bodyData) {
+
+    public RequestMessageBody(final byte[] bodyData, final MimeType mimeType,
+                              Supplier<List<String>> contentTypeSupplier) throws IOException {
         this.bodyData = bodyData;
-    }
+        this.mimeType = mimeType;
 
-    public RequestMessageBody(final BufferedReader requestReader, final String contentLengthValue) throws IOException {
-        if (Objects.isNull(contentLengthValue) || "0".equals(contentLengthValue.trim())) {
-            bodyData = EMPTY_DATA;
-            return;
+        if (mimeType == MimeType.APPLICATION_X_WWW_FORM_ENCODED) {
+            formParameters.putParameters(new String(bodyData, UTF_8.getCharset()));
         }
-        bodyData = parseRequestMessageBody(requestReader, contentLengthValue);
-    }
-
-    private String parseRequestMessageBody(final BufferedReader requestReader,
-                                           final String contentLengthValue) throws IOException {
-        int contentLength = Integer.parseInt(contentLengthValue.trim());
-        char[] buffer = new char[contentLength];
-        int result = requestReader.read(buffer);
-        if (result == NO_DATA || result == END_STREAM) {
-            return EMPTY_DATA;
+        if (mimeType == MimeType.MULTIPART_FORM_DATA) {
+            multipartParser = new MultipartParser(bodyData, contentTypeSupplier.get());
+            formParameters.putAll(multipartParser.getFormParameters());
+            multipartFile = multipartParser.getMultipartFile();
         }
-        return URLDecoder.decode(String.valueOf(buffer).trim(), UTF_8.getCharset());
     }
 
-    public String getBodyData() {
-        return bodyData;
+    public boolean containsParameter(final String key) {
+        return formParameters.contains(key);
+    }
+
+    public MultipartFile getMultipartFile() {
+        return multipartFile;
+    }
+
+    public String getParameter(final String key) {
+        return formParameters.get(key);
     }
 
     @Override

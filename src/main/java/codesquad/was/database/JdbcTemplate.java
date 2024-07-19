@@ -87,7 +87,7 @@ public class JdbcTemplate {
         }
     }
 
-    private static <T> List<T> getValues(final ResultSetMapper<T> mapper, final PreparedStatement ps)
+    private <T> List<T> getValues(final ResultSetMapper<T> mapper, final PreparedStatement ps)
             throws SQLException {
         try (ResultSet resultSet = ps.executeQuery()) {
             List<T> results = new ArrayList<>();
