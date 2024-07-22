@@ -21,7 +21,7 @@ public class Server {
         this.nThread = nThread;
     }
 
-    public void start() throws IOException {
+    public void start() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             log.debug("Listening for connection on port 8080 ....");
 
@@ -31,6 +31,8 @@ public class Server {
             while (true) {
                 executor.execute(new ConnectionHandler(serverSocket.accept(), requestHandlerMapping));
             }
+        } catch (IOException e) {
+            log.error("서버 소켓에 오류가 발생했습니다.", e);
         }
     }
 }
