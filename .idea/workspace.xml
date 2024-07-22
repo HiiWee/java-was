@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="280b8feb-1974-426b-989d-56a186fab4bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/codesquad/was/http/MultipartParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/codesquad/was/http/RequestInputStreamReaderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,9 +52,9 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Record" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -83,93 +88,95 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Profiler#1&quot;,
-    &quot;Gradle.Build java-was.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeadersTest.getHeader_헤더목록에_있는_헤더_값을_찾을_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequestTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HttpResponse_객체를_생성하면.HttpResponse_메시지를_만들_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LoginRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LoginRequestHandlerTest.로그인을_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MessageBodyTest.httpRequest의_요청바디가_비어있다면_바디는_비어있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MimeTypeTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MimeTypeTest.알_수_없는_mimeType이라면_octet_stream이_반환된다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.PostRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RawTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_null을_반환한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RequestMessageBodyTest.RequestMessageBody에서_form_parameter를_읽을_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RequestMessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'codesquad'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'codesquad.http'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'codesquad.web'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'codesquad.web.handler'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'java-was.test'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.java-was [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.java-was [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.만약_로그인이_되어있다면.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in java-was.test (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in java-was.test (2).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in java-was.test (3).executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.All in java-was.test (4).executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.All in java-was.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.HomeRequestHandlerTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LoginRequestHandlerTest$로그인_정보가_모두_존재하지_않으면.예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LogoutRequestHandlerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_예외가_발생한다ㅣ.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SignUpRequestHandlerTest$회원가입_정보를_하나라도_입력하지_않으면.예외가_발생한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SnippetTest.스니펫에_문자열_속성들을_포맷팅_할_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.UserRequestHandlerTest$사용자_목록을_요청할때.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.codesquad in java-was.test.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.codesquad.web in java-was.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.codesquad.web.handler in java-was.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;was3-2&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/woowatech20/develop/wootacam/java-was/src/main/resources/static&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Profiler#1",
+    "Gradle.Build java-was.executor": "Run",
+    "Gradle.HeadersTest.getHeader_헤더목록에_있는_헤더_값을_찾을_수_있다.executor": "Run",
+    "Gradle.HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다.executor": "Run",
+    "Gradle.HttpRequestTest.executor": "Run",
+    "Gradle.HttpRequest가_들어오면.Request_Message_Body가_form_data_라면_파싱하여_저장한다.executor": "Run",
+    "Gradle.HttpRequest가_들어오면.httpRequest_객체를_생성한다.executor": "Run",
+    "Gradle.HttpResponse_객체를_생성하면.HttpResponse_메시지를_만들_수_있다.executor": "Run",
+    "Gradle.LoginRequestHandlerTest.executor": "Run",
+    "Gradle.LoginRequestHandlerTest.로그인을_할_수_있다.executor": "Run",
+    "Gradle.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Run",
+    "Gradle.MessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor": "Run",
+    "Gradle.MessageBodyTest.httpRequest의_요청바디가_비어있다면_바디는_비어있다.executor": "Run",
+    "Gradle.MimeTypeTest.executor": "Run",
+    "Gradle.MimeTypeTest.알_수_없는_mimeType이라면_octet_stream이_반환된다.executor": "Run",
+    "Gradle.MimeTypeTest.일치하는_확장자의_mimeType이_없으면_예외가_발생한다.executor": "Run",
+    "Gradle.MultipartParserTest.멀티파트_요청을_파싱할_수_있다.executor": "Run",
+    "Gradle.PostRequestHandlerTest.executor": "Run",
+    "Gradle.RawTest.test.executor": "Run",
+    "Gradle.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_null을_반환한다.executor": "Run",
+    "Gradle.RequestInputStreamReaderTest.executor": "Run",
+    "Gradle.RequestLineTest.httpRequestLine을_받으면_각_메소드를_파싱하여_RequestLine을_생성한다.executor": "Run",
+    "Gradle.RequestMessageBodyTest.RequestMessageBody에서_form_parameter를_읽을_수_있다.executor": "Run",
+    "Gradle.RequestMessageBodyTest.httpRequest의_요청_바디를_읽을_수_있다.executor": "Run",
+    "Gradle.ResourceSnippetTest.외부_템플릿_파일이_존재하지_않는다면_예외가_발생한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다 (1).executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.GET으로_회원가입을_시도하면_예외가_발생한다.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.executor": "Run",
+    "Gradle.SignUpRequestHandlerTest.회원가입을_하면_메모리_DB에_사용자가_저장된다.executor": "Run",
+    "Gradle.Tests in 'codesquad'.executor": "Run",
+    "Gradle.Tests in 'codesquad.http'.executor": "Run",
+    "Gradle.Tests in 'codesquad.web'.executor": "Run",
+    "Gradle.Tests in 'codesquad.web.handler'.executor": "Run",
+    "Gradle.Tests in 'java-was.test'.executor": "Run",
+    "Gradle.java-was [:Main.main()].executor": "Run",
+    "Gradle.java-was [run].executor": "Run",
+    "Gradle.만약_로그인이_되어있다면.executor": "Run",
+    "Gradle.만약_로그인이_되어있다면.게시글을_저장하고_응답_코드로_200을_반환한다.executor": "Debug",
+    "Gradle.만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
+    "Gradle.만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor": "Run",
+    "Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다 (1).executor": "Run",
+    "Gradle.만약_로그인이_되어있지_않다면.응답_코드로_302를_반환한다.executor": "Run",
+    "Gradle.잘못된_파일경로를_넘겨주면.예외가_발생한다.executor": "Run",
+    "JUnit.All in java-was.test (1).executor": "Run",
+    "JUnit.All in java-was.test (2).executor": "Run",
+    "JUnit.All in java-was.test (3).executor": "Coverage",
+    "JUnit.All in java-was.test (4).executor": "Coverage",
+    "JUnit.All in java-was.test.executor": "Run",
+    "JUnit.HomeRequestHandlerTest$홈_화면을_요청할때$만약_로그인이_되어있다면.응답_코드로_200을_반환한다.executor": "Debug",
+    "JUnit.HomeRequestHandlerTest.executor": "Debug",
+    "JUnit.HttpResponseTest$sendError_메소드는$클라이언트로_전송할_에러_상태코드를_넘겨주면.해당_응답값으로_에러_상태코드를_가진_응답_메시지를_생성한다.executor": "Run",
+    "JUnit.HttpResponseTest$sendRedirect_메소드는$리다이렉트할_path를_넘겨주면.해당_path로_리다이렉트가_지정된_응답_메시지를_생성한다.executor": "Run",
+    "JUnit.LoginRequestHandlerTest$로그인_정보가_모두_존재하지_않으면.예외가_발생한다.executor": "Run",
+    "JUnit.LogoutRequestHandlerTest.executor": "Run",
+    "JUnit.LogoutRequestHandlerTest.로그아웃을_할_수_있다.executor": "Debug",
+    "JUnit.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_예외가_발생한다ㅣ.executor": "Run",
+    "JUnit.ResourceSnippetBuilderTest.ResourceSnippetBuilder를_통해_외부_템플릿_파일에_스니펫을_매핑_할_수_있다.executor": "Run",
+    "JUnit.ResourceSnippetTest.외부_템플릿_스니펫에_문자열_속성을_매핑_할_수_있다.executor": "Run",
+    "JUnit.SignUpRequestHandlerTest$회원가입_정보를_하나라도_입력하지_않으면.예외가_발생한다.executor": "Run",
+    "JUnit.SnippetBuilderTest.SnippetBuilder를_통해_스니펫을_생성할_수_있다.executor": "Run",
+    "JUnit.SnippetTest.스니펫에_문자열_속성들을_포맷팅_할_수_있다.executor": "Run",
+    "JUnit.SnippetTest.여러개의_스니펫을_개행문자를_추가하여_합칠_수_있다.executor": "Run",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있으면.응답_코드로_200을_반환한다.executor": "Run",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때$만약_로그인이_되어있지_않으면.응답_코드로_302를_반환한다.executor": "Debug",
+    "JUnit.UserRequestHandlerTest$사용자_목록을_요청할때.executor": "Run",
+    "JUnit.codesquad in java-was.test.executor": "Coverage",
+    "JUnit.codesquad.web in java-was.test.executor": "Run",
+    "JUnit.codesquad.web.handler in java-was.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "was3-2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/woowatech20/develop/wootecam/java-was/build.gradle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="codesquad.web" />
@@ -188,28 +195,15 @@
       <recent name="$PROJECT_DIR$/find_request_handler.png" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="codesquad.was.http" />
       <recent name="codesquad.web.handler" />
       <recent name="codesquad.web.snippet" />
       <recent name="codesquad.web" />
-      <recent name="codesquad.was.http" />
       <recent name="codesquad.http.type" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="codesquad.Main" />
-      <module name="java-was.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="codesquad.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.RequestInputStreamReaderTest">
+    <configuration name="MultipartParserTest.멀티파트_요청을_파싱할_수_있다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -222,7 +216,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;codesquad.was.http.HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다&quot;" />
+            <option value="&quot;codesquad.was.http.MultipartParserTest.멀티파트_요청을_파싱할_수_있다&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -247,6 +241,30 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;codesquad.was.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_null을_반환한다&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RequestInputStreamReaderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;codesquad.was.http.RequestInputStreamReaderTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -305,11 +323,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RequestInputStreamReaderTest" />
+        <item itemvalue="Gradle.MultipartParserTest.멀티파트_요청을_파싱할_수_있다" />
         <item itemvalue="Gradle.만약_로그인이_되어있으면.응답_코드로_200을_반환한다" />
         <item itemvalue="Gradle.Tests in 'java-was.test'" />
         <item itemvalue="Gradle.RequestHandlerMappingTest.매핑된_핸들러를_찾지_못하면_null을_반환한다" />
-        <item itemvalue="Gradle.HeadersTest.헤더_OWS_여부에_관계없이_파싱_할_수_있다" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -343,6 +361,7 @@
       <workItem from="1721047714447" duration="4983000" />
       <workItem from="1721263411715" duration="18656000" />
       <workItem from="1721358659359" duration="779000" />
+      <workItem from="1721624397590" duration="1193000" />
     </task>
     <servers />
   </component>
@@ -401,27 +420,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>116</line>
+          <line>135</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>142</line>
+          <line>153</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>148</line>
+          <line>159</line>
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/RequestInputStreamReader.java</url>
-          <line>81</line>
+          <line>83</line>
           <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/codesquad/was/http/MultipartParser.java</url>
-          <line>89</line>
+          <line>114</line>
           <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
