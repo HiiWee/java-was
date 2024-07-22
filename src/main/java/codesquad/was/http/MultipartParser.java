@@ -61,6 +61,11 @@ public class MultipartParser {
         return mimeTypeValues.get(1).split("=")[1];
     }
 
+    private Map<String, String> readContentDisposition() throws UnsupportedEncodingException {
+        return getContentDispositions(
+                new String(readUntilSymbol(CR), UTF_8.getCharset()));
+    }
+
     private byte[] readUntilSymbol(final byte symbol) {
         int count = countLine(symbol);
         byte[] bytes = new byte[count];
@@ -91,39 +96,6 @@ public class MultipartParser {
         return findBytes;
     }
 
-    private int countLine(final byte specificByte) {
-        int count = 0;
-        for (int i = offset; i < bodyData.length; i++) {
-            if (bodyData[i] == specificByte) {
-                break;
-            }
-            count++;
-        }
-        return count;
-    }
-
-    private void skipByte(int count) {
-        offset += count;
-    }
-
-    private Map<String, String> readContentDisposition() throws UnsupportedEncodingException {
-        return getContentDispositions(
-                new String(readUntilSymbol(CR), UTF_8.getCharset()));
-    }
-
-    private Map<String, String> getContentDispositions(final String header) {
-        String wholeValue = header.split(":")[1];
-        String[] values = wholeValue.split(";");
-        String[] onlyValues = Arrays.copyOfRange(values, 1, values.length);
-
-        return Arrays.stream(onlyValues)
-                .map(onlyValue -> onlyValue.split("="))
-                .collect(Collectors.toMap(
-                        split -> split[0].trim(),
-                        split -> split[1].trim().substring(1, split[1].trim().length() - 1)
-                ));
-    }
-
     private void putFormParameters(final Map<String, String> contentDispositionValues) {
         String formKey = contentDispositionValues.get("name");
         String formValue = new String(readUntilSymbol(CR));
@@ -131,15 +103,24 @@ public class MultipartParser {
         formParameters.put(formKey, formValue);
     }
 
-    private MimeType getMimeType(final String contentAndMimeType) {
-        String[] contentAndMimeTypes = contentAndMimeType.split(":");
-
-        return MimeType.findMimeType(contentAndMimeTypes[1].trim());
-    }
-
     private boolean isEmptyMultipart(final MimeType mimeType, final Map<String, String> contentDispositionValues) {
         return mimeType == MimeType.APPLICATION_OCTET_STREAM || contentDispositionValues.get("filename")
                 .isEmpty();
+    }
+
+    private MultipartFile parseMultipartFile(final Map<String, String> contentDispositionValues,
+                                             final MimeType mimeType) throws UnsupportedEncodingException {
+        String filename = contentDispositionValues.get("filename");
+
+        byte[] multipartBytes = readUntilSymbol(CRLF + splitBoundary);
+        log.debug("read multipart file byte = {}", multipartBytes.length);
+
+        return new MultipartFile(
+                filename,
+                StringUtils.getFilenameExtension(filename),
+                multipartBytes,
+                mimeType
+        );
     }
 
     private boolean isEndOfBoundary(final byte[] symbolBytes, final int end) {
@@ -159,19 +140,38 @@ public class MultipartParser {
         return true;
     }
 
-    private MultipartFile parseMultipartFile(final Map<String, String> contentDispositionValues,
-                                             final MimeType mimeType) throws UnsupportedEncodingException {
-        String filename = contentDispositionValues.get("filename");
+    private int countLine(final byte specificByte) {
+        int count = 0;
+        for (int i = offset; i < bodyData.length; i++) {
+            if (bodyData[i] == specificByte) {
+                break;
+            }
+            count++;
+        }
+        return count;
+    }
 
-        byte[] multipartBytes = readUntilSymbol(CRLF + splitBoundary);
-        log.debug("read multipart file byte = {}", multipartBytes.length);
+    private void skipByte(int count) {
+        offset += count;
+    }
 
-        return new MultipartFile(
-                filename,
-                StringUtils.getFilenameExtension(filename),
-                multipartBytes,
-                mimeType
-        );
+    private Map<String, String> getContentDispositions(final String header) {
+        String wholeValue = header.split(":")[1];
+        String[] values = wholeValue.split(";");
+        String[] onlyValues = Arrays.copyOfRange(values, 1, values.length);
+
+        return Arrays.stream(onlyValues)
+                .map(onlyValue -> onlyValue.split("="))
+                .collect(Collectors.toMap(
+                        split -> split[0].trim(),
+                        split -> split[1].trim().substring(1, split[1].trim().length() - 1)
+                ));
+    }
+
+    private MimeType getMimeType(final String contentAndMimeType) {
+        String[] contentAndMimeTypes = contentAndMimeType.split(":");
+
+        return MimeType.findMimeType(contentAndMimeTypes[1].trim());
     }
 
     public Map<String, String> getFormParameters() {
